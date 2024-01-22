@@ -1,0 +1,7 @@
+{
+  "name": "CodeExhibit",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
