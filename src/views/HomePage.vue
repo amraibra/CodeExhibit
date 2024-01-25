@@ -1,56 +1,34 @@
 <template>
-  <ion-page>
-    <ion-header :translucent="true">
-      <ion-toolbar>
-        <ion-title>Home</ion-title>
-      </ion-toolbar>
-    </ion-header>
+  <ion-header :translucent="true">
+    <ion-toolbar>
+      <div class="flex justify-between items-center w-full h-12 px-5">
+        <!-- Logo and title -->
+        <div class="flex items-center pl-5">
+          <img src="/src/output-onlinepngtools-2.png" alt="CodeExhibit Logo" class="h-10" />
+          <ion-title class="text-codeExhibit font-londrina text-3xl normal-case font-normal leading-normal -m-4">CodeExhibit</ion-title>
+        </div>
 
-    <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Blank</ion-title>
-        </ion-toolbar>
-      </ion-header>
+        <!-- Navigation buttons -->
+        <div class="flex gap-2">
+          <button class="text-white text-center font-semibold text-sm bg-transparent">Home</button>
+          <button class="text-white text-center font-semibold text-sm bg-transparent">About</button>
+          <button class="text-white text-center font-semibold text-sm bg-transparent">Contact</button>
+        </div>
 
-      <div id="container">
-        <strong>Ready to create an app?</strong>
-        <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+        <!-- Projects button -->
+        <button class="bg-codeExhibit px-6 py-2 text-white rounded-full">Projects</button>
       </div>
-    </ion-content>
-  </ion-page>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content :fullscreen="true" class="content-style">
+    <img src="/src/Rectangle1.svg" alt="Rectangle1" class="w-full h-auto mx-auto -z-1" />
+  </ion-content>
 </template>
 
 <script setup lang="ts">
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonButton } from '@ionic/vue';
 </script>
 
 <style scoped>
-#container {
-  text-align: center;
-  
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-  
-  color: #8c8c8c;
-  
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
 </style>
