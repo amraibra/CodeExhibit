@@ -22,6 +22,12 @@
         </nav>
       </header>
       <ion-content class="bg-custom-blue overflow-hidden">
+        <div class="absolute h-screen w-full">
+          <div class="rectangle1 absolute w-full h-screen bg-[url('/rectangle1.svg')] bg-no-repeat bg-cover -z-10"></div>
+          <div class="rectangle2 absolute w-full h-screen bg-[url('/rectangle2.svg')] bg-no-repeat bg-cover top-[20%] md:top-[15%] lg:top-[75%] -z-10"></div>
+        </div>
+
+
         <div class="bg-custom-blue text-white h-60 pt-10 pl-16 items-center">
           <h1 class="text-3xl md:text-4xl font-mono font-bold text-custom-orange mb-3">
             Project Today,
@@ -32,8 +38,6 @@
           <h2 class="text-3xl md:text-4xl font-mono font-bold">
             Where Students Shine.
           </h2>
-        </div>
-        <div class="bg-stone-300 text-custom-orange h-80">
         </div>
         <footer class="bg-custom-blue text-white flex items-center p-9">
           <div class="flex-1 flex items-center mx-2">
