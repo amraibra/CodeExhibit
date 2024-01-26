@@ -23,23 +23,40 @@
       </header>
       <ion-content class="bg-custom-blue overflow-hidden">
         <div class="bg-custom-blue text-white h-60 pt-10 pl-16 items-center">
-          <h1 class="text-3xl md:text-4xl font-bold text-custom-orange mb-3">
+          <h1 class="text-3xl md:text-4xl font-mono font-bold text-custom-orange mb-3">
             Project Today,
           </h1>
-          <h2 class="text-3xl md:text-4xl font-bold mb-3">
+          <h2 class="text-3xl md:text-4xl font-mono font-bold mb-3">
             Portfolio Tomorrow:
           </h2>
-          <h2 class="text-3xl md:text-4xl font-bold">
+          <h2 class="text-3xl md:text-4xl font-mono font-bold">
             Where Students Shine.
           </h2>
         </div>
         <div class="bg-stone-300 text-custom-orange h-80">
-
         </div>
-        <div class="bg-custom-blue text-white h-1/5">
-          <div class="container mx-auto">
+        <footer class="bg-custom-blue text-white flex items-center p-9">
+          <div class="flex-1 flex items-center mx-2">
+            <img src="/gmail.png" alt="email" class="h-7 w-7 mr-2">
+            <span class="text-sm font-semibold font-mono">support@codeexhibit.com</span>
           </div>
-        </div>
+          <div class="flex-1 flex justify-center">
+            <div class="text-base font-semibold font-mono">
+              Ready to <b class="text-custom-orange">Show</b> the World?
+            </div>
+          </div>
+          <div class="flex-1 flex justify-end items-center">
+            <a href="https://instagram.com" class="mx-1.5">
+              <img src="/instagram.png" alt="insta" class="h-7 w-7">
+            </a>
+            <a href="https://tiktok.com" class="mx-1.5">
+              <img src="/tiktok.png" alt="x" class="h-7 w-7">
+            </a>
+            <a href="https://facebook.com" class="mx-1.5">
+              <img src="/facebook.png" alt="facebook" class="h-7 w-7">
+            </a>
+          </div>
+        </footer>
       </ion-content>
   </ion-page>
 </template>
@@ -47,33 +64,3 @@
 <script setup lang="ts">
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 </script>
-
-<style scoped>
-#container {
-  text-align: center;
-  
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-#container strong {
-  font-size: 20px;
-  line-height: 26px;
-}
-
-#container p {
-  font-size: 16px;
-  line-height: 22px;
-  
-  color: #8c8c8c;
-  
-  margin: 0;
-}
-
-#container a {
-  text-decoration: none;
-}
-</style>
