@@ -28,16 +28,22 @@
         </div>
 
 
-        <div class="bg-custom-blue text-white h-60 pt-10 pl-16 items-center">
-          <h1 class="text-3xl md:text-4xl font-mono font-bold text-custom-orange mb-3">
-            Project Today,
-          </h1>
-          <h2 class="text-3xl md:text-4xl font-mono font-bold mb-3">
-            Portfolio Tomorrow:
-          </h2>
-          <h2 class="text-3xl md:text-4xl font-mono font-bold">
-            Where Students Shine.
-          </h2>
+        <div class="text-image-container relative z-20 px-[3.125rem] flex flex-col md:flex-row items-center justify-center h-full">
+
+          <!-- Text Content -->
+          <div class="text-content flex-1">
+            <h1 style="font-size: 3.75888rem;" class="font-mono font-bold text-custom-orange mb-3">
+              Project Today,<br>
+              Portfolio Tomorrow:<br>
+              Where Students Shine.
+            </h1>
+          </div>
+
+          <!-- Image Content -->
+          <div class="image-content flex-1">
+            <img src="/public/puter.png" alt="Descriptive Alt Text" class="max-w-full h-auto">
+          </div>
+
         </div>
         <footer class="bg-custom-blue text-white flex items-center p-9">
           <div class="flex-1 flex items-center mx-2">
