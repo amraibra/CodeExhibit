@@ -1,22 +1,20 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   purge: ['./src/**/*.{vue,js,ts,jsx,tsx}', './public/index.html'],
-  content: ['./src/**/*.{vue,js,ts,jsx,tsx}', './public/index.html'],
   theme: {
     extend: {
       colors: {
         codeExhibit: '#E76F51', // Custom color
+        'custom-blue': '#264653',
+        'custom-teal': '#2a9d8f',
+        'custom-yellow': '#e9c46a',
+        'custom-orange-light': '#f4a261',
+        'custom-orange': '#e76f51',
+        'custom-gray': '#d9d9d9',
       },
       fontFamily: {
         londrina: ['Londrina Solid', 'sans-serif'], // Existing custom font
         inter: ['Inter', 'sans-serif'], // Added Inter font
-      },
-        'custom-blue' : '#264653',
-        'custom-teal' : '#2a9d8f',
-        'custom-yellow' : '#e9c46a',
-        'custom-orange-light' : '#f4a261',
-        'custom-orange' : '#e76f51',
-        'custom-gray' : '#d9d9d9'
       },
       keyframes: {
         typing: {
