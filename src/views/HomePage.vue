@@ -1,47 +1,51 @@
 <template>
   <ion-page class="bg-custom-blue h-full overflow-hidden">
-      <header class="bg-custom-blue text-white">
-        <!--Navbar-->
-        <nav class="container mx-auto py-4 flex justify-between items-center">
-          <!--Logo + Title-->
-          <div class="flex items-center">
-            <span class="font-extrabold text-lg tracking-tight text-custom-orange font-mono">CodeExhibit</span>
-          </div>
-
-          <!--Navigation buttons-->
-          <div class="hidden md:flex items-center space-x-1">
-            <a href="/home" class="py-2 px-3 text-white hover:bg-custom-orange rounded-full 
-            transition duration-100 font-mono font-semibold text-sm">Home</a>
-            <a href="/info" class="py-2 px-3 text-white hover:bg-custom-orange rounded-full 
-            transition duration-100 font-mono font-semibold text-sm">About Us</a>
-            <a href="#" class="py-2 px-3 text-white hover:bg-custom-orange rounded-full 
-            transition duration-100 font-mono font-semibold text-sm">Contact</a>
-            <a href="/projects" class="py-2 px-3 text-white bg-custom-orange rounded-full 
-            transition duration-100 font-mono font-semibold text-sm">Projects</a>
-          </div>
-        </nav>
-      </header>
       <ion-content class="bg-custom-blue overflow-hidden">
+        <header class="bg-custom-blue text-white">
+          <!--Navbar-->
+          <nav class="container mx-auto py-4 flex justify-between items-center">
+
+            <!--Logo + Title-->
+            <div class="flex items-center justify-start flex-1">
+              <div class="logo" style="width: 3.625rem; height: 2.875rem; background-image: url('/logo.png'); background-size: cover; background-position: center;"></div>
+              <span class="text-3xl font-londrina leading-normal text-custom-orange">CodeExhibit</span>
+            </div>
+
+            <!--Navigation buttons-->
+            <div class="hidden md:flex items-center space-x-1 justify-center flex-1">
+              <a href="/home" class="py-2 px-3 text-white transition duration-100 font-inter font-semibold text-sm">Home</a>
+              <a href="/info" class="py-2 px-3 text-white transition duration-100 font-inter font-semibold text-sm">About Us</a>
+              <a href="#" class="py-2 px-3 text-white transition duration-100 font-inter font-semibold text-sm">Contact</a>
+            </div>
+
+            <!-- Projects Button -->
+            <div class="flex justify-end flex-1">
+              <a href="/projects" class="py-2 px-3 text-white bg-custom-orange rounded-full transition duration-100 font-inter font-semibold text-sm" style="padding: 0.4375rem 1.75rem; ">Projects</a>
+            </div>
+
+          </nav>
+        </header>
+
+
         <div class="absolute h-screen w-full">
-          <div class="rectangle1 absolute w-full h-screen bg-[url('/rectangle1.svg')] bg-no-repeat bg-cover -z-10"></div>
-          <div class="rectangle2 absolute w-full h-screen bg-[url('/rectangle2.svg')] bg-no-repeat bg-cover top-[20%] md:top-[15%] lg:top-[75%] -z-10"></div>
+          <div class="rectangle1 absolute w-full h-screen bg-[url('/rectangle1.svg')] bg-no-repeat bg-cover -z-10" style="top: -0.05rem;"></div>
+          <div class="rectangle2 absolute w-full h-screen bg-[url('/rectangle2.svg')] bg-no-repeat bg-cover top-[20%] md:top-[15%] lg:top-[75%] -z-10" ></div>
         </div>
 
-
         <div class="text-image-container relative z-20 px-[3.125rem] flex flex-col md:flex-row items-center justify-center h-full">
-
           <!-- Text Content -->
           <div class="text-content flex-1">
-            <h1 style="font-size: 3.75888rem;" class="font-mono font-bold text-custom-orange mb-3">
-              Project Today,<br>
-              Portfolio Tomorrow:<br>
-              Where Students Shine.
+            <h1 style="font-size: 3.75888rem;" class="font-inter font-bold text-white mb-3">
+              <span class="text-custom-orange">Project</span> Today,<br>
+              <span class="text-custom-orange">Portfolio</span> Tomorrow:<br>
+              Where Students <span class="text-custom-orange">Shine</span>.
             </h1>
+
           </div>
 
           <!-- Image Content -->
           <div class="image-content flex-1">
-            <img src="/public/puter.png" alt="Descriptive Alt Text" class="max-w-full h-auto">
+            <img src="/public/art1.svg" alt="Descriptive Alt Text" class="max-w-full h-auto">
           </div>
 
         </div>
