@@ -15,7 +15,7 @@
             <div class="hidden md:flex items-center space-x-1 justify-center flex-1">
               <a href="/home" class="py-2 px-3 text-white transition duration-100 font-inter font-semibold text-sm">Home</a>
               <a href="/info" class="py-2 px-3 text-white transition duration-100 font-inter font-semibold text-sm">About Us</a>
-              <a href="#" class="py-2 px-3 text-white transition duration-100 font-inter font-semibold text-sm">Contact</a>
+              <a href="/contact" class="py-2 px-3 text-white transition duration-100 font-inter font-semibold text-sm">Contact</a>
             </div>
 
             <!-- Projects Button -->
@@ -64,7 +64,7 @@
         </div>
       </ion-content>
 
-    <ion-footer class="bg-custom-blue text-white flex items-center p-9">
+    <ion-footer class="bg-custom-blue text-white flex items-center p-6">
       <div class="flex-1 flex items-center mx-2">
         <img src="/gmail.png" alt="email" class="h-7 w-7 mr-2">
         <span class="text-sm font-semibold font-mono">support@codeexhibit.com</span>

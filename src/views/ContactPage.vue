@@ -1,6 +1,6 @@
 <template>
     <ion-page>
-      <ion-content class="bg-custom-blue h-full">
+      <ion-content>
         <header class="bg-custom-blue text-white">
           <!--Navbar-->
           <nav class="container mx-auto py-4 flex justify-between items-center">
@@ -22,12 +22,11 @@
             <div class="flex justify-end flex-1">
               <a href="/projects" class="py-2 px-3 text-white bg-custom-orange rounded-full transition duration-100 font-inter font-semibold text-sm" style="padding: 0.4375rem 1.75rem; ">Projects</a>
             </div>
-
           </nav>
         </header>
 
         <div class="bg-custom-blue h-full">
-          
+            
         </div>
 
 
@@ -56,11 +55,10 @@
           </div>
         </ion-footer>
 
+
     </ion-page>
   </template>
   
   <script setup lang="ts">
   import { IonContent, IonPage } from '@ionic/vue';
   </script>
-  
-  
