@@ -26,12 +26,19 @@
         <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. ...</div>
         <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. ...</div>
         <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. ...</div>
+        <!-- File upload section -->
+        <div class="file-upload">
+          <input type="file" @change="uploadFile">
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { storage } from '../firebase'; // Adjust the path as necessary
+import { ref as firebaseRef, uploadBytes, getDownloadURL } from "firebase/storage";
+
 export default {
   data() {
     return {
@@ -51,10 +58,20 @@ export default {
         foundYear.open = !foundYear.open;
       }
     },
+    async uploadFile(event) {
+      const file = event.target.files[0];
+      const fileRef = firebaseRef(storage, `uploads/${file.name}`);
+      try {
+        await uploadBytes(fileRef, file);
+        const url = await getDownloadURL(fileRef);
+        console.log('Upload successful', url);
+      } catch (error) {
+        console.error('Upload failed', error);
+      }
+    },
   },
 }
 </script>
-
 
 <style scoped>
 
