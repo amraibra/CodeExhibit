@@ -29,19 +29,24 @@
         <div class="h-screen">
           <div class="flex flex-wrap h-full">
             <!-- First Row -->
-            <div class="w-1/2 h-[36rem] bg-custom-gray flex justify-center items-center">
-              <!-- Content here -->
+            <div class="w-full h-[32rem] bg-custom-gray flex items-center">
+              <div class="w-[29rem] h-[29rem] bg-custom-blue rounded-full border-4 border-custom-orange mx-20 my-auto flex items-center justify-center">
+                <img src="/SETA.jpg" alt="SETA" class="absolute w-[28.5rem] h-[28.5rem] object-cover rounded-full">
+              </div>
+              <div class="text-custom-blue mx-auto text-center flex-grow space-y-5 my-auto">
+                <h2 class="font-bold text-4xl font-mono pb-2">
+                  Our Inspiration... 
+                </h2>
+                <p> We aimed to create an innovative online platform designed exclusively</p>
+                <p>for showcasing the diverse range of computer science projects created by students.</p>
+                <p>These projects are an important aspect to a student's career and this is their</p>
+                <p>place to <b class="text-custom-orange">SHOW</b> their experience. The School of Engineering, Technology, and</p>
+                <p>Aeronautics (SETA) at Southern New Hampshire University has inspired our work.</p>
+                <p class="text-sm">- Amra, Sam, Paul</p>
+              </div>
             </div>
-            <div class="w-1/2 h-[36rem] bg-custom-blue flex justify-center items-center">
+            <div class="w-full h-[32rem] bg-custom-blue flex justify-center items-center">
               <!-- Content here -->
-            </div>
-    
-              <!-- Second Row -->
-            <div class="w-1/2 h-1/2 bg-custom-blue flex justify-center items-center">
-              <!-- Content here -->
-            </div>
-            <div class="w-1/2 h-1/2 bg-custom-orange flex justify-center items-center">
-            <!-- Content here -->
             </div>
         </div>
 </div>
