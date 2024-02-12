@@ -8,18 +8,18 @@
             <!--Logo + Title-->
             <div class="flex items-center justify-start flex-1">
               <div class="logo" style="width: 4.8rem; height: 3rem; background-image: url('/logo2.png'); background-size: cover; background-position: center;"></div>
-              <span class="text-3xl font-londrina leading-normal pt-2 text-custom-orange">CodeExhibit</span>
+              <span class="text-3xl font-londrina leading-normal text-custom-orange">CodeExhibit</span>
             </div>
 
             <!--Navigation buttons-->
-            <div class="hidden md:flex items-center space-x-1 justify-center flex-1 pt-2">
+            <div class="hidden md:flex items-center space-x-1 justify-center flex-1">
               <a href="/home" class="py-2 px-3 text-white transition duration-100 font-inter font-semibold text-sm">Home</a>
               <a href="/info" class="py-2 px-3 text-white transition duration-100 font-inter font-semibold text-sm">About Us</a>
               <a href="/contact" class="py-2 px-3 text-white transition duration-100 font-inter font-semibold text-sm">Contact</a>
             </div>
 
             <!-- Projects Button -->
-            <div class="flex justify-end flex-1 pt-2">
+            <div class="flex justify-end flex-1">
               <a href="/projects" class="py-2 px-3 text-white bg-custom-orange rounded-full transition duration-100 font-inter font-semibold text-sm" style="padding: 0.4375rem 1.75rem; ">Projects</a>
             </div>
 
@@ -29,26 +29,25 @@
         <div class="h-screen">
           <div class="flex flex-wrap h-full">
             <!-- First Row -->
-            <div class="w-full h-[32rem] bg-custom-gray flex items-center">
-              <div class="w-[29rem] h-[29rem] bg-custom-blue rounded-full border-4 border-custom-orange mx-20 my-auto flex items-center justify-center">
+            <div class="w-full h-full bg-custom-gray flex items-center pb-32">
+              <!--SETA image-->
+              <div class="w-[29rem] h-[29rem] bg-custom-blue rounded-full border-4 border-custom-orange mx-20 flex items-center justify-center">
                 <img src="/SETA.jpg" alt="SETA" class="absolute w-[28.5rem] h-[28.5rem] object-cover rounded-full">
               </div>
-              <div class="text-custom-blue mx-auto text-center flex-grow space-y-5 my-auto">
+              <!--First caption-->
+              <div class="text-custom-blue mx-auto text-center flex-grow space-y-5">
                 <h2 class="font-bold text-4xl font-mono pb-2">
                   Our Inspiration... 
                 </h2>
                 <p> We aimed to create an innovative online platform designed exclusively</p>
                 <p>for showcasing the diverse range of computer science projects created by students.</p>
                 <p>These projects are an important aspect to a student's career and this is their</p>
-                <p>place to <b class="text-custom-orange">SHOW</b> their experience. The School of Engineering, Technology, and</p>
+                <p>place to <b class="text-custom-orange">Show</b> their experience. The School of Engineering, Technology, and</p>
                 <p>Aeronautics (SETA) at Southern New Hampshire University has inspired our work.</p>
                 <p class="text-sm">- Amra, Sam, Paul</p>
               </div>
             </div>
-            <div class="w-full h-[32rem] bg-custom-blue flex justify-center items-center">
-              <!-- Content here -->
-            </div>
-        </div>
+          </div>
 </div>
 
 
