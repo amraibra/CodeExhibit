@@ -36,6 +36,7 @@
 </template>
 
 <script>
+import { storage } from '../firebase'; // Adjust the path as necessary
 import { ref as firebaseRef, uploadBytes, getDownloadURL } from "firebase/storage";
 
 export default {
@@ -55,6 +56,17 @@ export default {
       const foundYear = this.years.find(y => y.text === year);
       if (foundYear) {
         foundYear.open = !foundYear.open;
+      }
+    },
+    async uploadFile(event) {
+      const file = event.target.files[0];
+      const fileRef = firebaseRef(storage, `uploads/${file.name}`);
+      try {
+        await uploadBytes(fileRef, file);
+        const url = await getDownloadURL(fileRef);
+        console.log('Upload successful', url);
+      } catch (error) {
+        console.error('Upload failed', error);
       }
     },
   },

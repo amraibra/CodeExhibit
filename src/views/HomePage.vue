@@ -41,7 +41,7 @@
 
             <!-- Image Content for art1 -->
             <div class="image-content flex-1">
-              <img src="/art1.svg" alt="Descriptive Alt Text" class="max-w-full h-auto">
+              <img src="/public/art1.svg" alt="Descriptive Alt Text" class="max-w-full h-auto">
             </div>
           </div>
 
@@ -50,7 +50,7 @@
           <div class="centered-content new-content absolute z-20 w-[50%] h-[50%] top-[calc(75% + 25vh)] left-[25%] flex items-center justify-center">
             <!-- Image Content for art2 -->
             <div class="image-content w-1/2">
-              <img src="/art2.png" alt="Descriptive Alt Text" class="" style="width: 32.1875rem; height: 19.9375rem;">
+              <img src="/public/art2.png" alt="Descriptive Alt Text" class="" style="width: 32.1875rem; height: 19.9375rem;">
             </div>
 
             <!-- Text Content for art2 -->
