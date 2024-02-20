@@ -10,7 +10,7 @@ const firebaseConfig = {
     storageBucket: "code-exhibit.appspot.com",
     messagingSenderId: "243621454109",
     appId: "1:243621454109:web:1594ece5ca14707e1b81f4",
-    measurementId: "G-5VSSDQJB5K"
+    measurementId: "G-5VSSDQJB5K",
     databaseURL: "https://code-exhibit-default-rtdb.firebaseio.com/",
 };
 
