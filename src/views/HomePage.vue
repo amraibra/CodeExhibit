@@ -4,21 +4,22 @@
         <header class="bg-custom-blue text-white">
           <!--Navbar-->
           <nav class="container mx-auto py-4 flex justify-between items-center">
+
             <!--Logo + Title-->
             <div class="flex items-center justify-start flex-1">
               <div class="logo" style="width: 4.8rem; height: 3rem; background-image: url('/logo2.png'); background-size: cover; background-position: center;"></div>
-              <span class="text-3xl font-londrina leading-normal text-custom-orange">CodeExhibit</span>
+              <span class="text-3xl font-londrina leading-normal pt-2 text-custom-orange">CodeExhibit</span>
             </div>
 
             <!--Navigation buttons-->
-            <div class="hidden md:flex items-center space-x-1 justify-center flex-1">
+            <div class="hidden md:flex items-center space-x-1 justify-center flex-1 pt-2">
               <a href="/home" class="py-2 px-3 text-white transition duration-100 font-inter font-semibold text-sm">Home</a>
               <a href="/info" class="py-2 px-3 text-white transition duration-100 font-inter font-semibold text-sm">About Us</a>
               <a href="/contact" class="py-2 px-3 text-white transition duration-100 font-inter font-semibold text-sm">Contact</a>
             </div>
 
             <!-- Projects Button -->
-            <div class="flex justify-end flex-1">
+            <div class="flex justify-end flex-1 pt-2">
               <a href="/projects" class="py-2 px-3 text-white bg-custom-orange rounded-full transition duration-100 font-inter font-semibold text-sm" style="padding: 0.4375rem 1.75rem; ">Projects</a>
             </div>
 
