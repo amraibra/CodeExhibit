@@ -1,44 +1,62 @@
 <template>
-  <div class="wrapper">
-    <div class="sidebar font-inter">
-      <h2>Code Exhibit</h2>
+  <div class="flex">
+    <div class="w-64 bg-cyan-950 text-white p-5 space-y-6 h-screen overflow-auto">
+      <a href="/home" class="flex mt-2">
+        <i class="fas fa-home mr-3 mt-2"></i>
+      <h2 class="text-2xl font-semibold font-londrina text-custom-orange">CodeExhibit</h2>
+      </a>
       <ul>
-        <li v-for="year in years" :key="year.text">
-          <router-link to="#" @click.prevent="toggleYear(year.text)">
-            <i :class="year.icon"></i>{{ year.text }}
+        <li v-for="year in years" :key="year.text" class="group">
+          <router-link
+            to="#"
+            @click.prevent="toggleYear(year.text)"
+            class="flex items-center justify-between py-2 px-3 rounded hover:bg-custom-blue font-bold"
+          >
+            <span class="my-5">{{ year.text }}</span>
+            <i :class="year.icon"></i>
           </router-link>
-          <ul v-if="year.open" class="submenu">
+          <ul v-if="year.open" class="pl-4 space-y-3">
             <li v-for="item in year.items" :key="item">
-              <router-link to="#">{{ item }}</router-link>
+              <router-link
+                to="#"
+                class="block py-1 px-2 rounded hover:bg-custom-blue font-bold"
+              >{{ item }}</router-link>
             </li>
           </ul>
         </li>
       </ul>
-      <div class="social_media">
-        <router-link to="#"><i class="fab fa-facebook-f"></i></router-link>
-        <router-link to="#"><i class="fab fa-twitter"></i></router-link>
-        <router-link to="#"><i class="fab fa-instagram"></i></router-link>
-      </div>
-    </div>
-    <div class="main_content">
-      <div class="header flex justify-between items-center">Project 1
-        <button class="bg-custom-gray text-custom-blue p-2 w-10 font-extrabold rounded-full" @click="isFormOpen = true">+</button>
-      </div>
-      <div class="info">
-        <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. ...</div>
-        <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. ...</div>
-        <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. ...</div>
-        <!-- File upload section -->
-        <div class="file-upload">
-          <input type="file" @change="uploadFile">
+      <div class="fixed bottom-0 pb-4 bg-opacity-0 p-16">
+        <div class="flex justify-center space-x-4">
+          <router-link to="#" class="hover:text-gray-300"><i class="fab fa-facebook-f"></i></router-link>
+          <router-link to="#" class="hover:text-gray-300"><i class="fab fa-twitter"></i></router-link>
+          <router-link to="#" class="hover:text-gray-300"><i class="fab fa-instagram"></i></router-link>
         </div>
       </div>
     </div>
-      <div v-if="isFormOpen" class="form-overlay" @click.self="isFormOpen = false">
-        <div class="submission-form w-1/2 bg-custom-blue p-4 rounded shadow-lg" @click.stop>
-        <h2 class="text-2xl mb-4 text-center font-bold font-mono">Project Submission Form</h2>
-        <form class="w-full max-w-lg">
-  <div class="flex flex-wrap mx-3">
+    <!--Main-->
+    <div class="flex-1 p-5 bg-custom-blue overflow-auto">
+      <div class="w-full h-1/6 bg-cyan-950 border-custom-orange text-center justify-center items-center flex
+      text-4xl font-mono font-bold shadow-2xl">
+        Welcome to Our Projects Page!
+      </div>
+      <div class="bg-custom-gray w-full h-full mt-10 flex flex-col items-center">
+        <div class="flex w-full justify-between items-center px-10">
+          <div class="flex justify-center mt-10">
+            <input type="text" id="search-input" placeholder="Search..." class="bg-white border-2 border-custom-orange rounded-l
+            w-96 text-black p-2 font-mono">
+            <i class="fas fa-search text-black ml-3 mt-3 text-lg"></i>
+          </div>
+          <div class="text-sm">
+            <button class="bg-custom-orange text-white p-2 w-auto rounded-full font-bold mt-9" id="add-project" @click="isFormOpen = true">Add Project</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div v-if="isFormOpen" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center px-4 py-8" @click.self="isFormOpen = false">
+  <div class="bg-custom-blue p-6 rounded-lg shadow-lg w-1/2 h-full mx-auto my-8 overflow-auto" @click.stop> <!-- Adjust width here -->
+    <h2 class="text-2xl font-bold text-center mb-4">Project Submission Form</h2>
+        <form class="space-y-2">
+          <div class="flex flex-wrap mx-3">
     <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
       <label class="block uppercase tracking-wide text-custom-gray text-xs font-bold mb-2" for="grid-project-name">
         Project Name:
@@ -60,7 +78,7 @@
     </div>
   </div>
   <div class="flex flex-wrap mx-3">
-    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+    <div class="w-full md:w-1/2 px-3 md:mb-0">
       <label class="block uppercase tracking-wide text-custom-gray text-xs font-bold mb-2" for="grid-project-type">
         Project Type:
       </label>
@@ -113,8 +131,10 @@
       <input class="appearance-none block w-full bg-custom-gray text-black border border-custom-orange rounded px-4 mb-2 p-2 leading-tight focus:outline-none focus:bg-white" id="grid-powerpoint" type="file">
     </div>
   </div>
-</form>
-      <button class="bg-custom-orange w-1/4 text-white p-2 mt-2 rounded font-bold font-mono" @click="isFormOpen = false">Upload Project</button>
+        </form>
+        <div class="text-center mt-2">
+        <button class="bg-custom-orange text-white px-4 py-2 rounded font-extrabold" @click="isFormOpen = false">Upload Project</button>
+      </div>
       </div>
     </div>
   </div>
@@ -129,11 +149,11 @@ export default {
     return {
       isFormOpen: false,
       years: [
-        { text: '2024', icon: 'fas fa-2024', open: false, items: ['Project 1', 'Project 2'] },
-        { text: '2023', icon: 'fas fa-2023', open: false, items: ['Project 1', 'Project 2'] },
-        { text: '2022', icon: 'fas fa-2022', open: false, items: ['Project 1', 'Project 2'] },
-        { text: '2021', icon: 'fas fa-2021', open: false, items: ['Project 1', 'Project 2'] },
-        { text: '2020', icon: 'fas fa-2020', open: false, items: ['Project 1', 'Project 2'] },
+        { text: '2024', icon: 'fas fa-chevron-right', open: false, items: ['SPRING 2024', 'FALL 2024'] },
+        { text: '2023', icon: 'fas fa-chevron-right', open: false, items: ['SPRING 2023', 'FALL 2023'] },
+        { text: '2022', icon: 'fas fa-chevron-right', open: false, items: ['SPRING 2022', 'FALL 2022'] },
+        { text: '2021', icon: 'fas fa-chevron-right', open: false, items: ['SPRING 2021', 'FALL 2021'] },
+        { text: '2020', icon: 'fas fa-chevron-right', open: false, items: ['SPRING 2020', 'FALL 2020'] },
       ],
     };
   },
@@ -158,116 +178,3 @@ export default {
   },
 }
 </script>
-
-<style scoped>
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  list-style: none;
-  text-decoration: none;
-}
-
-body {
-  background-color: #264653;
-}
-
-.wrapper {
-  display: flex;
-  position: relative;
-}
-
-.wrapper .sidebar {
-  width: 200px;
-  height: 100%;
-  background: #264653;
-  padding: 30px 0px;
-  position: fixed;
-}
-
-.wrapper .sidebar h2 {
-  color: #fff;
-  text-transform: uppercase;
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-.wrapper .sidebar ul li {
-  padding: 15px;
-  border-bottom: 1px solid #bdb8d7;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  border-top: 1px solid rgba(255,255,255,0.05);
-}
-
-.wrapper .sidebar ul li router-link {
-  color: #bdb8d7;
-  display: block;
-}
-
-.wrapper .sidebar ul li .fas {
-  width: 25px;
-}
-
-.wrapper .sidebar ul li:hover {
-  background-color: #f86647;
-}
-
-.wrapper .sidebar ul li:hover router-link {
-  color: #fff;
-}
-
-.wrapper .sidebar .social_media {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-}
-
-
-.wrapper .main_content {
-  width: 100%;
-  margin-left: 200px;
-}
-
-.wrapper .main_content .header {
-  padding: 28px;
-  background-color: #f86647;
-}
-
-.wrapper .main_content .info {
-  margin: 20px;
-  color: #717171;
-  line-height: 25px;
-}
-
-.wrapper .main_content .info div {
-  margin-bottom: 20px;
-}
-
-.form-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.submission-form {
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-@media (max-height: 500px) {
-  .social_media {
-    display: none !important;
-  }
-}
-</style>
