@@ -3,7 +3,7 @@
         <div class="bg-custom-gray w-2/3 h-4/5 shadow-2xl flex flex-col items-center">
             <!--Stepper-->
             <div class="w-full p-4">
-                <div class="flex justify-center pb-6 pt-10">
+                <div class="flex justify-center pb-6 pt-8">
                     <!--Project Info-->
                     <div class="flex items-center">
                         <div class="flex items-center justify-center w-10 h-10 bg-custom-blue rounded-full text-custom-gray">
@@ -99,10 +99,12 @@
                 <div class="grid sm:grid-cols-1 pt-8">
                     <label for="project-description" class="block mb-1 text-sm font-medium text-custom-blue">Project Description:</label>
                     <textarea 
-                        id="project-description" 
-                        placeholder="CodeExhibit is a web application that allows students to..."
+                        id="project-description"
                         class="bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2">
                     </textarea>
+                </div>
+                <div class="text-center pt-7">
+                    <button class="bg-custom-blue text-white w-20 h-10 rounded-lg">Next</button>
                 </div>
             </form>
         </div>
