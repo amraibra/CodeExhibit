@@ -47,7 +47,7 @@
             <i class="fas fa-search text-black ml-3 mt-3 text-lg"></i>
           </div>
           <div class="text-sm">
-            <button class="bg-custom-orange text-white p-2 w-auto rounded-full font-bold mt-9" id="add-project" @click="isFormOpen = true">Add Project</button>
+            <button class="bg-custom-orange text-white p-2 w-auto rounded-full font-bold mt-9" id="add-project" @click="isFormOpen = true" >Add Project</button>
           </div>
         </div>
       </div>
