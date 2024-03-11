@@ -37,19 +37,20 @@
     <div class="flex-1 p-5 bg-custom-blue overflow-auto">
       <div class="w-full h-1/6 bg-cyan-950 border-custom-orange text-center justify-center items-center flex
       text-4xl font-mono font-bold shadow-2xl">
-        Welcome to Our Projects Page!
+        Showcase Projects
       </div>
       <div class="bg-custom-gray w-full h-full mt-10 flex flex-col items-center">
         <div class="flex w-full justify-between items-center px-10">
-          <div class="flex justify-center mt-10">
+          <div class="flex justify-center mt-10 ">
             <input type="text" id="search-input" placeholder="Search..." class="bg-white border-2 border-custom-orange rounded-l
             w-96 text-black p-2 font-mono">
             <i class="fas fa-search text-black ml-3 mt-3 text-lg"></i>
           </div>
-          <div class="text-sm">
-            <button class="bg-custom-orange text-white p-2 w-auto rounded-full font-bold mt-9" id="add-project">Add Project</button>
+          <div class="text-sm mt-10">
+            <a href="/form" class="bg-custom-orange p-3 rounded-lg font-mono font-bold">Add Project</a>
           </div>
         </div>
+        <div class="bg-custom-blue w-11/12 h-1 mt-10"></div>
       </div>
     </div>
   </div>
@@ -64,11 +65,10 @@ export default {
     return {
       isFormOpen: false,
       years: [
-        { text: '2024', icon: 'fas fa-chevron-right', open: false, items: ['SPRING 2024', 'FALL 2024'] },
-        { text: '2023', icon: 'fas fa-chevron-right', open: false, items: ['SPRING 2023', 'FALL 2023'] },
-        { text: '2022', icon: 'fas fa-chevron-right', open: false, items: ['SPRING 2022', 'FALL 2022'] },
-        { text: '2021', icon: 'fas fa-chevron-right', open: false, items: ['SPRING 2021', 'FALL 2021'] },
-        { text: '2020', icon: 'fas fa-chevron-right', open: false, items: ['SPRING 2020', 'FALL 2020'] },
+        { text: 'Project Type', icon: 'fas fa-chevron-right', open: false, items: ['Social Media', 'Games', 'Web Application', 'Mobile Application', 'Other' ]},
+        { text: 'Year', icon: 'fas fa-chevron-right', open: false, items: ['2024', '2023', '2022', '2021'] },
+        { text: 'Semester', icon: 'fas fa-chevron-right', open: false, items: ['Spring 2024', 'Fall 2023', 'Spring 2023', 'Fall 2022'] },
+        { text: 'Class', icon: 'fas fa-chevron-right', open: false, items: ['Software Engineering Project', 'Junior Software Engineering','Sophomore Software Engineering', 'Intro to Programming'] }
       ],
     };
   },
