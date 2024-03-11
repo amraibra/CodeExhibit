@@ -25,13 +25,6 @@
           </ul>
         </li>
       </ul>
-      <div class="fixed bottom-0 pb-4 bg-opacity-0 p-16">
-        <div class="flex justify-center space-x-4">
-          <router-link to="#" class="hover:text-gray-300"><i class="fab fa-facebook-f"></i></router-link>
-          <router-link to="#" class="hover:text-gray-300"><i class="fab fa-twitter"></i></router-link>
-          <router-link to="#" class="hover:text-gray-300"><i class="fab fa-instagram"></i></router-link>
-        </div>
-      </div>
     </div>
     <!--Main-->
     <div class="flex-1 p-5 bg-custom-blue overflow-auto">
@@ -41,7 +34,7 @@
       </div>
       <div class="bg-custom-gray w-full h-full mt-10 flex flex-col items-center">
         <div class="flex w-full justify-between items-center px-10">
-          <div class="flex justify-center mt-10 ">
+          <div class="flex justify-center mt-10">
             <input type="text" id="search-input" placeholder="Search..." class="bg-white border-2 border-custom-orange rounded-l
             w-96 text-black p-2 font-mono">
             <i class="fas fa-search text-black ml-3 mt-3 text-lg"></i>
