@@ -6,32 +6,32 @@
                 <div class="flex justify-center pb-6 pt-8">
                     <!--Project Info-->
                     <div class="flex items-center">
-                        <div class="flex items-center justify-center w-10 h-10 bg-custom-blue rounded-full text-custom-gray">
-                            <i class="fas fa-folder-open"></i>
+                        <div :class="{'bg-custom-blue': step >= 1, 'bg-custom-gray border-2 border-custom-blue': step < 1}" class="flex items-center justify-center w-10 h-10 rounded-full text-custom-gray">
+                            <i :class="{'text-custom-gray': step >= 1, 'text-custom-blue': step < 1}" class="fas fa-folder-open"></i>
                         </div>
-                        <div class="w-48 h-1 bg-custom-teal">
-                        </div>
+                        <div :class="{'bg-custom-teal': step > 1, 'bg-gray-200': step <= 1}" class="w-48 h-1"></div>
                     </div>
                     <!--Links-->
                     <div class="flex items-center">
-                        <div class="flex items-center justify-center w-10 h-10 bg-custom-blue rounded-full text-custom-gray">
-                            <i class="fas fa-link"></i>
+                        <div :class="{'bg-custom-blue': step >= 2, 'bg-custom-gray border-2 border-custom-blue': step < 2}" class="flex items-center justify-center w-10 h-10 rounded-full text-custom-gray">
+                            <i :class="{'text-custom-gray': step >= 2, 'text-custom-blue': step < 2}" class="fas fa-link"></i>
                         </div>
-                        <div class="w-48 h-1 bg-custom-teal"></div>
+                        <div :class="{'bg-custom-teal': step > 2, 'bg-gray-200' : step <= 2}" class="w-48 h-1"></div>
                     </div>
                     <!--Upload Step-->
                     <div class="flex items-center text-custom-gray">
-                        <div class="flex items-center justify-center w-10 h-10 bg-custom-blue rounded-full">
-                            <i class="fas fa-upload"></i>
+                        <div :class="{'bg-custom-blue': step >= 3, 'bg-custom-gray border-2 border-custom-blue': step < 3}" class="flex items-center justify-center w-10 h-10 rounded-full">
+                            <i :class="{'text-custom-gray': step >= 3, 'text-custom-blue': step < 3}" class="fas fa-upload"></i>
                         </div>
                     </div>
                 </div>
             </div>
-            <form>
-                <h3 class="text-mono text-custom-blue text-xl font-medium pb-5">
-                    Project Information
-                </h3>
-                <div class="grid gap-8 sm:grid-cols-2">
+            <form @submit.prevent="nextStep">
+                <div v-if="step === 1">
+                    <h3 class="text-mono text-custom-blue text-xl font-medium pb-5">
+                        Project Information
+                    </h3>
+                    <div class="grid gap-8 sm:grid-cols-2">
                     <div>
                         <label for="project-name" class="block mb-1 text-sm font-medium text-custom-blue">
                             Project Name:
@@ -106,10 +106,83 @@
                 <div class="text-center pt-7">
                     <button class="bg-custom-blue text-white w-20 h-10 rounded-lg">Next</button>
                 </div>
+                </div>
+                <div v-if="step === 2">
+                    <h3 class="text-mono text-custom-blue text-xl font-medium pb-5">
+                        Github & PowerPoint Links
+                    </h3>
+                    <div class="flex items-center justify-center w-full">
+                        <label for="showcase-presentation" class="block text-sm font-medium text-custom-blue">
+                            Showcase Presentation:
+                        <label for="dropzone-file" class="flex flex-col items-center justify-center w-96 h-1/4 border-2 border-custom-blue rounded-lg cursor-pointer bg-custom-gray dark:bg-custom-gray hover:border-custom-teal dark:border-custom-blue dark:hover:border-custom-teal mt-1">
+                            <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                                <svg class="w-8 h-8 mb-4 text-custom-blue dark:text-custom-blue" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                                </svg>
+                                <p class="mb-2 text-sm text-custom-blue dark:text-custom-blue"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                                <p class="text-xs text-custom-blue dark:text-custom-blue">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                            </div>
+                            <input id="dropzone-file" type="file" class="hidden" />
+                        </label>
+                        </label>
+                    </div>
+                    <div class=" mt-10">
+                        <label for="github-link" class="block mb-1 text-sm font-medium text-custom-blue">
+                            Github Link:
+                            </label>
+                        <input 
+                            type="url" 
+                            name="github" 
+                            id="github-link"
+                            placeholder="Paste link here" 
+                            class="bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5">
+                    </div>
+                    <div class="text-center pt-12">
+                        <button @click="prevStep" class="bg-custom-blue text-white w-20 h-10 rounded-lg mx-5">Back</button>
+                        <button class="bg-custom-blue text-white w-20 h-10 rounded-lg">Next</button>
+                    </div>
+                </div>
+                <div v-if="step === 3">
+                    <h3 class="text-mono text-custom-blue text-xl font-medium pb-5">
+                        Extras & Submit
+                    </h3>
+                    <!-- Form fields for step 3 -->
+                    <p class="text-custom-blue font-medium pb-5">Would you want your project to be continued by other students?</p>
+                    <div class="flex items-center me-4 justify-center">
+                        <input checked id="teal-checkbox" type="checkbox" value="" class="w-4 h-4 text-teal-600 bg-custom-blue rounded focus:ring-custom-teal dark:focus:ring-custom-teal dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="teal-checkbox" class="ms-2 text-sm font-bold text-gray-900 dark:text-custom-blue">Yes</label>
+
+                        <input checked id="teal-checkbox" type="checkbox" value="" class="w-4 h-4 text-teal-600 bg-custom-blue rounded focus:ring-custom-teal dark:focus:ring-custom-teal dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 ml-8">
+                        <label for="teal-checkbox" class="ms-2 text-sm font-bold text-gray-900 dark:text-custom-blue">No</label>
+                    </div>
+                    <div class="text-center pt-7">
+                        <button @click="prevStep" class="bg-custom-blue text-white w-20 h-10 rounded-lg mx-5">Back</button>
+                        <button class="bg-custom-blue text-white w-20 h-10 rounded-lg">Submit</button>
+                    </div>
+                </div>
             </form>
         </div>
     </div>
 </template>
 
 <script>
+export default {
+    data() {
+        return {
+            step: 1
+        }
+    },
+    methods: {
+        nextStep() {
+            if (this.step < 3) {
+                this.step++;
+            }
+        },
+        prevStep() {
+            if (this.step > 1) {
+                this.step--;
+            }
+        }
+    }
+};
 </script>
