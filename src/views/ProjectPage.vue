@@ -47,94 +47,9 @@
             <i class="fas fa-search text-black ml-3 mt-3 text-lg"></i>
           </div>
           <div class="text-sm">
-            <button class="bg-custom-orange text-white p-2 w-auto rounded-full font-bold mt-9" id="add-project" @click="isFormOpen = true">Add Project</button>
+            <button class="bg-custom-orange text-white p-2 w-auto rounded-full font-bold mt-9" id="add-project">Add Project</button>
           </div>
         </div>
-      </div>
-    </div>
-    <div v-if="isFormOpen" class="fixed inset-0 bg-gray-900 bg-opacity-50 flex justify-center items-center px-4 py-8" @click.self="isFormOpen = false">
-  <div class="bg-custom-blue p-6 rounded-lg shadow-lg w-1/2 h-full mx-auto my-8 overflow-auto" @click.stop> <!-- Adjust width here -->
-    <h2 class="text-2xl font-bold text-center mb-4">Project Submission Form</h2>
-        <form class="space-y-2">
-          <div class="flex flex-wrap mx-3">
-    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-      <label class="block uppercase tracking-wide text-custom-gray text-xs font-bold mb-2" for="grid-project-name">
-        Project Name:
-      </label>
-      <input class="appearance-none block w-full bg-custom-gray text-black border border-custom-orange rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-project-name" type="text" placeholder="CodeExhibit">
-    </div>
-    <div class="w-full md:w-1/2 px-3">
-      <label class="block uppercase tracking-wide text-custom-gray text-xs font-bold mb-2" for="grid-semester">
-        Semester Created:
-      </label>
-      <select class="appearance-none block w-full bg-custom-gray text-black border border-custom-orange rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white" id="grid-semester">
-        <option>Please select a semester</option>
-        <option>Fall 2022</option>
-        <option>Spring 2023</option>
-        <option>Fall 2023</option>
-        <option>Spring 2024</option>
-        <option>Fall 2024</option>
-      </select>
-    </div>
-  </div>
-  <div class="flex flex-wrap mx-3">
-    <div class="w-full md:w-1/2 px-3 md:mb-0">
-      <label class="block uppercase tracking-wide text-custom-gray text-xs font-bold mb-2" for="grid-project-type">
-        Project Type:
-      </label>
-      <select class="appearance-none block w-full bg-custom-gray text-black border border-custom-orange rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-project-type">
-        <option>Please select a type</option>
-        <option>Social Media</option>
-        <option>Game</option>
-        <option>Mobile Application</option>
-        <option>Web Application</option>
-        <option>Android Application</option>
-      </select>
-    </div>
-    <div class="w-full md:w-1/2 px-3">
-      <label class="block uppercase tracking-wide text-custom-gray text-xs font-bold mb-2" for="grid-semester">
-        Semester Created:
-      </label>
-      <input class="appearance-none block w-full bg-custom-gray text-black border border-custom-orange rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white" id="grid-semester" type="text" placeholder="SPR2024">
-    </div>
-  </div>
-  <div class="flex flex-wrap mx-3 mb-3">
-    <div class="w-full md:w1/2 px-3 mb-6 md:mb-0">
-      <label class="block uppercase tracking-wide text-custom-gray text-xs font-bold mb-2" for="grid-member">
-        Member Names:
-      </label>
-      <input class="appearance-none block w-full bg-custom-gray text-black border border-custom-orange rounded py-3 px-4 mb-2 leading-tight focus:outline-none focus:bg-white" id="grid-members" type="text" placeholder="Amra Ibrahimovic, Samuel Tyler, Paul Antuono">
-      <p class="text-xs text-custom-orange italic">Please put first and last name</p>
-    </div>
-  </div>
-  <div class="flex flex-wrap mx-3 mb-1">
-    <div class="w-full md:w1/2 px-3 mb-6 md:mb-0">
-      <label class="block uppercase tracking-wide text-custom-gray text-xs font-bold mb-2" for="grid-member">
-        Project Description:
-      </label>
-      <textarea class="appearance-none block w-full bg-custom-gray text-black border border-custom-orange rounded px-4 mb-2 p-2 h-28 leading-tight focus:outline-none focus:bg-white" id="grid-members" type="text" placeholder="Type your description here..."></textarea>
-    </div>
-  </div>
-  <div class="flex flex-wrap mx-3">
-    <div class="w-full md:w1/2 px-3 mb-6 md:mb-0">
-      <label class="block uppercase tracking-wide text-custom-gray text-xs font-bold mb-2" for="grid-github">
-        Github Link:
-      </label>
-      <input class="appearance-none block w-full bg-custom-gray text-black border border-custom-orange rounded px-4 mb-2 p-2 leading-tight focus:outline-none focus:bg-white" id="grid-github" type="url" placeholder="Paste your Github link here...">
-    </div>
-  </div>
-  <div class="flex flex-wrap mx-3">
-    <div class="w-full md:w1/2 px-3 md:mb-0">
-      <label class="block uppercase tracking-wide text-custom-gray text-xs font-bold mb-2" for="grid-powerpoint">
-        PowerPoint Upload:
-      </label>
-      <input class="appearance-none block w-full bg-custom-gray text-black border border-custom-orange rounded px-4 mb-2 p-2 leading-tight focus:outline-none focus:bg-white" id="grid-powerpoint" type="file">
-    </div>
-  </div>
-        </form>
-        <div class="text-center mt-2">
-        <button class="bg-custom-orange text-white px-4 py-2 rounded font-extrabold" @click="isFormOpen = false">Upload Project</button>
-      </div>
       </div>
     </div>
   </div>
