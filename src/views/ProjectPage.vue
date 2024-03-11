@@ -28,19 +28,24 @@
     </div>
     <!--Main-->
     <div class="flex-1 p-5 bg-custom-blue overflow-auto">
-      <div class="w-full h-1/6 bg-cyan-950 border-custom-orange text-center justify-center items-center flex
+      <div class="w-full h-1/6 bg-cyan-950 text-center justify-between items-center flex
       text-4xl font-mono font-bold shadow-2xl">
-        Showcase Projects
+        <div class="flex-grow text-center ml-8">Showcase Projects</div>
+        <div class="text-sm mr-8">
+            <a href="/form" class="bg-custom-orange p-2 rounded-2xl font-mono font-bold">
+            <i class="fas fa-plus w-5"></i>
+            </a>
+          </div>
       </div>
       <div class="bg-custom-gray w-full h-full mt-10 flex flex-col items-center">
-        <div class="flex w-full justify-between items-center px-10">
-          <div class="flex justify-center mt-10">
-            <input type="text" id="search-input" placeholder="Search..." class="bg-white border-2 border-custom-orange rounded-l
-            w-96 text-black p-2 font-mono">
-            <i class="fas fa-search text-black ml-3 mt-3 text-lg"></i>
+        <div class="flex w-full justify-between items-center px-20 mt-10">
+          <div class="flex-grow">
+            <h3 class="font-mono mt-1 ml-36 text-custom-blue font-extrabold text-2xl">Highlighted Projects</h3>
           </div>
-          <div class="text-sm mt-10">
-            <a href="/form" class="bg-custom-orange p-3 rounded-lg font-mono font-bold">Add Project</a>
+          <div class="flex items-center">
+            <input type="text" id="search-input" placeholder="Search..." class="bg-gray-50 border-2 border-custom-orange rounded-l
+            w-96 text-black p-1 font-mono">
+            <i class="fas fa-search text-black ml-3 mt-2 text-lg"></i>
           </div>
         </div>
         <div class="bg-custom-blue w-11/12 h-1 mt-10"></div>
