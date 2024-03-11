@@ -2,26 +2,28 @@
     <div class="bg-custom-blue w-full h-screen flex justify-center items-center">
         <div class="bg-custom-gray w-2/3 h-4/5 shadow-2xl flex flex-col items-center">
             <!--Stepper-->
-            <div class="w-full p-4">
-                <div class="flex justify-center pb-6 pt-8">
-                    <!--Project Info-->
-                    <div class="flex items-center">
-                        <div :class="{'bg-custom-blue': step >= 1, 'bg-custom-gray border-2 border-custom-blue': step < 1}" class="flex items-center justify-center w-10 h-10 rounded-full text-custom-gray">
-                            <i :class="{'text-custom-gray': step >= 1, 'text-custom-blue': step < 1}" class="fas fa-folder-open"></i>
+            <div v-if="step < 4">
+                <div class="w-full p-4">
+                    <div class="flex justify-center pb-6 pt-8">
+                        <!--Project Info-->
+                        <div class="flex items-center">
+                            <div :class="{'bg-custom-blue': step >= 1, 'bg-custom-gray border-2 border-custom-blue': step < 1}" class="flex items-center justify-center w-10 h-10 rounded-full text-custom-gray">
+                                <i :class="{'text-custom-gray': step >= 1, 'text-custom-blue': step < 1}" class="fas fa-folder-open"></i>
+                            </div>
+                            <div :class="{'bg-custom-teal': step > 1, 'bg-gray-200': step <= 1}" class="w-48 h-1"></div>
                         </div>
-                        <div :class="{'bg-custom-teal': step > 1, 'bg-gray-200': step <= 1}" class="w-48 h-1"></div>
-                    </div>
-                    <!--Links-->
-                    <div class="flex items-center">
-                        <div :class="{'bg-custom-blue': step >= 2, 'bg-custom-gray border-2 border-custom-blue': step < 2}" class="flex items-center justify-center w-10 h-10 rounded-full text-custom-gray">
-                            <i :class="{'text-custom-gray': step >= 2, 'text-custom-blue': step < 2}" class="fas fa-link"></i>
+                        <!--Links-->
+                        <div class="flex items-center">
+                            <div :class="{'bg-custom-blue': step >= 2, 'bg-custom-gray border-2 border-custom-blue': step < 2}" class="flex items-center justify-center w-10 h-10 rounded-full text-custom-gray">
+                                <i :class="{'text-custom-gray': step >= 2, 'text-custom-blue': step < 2}" class="fas fa-link"></i>
+                            </div>
+                            <div :class="{'bg-custom-teal': step > 2, 'bg-gray-200' : step <= 2}" class="w-48 h-1"></div>
                         </div>
-                        <div :class="{'bg-custom-teal': step > 2, 'bg-gray-200' : step <= 2}" class="w-48 h-1"></div>
-                    </div>
-                    <!--Upload Step-->
-                    <div class="flex items-center text-custom-gray">
-                        <div :class="{'bg-custom-blue': step >= 3, 'bg-custom-gray border-2 border-custom-blue': step < 3}" class="flex items-center justify-center w-10 h-10 rounded-full">
-                            <i :class="{'text-custom-gray': step >= 3, 'text-custom-blue': step < 3}" class="fas fa-upload"></i>
+                        <!--Upload Step-->
+                        <div class="flex items-center text-custom-gray">
+                            <div :class="{'bg-custom-blue': step >= 3, 'bg-custom-gray border-2 border-custom-blue': step < 3}" class="flex items-center justify-center w-10 h-10 rounded-full">
+                                <i :class="{'text-custom-gray': step >= 3, 'text-custom-blue': step < 3}" class="fas fa-upload"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -41,7 +43,9 @@
                             name="project name" 
                             id="project-name"
                             placeholder="CodeExhibit"
-                            class="bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5">
+                            class="bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5"
+                            v-model="projectName"
+                            required>
                     </div>
                     <div>
                         <label for="members" class="block mb-1 text-sm font-medium text-custom-blue">Member Names:</label>
@@ -50,7 +54,9 @@
                             name="members" 
                             id="members"
                             placeholder="Samuel Tyler" 
-                            class="bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5">
+                            class="bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5"
+                            v-model="memberNames"
+                            required>
                     </div>
                     <div>
                         <label for="semester" class="block mb-1 text-sm font-medium text-custom-blue">
@@ -60,22 +66,15 @@
                             type="text" 
                             name="semester" 
                             id="semester"
-                            class=" appearance-none bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5">
-                            <option>
-                                Spring 2024
-                            </option>
-                            <option>
-                                Fall 2023
-                            </option>
-                            <option>
-                                Spring 2023
-                            </option>
-                            <option>
-                                Fall 2022
-                            </option>
-                            <option>
-                                Spring 2022
-                            </option>
+                            class=" appearance-none bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5"
+                            v-model="semesterType"
+                            required>
+                            <option value="">Select a semester</option>
+                            <option value="Spring 2024">Spring 2024</option>
+                            <option value="Fall 2023">Fall 2023</option>
+                            <option value="Spring 2023">Spring 2023</option>
+                            <option value="Fall 2022">Fall 2022</option>
+                            <option value="Spring 2022">Spring 2022</option> 
                         </select>
                     </div>
                     <div>
@@ -86,13 +85,14 @@
                             type="text" 
                             name="class" 
                             id="class"
-                            class=" appearance-none bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5">
-                            <option>
-                                Jr Software Engineering
-                            </option>
-                            <option>
-                                Sophmore Software Engineering
-                            </option>
+                            class=" appearance-none bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5"
+                            v-model="className"
+                            required>
+                            <option value="">Select a class</option>
+                            <option value="Software Engineering Project">Software Engineering Project</option>
+                            <option value="Jr Software Engineering">Jr Software Engineering</option>
+                            <option value="Softmore Software Engineering">Softmore Software Engineering</option>
+                            <option value="Intro to Programming">Intro to Programming</option>
                         </select>
                     </div>
                 </div>
@@ -100,8 +100,9 @@
                     <label for="project-description" class="block mb-1 text-sm font-medium text-custom-blue">Project Description:</label>
                     <textarea 
                         id="project-description"
-                        class="bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2">
-                    </textarea>
+                        class="bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2"
+                        v-model="projectDescription"
+                        required></textarea>
                 </div>
                 <div class="text-center pt-7">
                     <button class="bg-custom-blue text-white w-20 h-10 rounded-lg">Next</button>
@@ -121,8 +122,9 @@
                                 </svg>
                                 <p class="mb-2 text-sm text-custom-blue dark:text-custom-blue"><span class="font-semibold">Click to upload</span> or drag and drop</p>
                                 <p class="text-xs text-custom-blue dark:text-custom-blue">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                                <span id="file-name" class="pt-2 text-sm font-bold underline text-custom-blue dark:text-custom-blue">No File Selected</span>
                             </div>
-                            <input id="dropzone-file" type="file" class="hidden" />
+                            <input id="dropzone-file" type="file" class="hidden" v-on:change="updateFileName"/>
                         </label>
                         </label>
                     </div>
@@ -135,10 +137,12 @@
                             name="github" 
                             id="github-link"
                             placeholder="Paste link here" 
-                            class="bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5">
+                            class="bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5"
+                            v-model="githubLink"
+                            required>
                     </div>
-                    <div class="text-center pt-12">
-                        <button @click="prevStep" class="bg-custom-blue text-white w-20 h-10 rounded-lg mx-5">Back</button>
+                    <div class="text-center pt-7">
+                        <button @click="prevStep" class="bg-custom-blue text-white w-20 h-10 rounded-lg mx-3">Back</button>
                         <button class="bg-custom-blue text-white w-20 h-10 rounded-lg">Next</button>
                     </div>
                 </div>
@@ -155,9 +159,19 @@
                         <input checked id="teal-checkbox" type="checkbox" value="" class="w-4 h-4 text-teal-600 bg-custom-blue rounded focus:ring-custom-teal dark:focus:ring-custom-teal dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 ml-8">
                         <label for="teal-checkbox" class="ms-2 text-sm font-bold text-gray-900 dark:text-custom-blue">No</label>
                     </div>
-                    <div class="text-center pt-7">
-                        <button @click="prevStep" class="bg-custom-blue text-white w-20 h-10 rounded-lg mx-5">Back</button>
-                        <button class="bg-custom-blue text-white w-20 h-10 rounded-lg">Submit</button>
+                    <div class="text-center pt-64">
+                        <button @click="prevStep" class="bg-custom-blue text-white w-20 h-10 rounded-lg mx-3">Back</button>
+                        <button @click="submitForm" class="bg-custom-blue text-white w-20 h-10 rounded-lg">Submit</button>
+                    </div>
+                </div>
+                <div class="flex text-center items-center justify-center my-56">
+                    <div v-if="step === 4">
+                        <h3 class="text-mono text-custom-blue text-3xl font-extrabold font-mono pb-5">
+                            Your project has been submitted!
+                        </h3>
+                        <p class="sm text-custom-blue font-medium mt-2">Please check the projects page to view your submitted project.</p>
+                        <button @click="$router.push('/home')" class="bg-custom-blue text-white w-36 h-10 rounded-lg mt-10 mx-2">Home</button>
+                        <button class="bg-custom-blue text-white w-36 h-10 rounded-lg mt-10 p-2">Upload Project</button>
                     </div>
                 </div>
             </form>
@@ -169,12 +183,18 @@
 export default {
     data() {
         return {
-            step: 1
-        }
+            step: 1,
+            projectName: '',
+            memberNames: '',
+            semesterType: '',
+            className: '',
+            projectDescription: '',
+            githubLink: ''
+        };
     },
     methods: {
         nextStep() {
-            if (this.step < 3) {
+            if (this.step < 4) {
                 this.step++;
             }
         },
@@ -182,6 +202,14 @@ export default {
             if (this.step > 1) {
                 this.step--;
             }
+        },
+        updateFileName() {
+            const fileInput = document.getElementById('dropzone-file');
+            const fileName = fileInput.files[0] ? fileInput.files[0].name : 'No file selected';
+            document.getElementById('file-name').textContent = fileName;
+        },
+        submitForm() {
+            this.step = 4;
         }
     }
 };
