@@ -1,77 +1,80 @@
 <template>
   <div class="wrapper">
-    <div class="sidebar font-inter">
+    <div class="sidebar">
       <h2>Code Exhibit</h2>
-      <ul>
-        <li v-for="year in years" :key="year.text">
-          <router-link to="#" @click.prevent="toggleYear(year.text)">
-            <i :class="year.icon"></i>{{ year.text }}
-          </router-link>
-          <ul v-if="year.open" class="submenu">
-            <li v-for="item in year.items" :key="item">
-              <router-link to="#">{{ item }}</router-link>
-            </li>
-          </ul>
-        </li>
-      </ul>
-      <div class="social_media">
-        <router-link to="#"><i class="fab fa-facebook-f"></i></router-link>
-        <router-link to="#"><i class="fab fa-twitter"></i></router-link>
-        <router-link to="#"><i class="fab fa-instagram"></i></router-link>
-      </div>
+      <!-- Optionally include navigation or other sidebar content here -->
     </div>
     <div class="main_content">
-      <div class="header">Project 1</div>
-      <div class="info">
-        <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. ...</div>
-        <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. ...</div>
-        <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. ...</div>
-        <!-- File upload section -->
-        <div class="file-upload">
-          <input type="file" @change="uploadFile">
+      <div v-for="project in projects" :key="project.id" class="project-details">
+        <h3>{{ project.name }}</h3>
+        <p><strong>Description:</strong> {{ project.description }}</p>
+        <p><strong>GitHub:</strong> <a :href="project.github" target="_blank">{{ project.github }}</a></p>
+        <p><strong>Members:</strong> {{ project.members }}</p>
+        <p><strong>Powerpoint:</strong> <a :href="project.powerpoint" target="_blank">View Presentation</a></p>
+        <p><strong>Semester:</strong> {{ project.semester }}</p>
+        <p><strong>Type:</strong> {{ project.type }}</p>
+        <div v-if="project.imagesUrls && project.imagesUrls.length">
+          <img v-for="url in project.imagesUrls" :src="url" :key="url" :alt="`Image for ${project.name}`" class="project-image" />
         </div>
+      </div>
+      <div v-if="projects.length === 0">
+        <p>No projects to display.</p>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { storage } from '../firebase'; // Adjust the path as necessary
-import { ref as firebaseRef, uploadBytes, getDownloadURL } from "firebase/storage";
+import { database } from '/Users/awhile/Documents/Coding/JetBrains/WebStormProjects/CodeExhibit/src/firebase.js'; // Ensure this path is correct
+import { ref as firebaseRef, onValue } from "firebase/database";
+import { getStorage, ref as storageRef, getDownloadURL } from "firebase/storage";
 
 export default {
   data() {
     return {
-      years: [
-        { text: '2024', icon: 'fas fa-2024', open: false, items: ['Project 1', 'Project 2'] },
-        { text: '2023', icon: 'fas fa-2023', open: false, items: ['Project 1', 'Project 2'] },
-        { text: '2022', icon: 'fas fa-2022', open: false, items: ['Project 1', 'Project 2'] },
-        { text: '2021', icon: 'fas fa-2021', open: false, items: ['Project 1', 'Project 2'] },
-        { text: '2020', icon: 'fas fa-2020', open: false, items: ['Project 1', 'Project 2'] },
-      ],
+      projects: [],
     };
   },
+  created() {
+    this.fetchProjects();
+  },
   methods: {
-    toggleYear(year) {
-      const foundYear = this.years.find(y => y.text === year);
-      if (foundYear) {
-        foundYear.open = !foundYear.open;
-      }
+    async fetchProjects() {
+      const projectsRef = firebaseRef(database, 'Projects');
+      onValue(projectsRef, async (snapshot) => {
+        const projectsData = snapshot.val();
+        const projects = await Promise.all(Object.keys(projectsData).map(async (key) => {
+          const project = projectsData[key];
+          const imagesUrls = await this.fetchProjectImages(project.Images || []);
+          return {
+            id: key,
+            name: key, // Or use project.Name if it exists
+            description: project.Description,
+            github: project.Github,
+            members: project.Members,
+            powerpoint: project.Powerpoint,
+            semester: project.Semester,
+            type: project.Type,
+            imagesUrls,
+          };
+        }));
+        this.projects = projects;
+      });
     },
-    async uploadFile(event) {
-      const file = event.target.files[0];
-      const fileRef = firebaseRef(storage, `uploads/${file.name}`);
-      try {
-        await uploadBytes(fileRef, file);
-        const url = await getDownloadURL(fileRef);
-        console.log('Upload successful', url);
-      } catch (error) {
-        console.error('Upload failed', error);
-      }
+    async fetchProjectImages(images) {
+      const storage = getStorage();
+      const urls = await Promise.all(images.map(async (imagePath) => {
+        const imageRef = storageRef(storage, imagePath.replace('gs://code-exhibit.appspot.com/', ''));
+        return await getDownloadURL(imageRef);
+      }));
+      return urls;
     },
   },
 }
 </script>
+
+
+
 
 <style scoped>
 
