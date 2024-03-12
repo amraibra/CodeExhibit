@@ -41,7 +41,7 @@
 
             <!-- Image Content for art1 -->
             <div class="image-content flex-1">
-              <img src="/snhu.png" alt="Descriptive Alt Text" class="max-w-full h-auto border-8 border-custom-orange">
+              <img src="/art1.svg" alt="Descriptive Alt Text" class="max-w-full h-auto">
             </div>
           </div>
 
