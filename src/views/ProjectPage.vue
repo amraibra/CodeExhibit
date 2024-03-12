@@ -16,21 +16,6 @@
         <div v-if="project.imagesUrls && project.imagesUrls.length">
           <img v-for="url in project.imagesUrls" :src="url" :key="url" :alt="`Image for ${project.name}`" class="project-image" />
         </div>
-        <div class="bg-custom-blue w-11/12 h-1 mt-10"></div>
-        <div class="mt-8 ">
-          <div class="grid grid-cols-3 gap-4 text-black">
-            <div v-for="project in projects" :key="project.name" class="bg-white p-4 rounded-lg shadow-lg">
-              <h4 class="font-semibold">{{ project.projectName }}</h4>
-              <p>{{ project.projectDescription }}</p>
-              <p>{{ project.memberNames }}</p>
-              <p>{{ project.semesterType }}</p>
-              <p>{{ project.className }}</p>
-              <a :href="project.githubLink" target="_blank">GitHub Link</a><br>
-              <a :href="project.powerpoint" target="_blank">PowerPoint Link</a>
-            </div>
-          </div>
-        </div>
-
       </div>
       <div v-if="projects.length === 0">
         <p>No projects to display.</p>
@@ -40,20 +25,14 @@
 </template>
 
 <script>
-import { onMounted, ref } from 'vue';
-import { database } from '../firebase'; // Your existing import
-import { ref as databaseRef, get, child } from 'firebase/database';
+import { database } from '/Users/awhile/Documents/Coding/JetBrains/WebStormProjects/CodeExhibit/src/firebase.js'; // Ensure this path is correct
+import { ref as firebaseRef, onValue } from "firebase/database";
+import { getStorage, ref as storageRef, getDownloadURL } from "firebase/storage";
 
 export default {
   data() {
     return {
       projects: [],
-      years: [
-        { text: 'Project Type', icon: 'fas fa-chevron-right', open: false, items: ['Social Media', 'Games', 'Web Application', 'Mobile Application', 'Other' ]},
-        { text: 'Year', icon: 'fas fa-chevron-right', open: false, items: ['2024', '2023', '2022', '2021'] },
-        { text: 'Semester', icon: 'fas fa-chevron-right', open: false, items: ['Spring 2024', 'Fall 2023', 'Spring 2023', 'Fall 2022'] },
-        { text: 'Class', icon: 'fas fa-chevron-right', open: false, items: ['Software Engineering Project', 'Junior Software Engineering', 'Sophomore Software Engineering', 'Intro to Programming'] }
-      ],
     };
   },
   created() {
@@ -82,28 +61,111 @@ export default {
         this.projects = projects;
       });
     },
-    fetchProjects() {
-      const projectsRef = databaseRef(database, 'projects/');
-      get(projectsRef).then((snapshot) => {
-        if (snapshot.exists()) {
-          const data = snapshot.val();
-          this.projects = Object.keys(data).map(key => ({
-            ...data[key],
-            id: key,
-          }));
-          console.log(this.projects);
-        } else {
-          console.log("No data available");
-        }
-      }).catch((error) => {
-        console.error(error);
-      });
+    async fetchProjectImages(images) {
+      const storage = getStorage();
+      const urls = await Promise.all(images.map(async (imagePath) => {
+        const imageRef = storageRef(storage, imagePath.replace('gs://code-exhibit.appspot.com/', ''));
+        return await getDownloadURL(imageRef);
+      }));
+      return urls;
     },
-  },
-  mounted() {
-    this.fetchProjects();
   },
 }
 </script>
 
 
+
+
+<style scoped>
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  text-decoration: none;
+}
+
+body {
+  background-color: #264653;
+}
+
+.wrapper {
+  display: flex;
+  position: relative;
+}
+
+.wrapper .sidebar {
+  width: 200px;
+  height: 100%;
+  background: #264653;
+  padding: 30px 0px;
+  position: fixed;
+}
+
+.wrapper .sidebar h2 {
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.wrapper .sidebar ul li {
+  padding: 15px;
+  border-bottom: 1px solid #bdb8d7;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.wrapper .sidebar ul li router-link {
+  color: #bdb8d7;
+  display: block;
+}
+
+.wrapper .sidebar ul li .fas {
+  width: 25px;
+}
+
+.wrapper .sidebar ul li:hover {
+  background-color: #f86647;
+}
+
+.wrapper .sidebar ul li:hover router-link {
+  color: #fff;
+}
+
+.wrapper .sidebar .social_media {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+}
+
+
+.wrapper .main_content {
+  width: 100%;
+  margin-left: 200px;
+}
+
+.wrapper .main_content .header {
+  padding: 28px;
+  background-color: #f86647;
+}
+
+.wrapper .main_content .info {
+  margin: 20px;
+  color: #717171;
+  line-height: 25px;
+}
+
+.wrapper .main_content .info div {
+  margin-bottom: 20px;
+}
+
+@media (max-height: 500px) {
+  .social_media {
+    display: none !important;
+  }
+}
+</style>

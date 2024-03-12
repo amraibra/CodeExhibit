@@ -24,8 +24,6 @@ import '@ionic/vue/css/display.css';
 import './theme/variables.css';
 import './assets/tailwind.css'
 
-import '@fortawesome/fontawesome-free/css/all.css';
-
 const app = createApp(App)
   .use(IonicVue)
   .use(router);

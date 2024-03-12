@@ -41,16 +41,16 @@
 
             <!-- Image Content for art1 -->
             <div class="image-content flex-1">
-              <img src="/art1.svg" alt="Descriptive Alt Text" class="max-w-full h-auto">
+              <img src="/public/art1.svg" alt="Descriptive Alt Text" class="max-w-full h-auto">
             </div>
           </div>
 
           <!-- New setup for rectangle2 and art2 -->
           <div class="rectangle2 absolute w-full h-screen bg-[url('/rectangle2.svg')] bg-no-repeat bg-cover top-[20%] md:top-[15%] lg:top-[75%] -z-10"></div>
-          <div class="centered-content new-content absolute z-20 w-[50%] h-[50%] top-[calc(75% + 25vh)] left-[25%] flex items-center justify-center gap-8">
+          <div class="centered-content new-content absolute z-20 w-[50%] h-[50%] top-[calc(75% + 25vh)] left-[25%] flex items-center justify-center">
             <!-- Image Content for art2 -->
             <div class="image-content w-1/2">
-              <img src="/snhu3.jpg" alt="Descriptive Alt Text" class="border-8 border-custom-orange">
+              <img src="/public/art2.png" alt="Descriptive Alt Text" class="" style="width: 32.1875rem; height: 19.9375rem;">
             </div>
 
             <!-- Text Content for art2 -->
