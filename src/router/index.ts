@@ -4,6 +4,7 @@ import HomePage from '../views/HomePage.vue';
 import InfoPage from '../views/InfoPage.vue';
 import ProjectPage from '../views/ProjectPage.vue';
 import ContactPage from '@/views/ContactPage.vue';
+import ProjectForm from '@/views/ProjectForm.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -28,7 +29,12 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/projects',
     name: 'Projects',
-    component: ProjectPage 
+    component: ProjectPage
+  },
+  {
+    path: '/form',
+    name: 'Form',
+    component: ProjectForm
   }
 ]
 

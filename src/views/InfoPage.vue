@@ -31,8 +31,8 @@
             <!-- First Row -->
             <div class="w-full h-full bg-custom-gray flex items-center pb-32">
               <!--SETA image-->
-              <div class="w-[29rem] h-[29rem] bg-custom-blue rounded-full border-4 border-custom-orange mx-20 flex items-center justify-center">
-                <img src="/SETA.jpg" alt="SETA" class="absolute w-[28.5rem] h-[28.5rem] object-cover rounded-full">
+              <div class="w-[27rem] h-[27rem] bg-custom-blue rounded-full border-4 border-custom-orange mx-20 flex items-center justify-center">
+                <img src="/SETA.jpg" alt="SETA" class="absolute w-[26.5rem] h-[26.5rem] object-cover rounded-full">
               </div>
               <!--First caption-->
               <div class="text-custom-blue mx-auto text-center flex-grow space-y-5">
@@ -47,11 +47,33 @@
                 <p class="text-sm">- Amra, Sam, Paul</p>
               </div>
             </div>
+            <div class="w-full h-full bg-custom-blue flex items-center">
+              <div class="text-white mx-auto text-center flex-grow space-y-5">
+                <h2 class="font-bold text-4xl font-mono pb-2">
+                  What is the SETA Showcase?
+                </h2>
+                <p>The SETA showcase is an event held at the end of each semester for computer science students.</p>
+                <p>Participating classes give their student's an oppurtunity to present their projects to the department</p>
+                <p>and other students. The students are also given an opportunity to get feedback from the audience</p>
+                <p>suggestions. The department has all these amazing projects, but no home to keep them for reference</p>
+                <p>and inspiration. CodeExhibit aims to be the connection between the students and the department.</p>
+              </div>
+              <div class="flex items-center justify-end mx-32">
+                <div class="relative">
+                  <div class="w-[16rem] h-[16rem] bg-custom-blue rounded-full border-4 border-custom-grayflex items-center justify-center relative top-28 right-36">
+                    <img src="/showcase.png" alt="Image 1" class="absolute w-[15.5rem] h-[15.5rem] object-cover rounded-full">
+                  </div>
+                  <div class="w-[16rem] h-[16rem] bg-custom-blue rounded-full border-4 border-custom-gray flex items-center justify-center relative left-208">
+                    <img src="/tech-class.jpeg" alt="Image 2" class="absolute w-[15.5rem] h-[15.5rem] object-cover rounded-full">
+                  </div>
+                  <div class="w-[16rem] h-[16rem] bg-custom-blue rounded-full border-4 border-custom-gray flex items-center justify-center relative bottom-28 right-36">
+                    <img src="/seta-cup.jpg" alt="Image 3" class="absolute w-[15.5rem] h-[15.5rem] object-cover rounded-full">
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-</div>
-
-
-
+        </div>
       </ion-content>
 
       <ion-footer class="bg-custom-blue text-white flex items-center p-6">
