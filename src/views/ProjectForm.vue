@@ -113,20 +113,20 @@
                         Github & PowerPoint Links
                     </h3>
                     <div class="flex items-center justify-center w-full">
-                        <label for="showcase-presentation" class="block text-sm font-medium text-custom-blue">
-                            Showcase Presentation:
-                        <label for="dropzone-file" class="flex flex-col items-center justify-center w-96 h-1/4 border-2 border-custom-blue rounded-lg cursor-pointer bg-custom-gray dark:bg-custom-gray hover:border-custom-teal dark:border-custom-blue dark:hover:border-custom-teal mt-1">
-                            <div class="flex flex-col items-center justify-center pt-5 pb-6">
-                                <svg class="w-8 h-8 mb-4 text-custom-blue dark:text-custom-blue" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
-                                </svg>
-                                <p class="mb-2 text-sm text-custom-blue dark:text-custom-blue"><span class="font-semibold">Click to upload</span> or drag and drop</p>
-                                <p class="text-xs text-custom-blue dark:text-custom-blue">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
-                                <span id="file-name" class="pt-2 text-sm font-bold underline text-custom-blue dark:text-custom-blue">No File Selected</span>
-                            </div>
-                            <input id="dropzone-file" type="file" class="hidden" v-on:change="updateFileName"/>
-                        </label>
-                        </label>
+                      <label class="block text-sm font-medium text-custom-blue">
+                        Showcase Presentation:
+                        <div class="flex flex-col items-center justify-center w-96 h-1/4 border-2 border-custom-blue rounded-lg cursor-pointer bg-custom-gray dark:bg-custom-gray hover:border-custom-teal dark:border-custom-blue dark:hover:border-custom-teal mt-1">
+                          <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                            <svg class="w-8 h-8 mb-4 text-custom-blue dark:text-custom-blue" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                            </svg>
+                            <p class="mb-2 text-sm text-custom-blue dark:text-custom-blue"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                            <p class="text-xs text-custom-blue dark:text-custom-blue">SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
+                            <span id="file-name" class="pt-2 text-sm font-bold underline text-custom-blue dark:text-custom-blue">No File Selected</span>
+                          </div>
+                          <input id="dropzone-file" type="file" class="hidden" @change="handleFileChange" accept=".ppt,.pptx"/>
+                        </div>
+                      </label>
                     </div>
                     <div class=" mt-10">
                         <label for="github-link" class="block mb-1 text-sm font-medium text-custom-blue">
@@ -180,37 +180,83 @@
 </template>
 
 <script>
+import { database } from '../firebase'; // Make sure this path is correct
+import { ref as databaseRef, set } from 'firebase/database';
+import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from 'firebase/storage';
+
 export default {
-    data() {
-        return {
-            step: 1,
-            projectName: '',
-            memberNames: '',
-            semesterType: '',
-            className: '',
-            projectDescription: '',
-            githubLink: ''
-        };
+  data() {
+    return {
+      // Initialize your form fields
+      step: 1,
+      projectName: '',
+      memberNames: '',
+      semesterType: '',
+      className: '',
+      projectDescription: '',
+      githubLink: '',
+      powerPointFile: null, // Placeholder for the PowerPoint file
+    };
+  },
+  methods: {
+    nextStep() {
+      if (this.step < 3) {
+        this.step++;
+      } else {
+        this.submitForm(); // Call submitForm when moving to the last step
+      }
     },
-    methods: {
-        nextStep() {
-            if (this.step < 4) {
-                this.step++;
-            }
-        },
-        prevStep() {
-            if (this.step > 1) {
-                this.step--;
-            }
-        },
-        updateFileName() {
-            const fileInput = document.getElementById('dropzone-file');
-            const fileName = fileInput.files[0] ? fileInput.files[0].name : 'No file selected';
-            document.getElementById('file-name').textContent = fileName;
-        },
-        submitForm() {
-            this.step = 4;
-        }
-    }
+    prevStep() {
+      if (this.step > 1) {
+        this.step--;
+      }
+    },
+    handleFileChange(event) {
+      this.powerPointFile = event.target.files[0];
+      console.log('File selected:', this.powerPointFile); // Debug line
+    },
+    async uploadPowerPoint(file) {
+      console.log('Uploading file:', file); // Debug line
+      if (!file) {
+        console.log('No file to upload'); // Debug line
+        return null; // No file to upload
+      }
+      const storage = getStorage();
+      const fileRef = storageRef(storage, `presentations/${Date.now()}_${file.name}`);
+      await uploadBytes(fileRef, file);
+      const url = await getDownloadURL(fileRef);
+      console.log('File uploaded, URL:', url); // Debug line
+      return url;
+    },
+    async submitForm() {
+      let powerPointUrl = '';
+      if (this.powerPointFile) {
+        powerPointUrl = await this.uploadPowerPoint(this.powerPointFile);
+      }
+      const projectKey = this.projectName.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+      const projectRef = databaseRef(database, 'projects/' + projectKey);
+
+      const projectData = {
+        projectName: this.projectName,
+        memberNames: this.memberNames,
+        semesterType: this.semesterType,
+        className: this.className,
+        projectDescription: this.projectDescription,
+        githubLink: this.githubLink,
+        powerpoint: powerPointUrl, // Store the PowerPoint URL
+      };
+
+      set(projectRef, projectData)
+          .then(() => {
+            console.log('Project submitted successfully');
+            this.step = 4; // Optionally, navigate to a confirmation message
+          })
+          .catch((error) => {
+            console.error('Failed to submit project:', error);
+          });
+    },
+  }
 };
 </script>
+
+
