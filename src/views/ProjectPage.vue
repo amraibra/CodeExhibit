@@ -1,20 +1,52 @@
 <template>
-  <div class="wrapper">
-    <div class="sidebar">
-      <h2>Code Exhibit</h2>
-      <!-- Optionally include navigation or other sidebar content here -->
+  <div class="flex">
+    <div class="w-64 bg-cyan-950 text-white p-5 space-y-6 h-screen overflow-auto">
+      <a href="/home" class="flex mt-2">
+        <i class="fas fa-home mr-3 mt-2"></i>
+      <h2 class="text-2xl font-semibold font-londrina text-custom-orange">CodeExhibit</h2>
+      </a>
+      <ul>
+        <li v-for="year in years" :key="year.text" class="group">
+          <router-link
+            to="#"
+            @click.prevent="toggleYear(year.text)"
+            class="flex items-center justify-between py-2 px-3 rounded hover:bg-custom-blue font-bold"
+          >
+            <span class="my-5">{{ year.text }}</span>
+            <i :class="year.icon"></i>
+          </router-link>
+          <ul v-if="year.open" class="pl-4 space-y-3">
+            <li v-for="item in year.items" :key="item">
+              <router-link
+                to="#"
+                class="block py-1 px-2 rounded hover:bg-custom-blue font-bold"
+              >{{ item }}</router-link>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
-    <div class="main_content">
-      <div v-for="project in projects" :key="project.id" class="project-details">
-        <h3>{{ project.name }}</h3>
-        <p><strong>Description:</strong> {{ project.description }}</p>
-        <p><strong>GitHub:</strong> <a :href="project.github" target="_blank">{{ project.github }}</a></p>
-        <p><strong>Members:</strong> {{ project.members }}</p>
-        <p><strong>Powerpoint:</strong> <a :href="project.powerpoint" target="_blank">View Presentation</a></p>
-        <p><strong>Semester:</strong> {{ project.semester }}</p>
-        <p><strong>Type:</strong> {{ project.type }}</p>
-        <div v-if="project.imagesUrls && project.imagesUrls.length">
-          <img v-for="url in project.imagesUrls" :src="url" :key="url" :alt="`Image for ${project.name}`" class="project-image" />
+    <!--Main-->
+    <div class="flex-1 p-5 bg-custom-blue overflow-auto">
+      <div class="w-full h-1/6 bg-cyan-950 text-center justify-between items-center flex
+      text-4xl font-mono font-bold shadow-2xl">
+        <div class="flex-grow text-center ml-8">Showcase Projects</div>
+        <div class="text-sm mr-8">
+            <a href="/form" class="bg-custom-orange p-2 rounded-2xl font-mono font-bold">
+            <i class="fas fa-plus w-5"></i>
+            </a>
+          </div>
+      </div>
+      <div class="bg-custom-gray w-full h-full mt-10 flex flex-col items-center">
+        <div class="flex w-full justify-between items-center px-20 mt-10">
+          <div class="flex-grow">
+            <h3 class="font-mono mt-1 ml-36 text-custom-blue font-extrabold text-2xl">Highlighted Projects</h3>
+          </div>
+          <div class="flex items-center">
+            <input type="text" id="search-input" placeholder="Search..." class="bg-gray-50 border-2 border-custom-orange rounded-l
+            w-96 text-black p-1 font-mono">
+            <i class="fas fa-search text-black ml-3 mt-2 text-lg"></i>
+          </div>
         </div>
         <div class="bg-custom-blue w-11/12 h-1 mt-10"></div>
         <div class="mt-8 ">
@@ -31,9 +63,6 @@
           </div>
         </div>
 
-      </div>
-      <div v-if="projects.length === 0">
-        <p>No projects to display.</p>
       </div>
     </div>
   </div>
@@ -56,31 +85,12 @@ export default {
       ],
     };
   },
-  created() {
-    this.fetchProjects();
-  },
   methods: {
-    async fetchProjects() {
-      const projectsRef = firebaseRef(database, 'Projects');
-      onValue(projectsRef, async (snapshot) => {
-        const projectsData = snapshot.val();
-        const projects = await Promise.all(Object.keys(projectsData).map(async (key) => {
-          const project = projectsData[key];
-          const imagesUrls = await this.fetchProjectImages(project.Images || []);
-          return {
-            id: key,
-            name: key, // Or use project.Name if it exists
-            description: project.Description,
-            github: project.Github,
-            members: project.Members,
-            powerpoint: project.Powerpoint,
-            semester: project.Semester,
-            type: project.Type,
-            imagesUrls,
-          };
-        }));
-        this.projects = projects;
-      });
+    toggleYear(year) {
+      const foundYear = this.years.find(y => y.text === year);
+      if (foundYear) {
+        foundYear.open = !foundYear.open;
+      }
     },
     fetchProjects() {
       const projectsRef = databaseRef(database, 'projects/');
@@ -105,5 +115,3 @@ export default {
   },
 }
 </script>
-
-
