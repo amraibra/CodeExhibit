@@ -173,7 +173,7 @@
 
                       <div class="pt-4">
                         <label class="block text-sm font-medium text-custom-blue">
-                          Upload <i>at least</i> one picture of your project:
+                          Upload <i>at least</i> one picture of your project (Recommended):
                           <div class="flex flex-col items-center justify-center w-full h-28 border-2 border-custom-blue rounded-lg cursor-pointer bg-custom-gray dark:bg-custom-gray hover:border-custom-teal dark:border-custom-blue dark:hover:border-custom-teal mt-1 mb-4">
                             <div class="flex flex-col items-center justify-center pt-8 pb-8">
                               <svg class="w-5 h-5 mb-2 text-custom-blue dark:text-custom-blue" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
@@ -188,7 +188,7 @@
                         </label>
 
                         <label for="keywords" class="block mb-1 text-sm font-medium text-custom-blue">
-                          Please type in some keywords related to your project:
+                          Please type in some keywords related to your project (Optional):
                         </label>
                         <input
                           id="keywords"
@@ -196,7 +196,6 @@
                           placeholder="Mobile App, Ionic, Vue.js ..." 
                           class="bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full h-12 p-2.5 mb-1"
                           v-model="keywords"
-                          required
                         >
 
                         <div class="col-span-2">
