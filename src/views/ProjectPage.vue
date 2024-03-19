@@ -59,6 +59,7 @@
               <p>{{ project.className }}</p>
               <a :href="project.githubLink" target="_blank">GitHub Link</a><br>
               <a :href="project.powerpoint" target="_blank">PowerPoint Link</a>
+              <button @click="removeProject(project)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
             </div>
           </div>
         </div>
@@ -71,7 +72,7 @@
 <script>
 import { onMounted, ref } from 'vue';
 import { database } from '../firebase'; // Your existing import
-import { ref as databaseRef, get, child } from 'firebase/database';
+import { ref as databaseRef, get, child, remove } from 'firebase/database';
 
 export default {
   data() {
@@ -92,6 +93,17 @@ export default {
         foundYear.open = !foundYear.open;
       }
     },
+    removeProject(project) {
+  const projectKey = project.projectName.replace(/[^a-zA-Z0-9]/g, '').toLowerCase();
+  const projectRef = databaseRef(database, `projects/${projectKey}`);
+  remove(projectRef).then(() => {
+    // Remove the project from the local array
+    this.projects = this.projects.filter(p => p.projectName !== project.projectName);
+    console.log('Project removed successfully');
+  }).catch((error) => {
+    console.error('Error removing project: ', error);
+  });
+},
     fetchProjects() {
       const projectsRef = databaseRef(database, 'projects/');
       get(projectsRef).then((snapshot) => {
