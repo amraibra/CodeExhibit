@@ -32,9 +32,15 @@
       text-4xl font-mono font-bold shadow-2xl">
         <div class="flex-grow text-center ml-8">Showcase Projects</div>
         <div class="text-sm mr-8">
-            <a href="/form" class="bg-custom-orange p-2 rounded-2xl font-mono font-bold">
+          <div v-if="!isAuthenticated">
+    <input type="password" v-model="inputPassword" placeholder="Enter password to add projects">
+    <button @click="verifyPassword">Submit</button></div>
+  <div v-if="isAuthenticated">
+    <a href="/form" class="bg-custom-orange p-2 rounded-2xl font-mono font-bold">
             <i class="fas fa-plus w-5"></i>
             </a>
+  </div>
+            
           </div>
       </div>
       <div class="bg-custom-gray w-full h-full mt-10 flex flex-col items-center">
@@ -84,9 +90,21 @@ export default {
         { text: 'Class', icon: 'fas fa-chevron-right', open: false, items: ['Software Engineering Project', 'Junior Software Engineering', 'Sophomore Software Engineering', 'Intro to Programming'] }
       ],
       searchQuery: '',
+      inputPassword: '',
+    isAuthenticated: false,
+    correctPassword: 'tempadmin', // 
     };
   },
   methods: {
+    verifyPassword() {
+    if (this.inputPassword === this.correctPassword) {
+      this.isAuthenticated = true;
+    } else {
+      alert('Incorrect password');
+      this.inputPassword = ''; // Reset input field after incorrect password
+    }
+  },
+
     toggleYear(year) {
       const foundYear = this.years.find(y => y.text === year);
       if (foundYear) {
