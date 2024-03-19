@@ -62,6 +62,7 @@
               <p>{{ project.memberNames }}</p>
               <p>{{ project.semesterType }}</p>
               <p>{{ project.className }}</p>
+              <p>{{ project.projectType }}</p>
               <a :href="project.githubLink" target="_blank">GitHub Link</a><br>
               <a :href="project.powerpoint" target="_blank">PowerPoint Link</a>
               <button @click="removeProject(project)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>

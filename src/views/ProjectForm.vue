@@ -58,45 +58,66 @@
                             v-model="memberNames"
                             required>
                     </div>
-                    <div>
+                      <div>
+                          <label for="semester" class="block mb-1 text-sm font-medium text-custom-blue">
+                              Semester:
+                          </label>
+                          <select 
+                              type="text" 
+                              name="semester" 
+                              id="semester"
+                              class=" appearance-none bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5"
+                              v-model="semesterType"
+                              required>
+                              <option value="">Select a semester</option>
+                              <option value="Spring 2024">Spring 2024</option>
+                              <option value="Fall 2023">Fall 2023</option>
+                              <option value="Spring 2023">Spring 2023</option>
+                              <option value="Fall 2022">Fall 2022</option>
+                              <option value="Spring 2022">Spring 2022</option> 
+                          </select>
+                      </div>
+                      <div>
+                          <label for="class" class="block mb-1 text-sm font-medium text-custom-blue">
+                              Class:
+                          </label>
+                          <select 
+                              type="text" 
+                              name="class" 
+                              id="class"
+                              class=" appearance-none bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5"
+                              v-model="className"
+                              required>
+                              <option value="">Select a class</option>
+                              <option value="Software Engineering Project">Software Engineering Project</option>
+                              <option value="Jr Software Engineering">Jr Software Engineering</option>
+                              <option value="Softmore Software Engineering">Softmore Software Engineering</option>
+                              <option value="Intro to Programming">Intro to Programming</option>
+                          </select>
+                      </div>
+                    </div>
+                <div class="grid sm:grid-cols-1 pt-3">
+                      <div>
                         <label for="semester" class="block mb-1 text-sm font-medium text-custom-blue">
                             Semester:
                         </label>
                         <select 
                             type="text" 
-                            name="semester" 
-                            id="semester"
+                            name="projectType" 
+                            id="projectType"
                             class=" appearance-none bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5"
-                            v-model="semesterType"
+                            v-model="projectType"
                             required>
-                            <option value="">Select a semester</option>
-                            <option value="Spring 2024">Spring 2024</option>
-                            <option value="Fall 2023">Fall 2023</option>
-                            <option value="Spring 2023">Spring 2023</option>
-                            <option value="Fall 2022">Fall 2022</option>
-                            <option value="Spring 2022">Spring 2022</option> 
+                            <option value="">Select a project type</option>
+                            <option value="Social Media">Social Media</option>
+                            <option value="Game">Game</option>
+                            <option value="Web Application">Web Application</option>
+                            <option value="Android Application">Android Application</option>
+                            <option value="Mobile App">Mobile App</option> 
                         </select>
                     </div>
-                    <div>
-                        <label for="class" class="block mb-1 text-sm font-medium text-custom-blue">
-                            Class:
-                        </label>
-                        <select 
-                            type="text" 
-                            name="class" 
-                            id="class"
-                            class=" appearance-none bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5"
-                            v-model="className"
-                            required>
-                            <option value="">Select a class</option>
-                            <option value="Software Engineering Project">Software Engineering Project</option>
-                            <option value="Jr Software Engineering">Jr Software Engineering</option>
-                            <option value="Softmore Software Engineering">Softmore Software Engineering</option>
-                            <option value="Intro to Programming">Intro to Programming</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="grid sm:grid-cols-1 pt-8">
+                  </div>
+                <div class="grid sm:grid-cols-1 pt-3">
                     <label for="project-description" class="block mb-1 text-sm font-medium text-custom-blue">Project Description:</label>
                     <textarea 
                         id="project-description"
@@ -104,7 +125,7 @@
                         v-model="projectDescription"
                         required></textarea>
                 </div>
-                <div class="text-center pt-7">
+                <div class="text-center pt-2">
                     <button class="bg-custom-blue text-white w-20 h-10 rounded-lg">Next</button>
                 </div>
                 </div>
@@ -240,7 +261,8 @@ export default {
       powerPointFile: null, // Placeholder for the PowerPoint file
       continuation: '',
       extraInfo: '',
-      keywords: ''
+      keywords: '',
+      projectType: ''
     };
   },
   methods: {
@@ -288,6 +310,7 @@ export default {
         className: this.className,
         projectDescription: this.projectDescription,
         githubLink: this.githubLink,
+        projectType: this.projectType,
         powerpoint: powerPointUrl, // Store the PowerPoint URL
       };
 
