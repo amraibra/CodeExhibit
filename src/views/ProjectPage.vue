@@ -43,15 +43,14 @@
             <h3 class="font-mono mt-1 ml-36 text-custom-blue font-extrabold text-2xl">Highlighted Projects</h3>
           </div>
           <div class="flex items-center">
-            <input type="text" id="search-input" placeholder="Search..." class="bg-gray-50 border-2 border-custom-orange rounded-l
-            w-96 text-black p-1 font-mono">
+            <<input type="text" id="search-input" v-model="searchQuery" placeholder="Search..." class="bg-gray-50 border-2 border-custom-orange rounded-l w-96 text-black p-1 font-mono">
             <i class="fas fa-search text-black ml-3 mt-2 text-lg"></i>
           </div>
         </div>
         <div class="bg-custom-blue w-11/12 h-1 mt-10"></div>
         <div class="mt-8 ">
           <div class="grid grid-cols-3 gap-4 text-black">
-            <div v-for="project in projects" :key="project.name" class="bg-white p-4 rounded-lg shadow-lg">
+            <div v-for="project in filteredProjects" :key="project.name" class="bg-white p-4 rounded-lg shadow-lg">
               <h4 class="font-semibold">{{ project.projectName }}</h4>
               <p>{{ project.projectDescription }}</p>
               <p>{{ project.memberNames }}</p>
@@ -84,6 +83,7 @@ export default {
         { text: 'Semester', icon: 'fas fa-chevron-right', open: false, items: ['Spring 2024', 'Fall 2023', 'Spring 2023', 'Fall 2022'] },
         { text: 'Class', icon: 'fas fa-chevron-right', open: false, items: ['Software Engineering Project', 'Junior Software Engineering', 'Sophomore Software Engineering', 'Intro to Programming'] }
       ],
+      searchQuery: '',
     };
   },
   methods: {
@@ -122,8 +122,24 @@ export default {
       });
     },
   },
+  computed: {
+    // Define your computed properties here
+    filteredProjects() {
+      if (!this.searchQuery) {
+        return this.projects; // Return all projects if there is no search query
+      }
+      return this.projects.filter(project => {
+        // Adjust the filtering logic based on your project structure
+        return project.projectName.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+               project.semesterType.toLowerCase().includes(this.searchQuery.toLowerCase()) ||
+               project.memberNames.toLowerCase().includes(this.searchQuery.toLowerCase())
+        
+      });
+    }
+  },
   mounted() {
     this.fetchProjects();
   },
+  
 }
 </script>
