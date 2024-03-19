@@ -147,23 +147,65 @@
                     </div>
                 </div>
                 <div v-if="step === 3">
-                    <h3 class="text-mono text-custom-blue text-xl font-medium pb-5">
-                        Extras & Submit
-                    </h3>
-                    <!-- Form fields for step 3 -->
-                    <p class="text-custom-blue font-medium pb-5">Would you want your project to be continued by other students?</p>
-                    <div class="flex items-center me-4 justify-center">
-                        <input checked id="teal-checkbox" type="checkbox" value="" class="w-4 h-4 text-teal-600 bg-custom-blue rounded focus:ring-custom-teal dark:focus:ring-custom-teal dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="teal-checkbox" class="ms-2 text-sm font-bold text-gray-900 dark:text-custom-blue">Yes</label>
+                      <div class="pb-3">
+                        <p class="text-custom-blue text-sm font-medium pb-3">Would you want your project to be continued by other students?</p>
+                        <div class="flex items-center me-4 justify-center">
+                          <input id="yes-radio" type="radio" value="yes" v-model="continuation" class="w-3 h-3 text-teal-600 bg-custom-blue rounded focus:ring-custom-teal dark:focus:ring-custom-teal dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                          <label for="yes-radio" class="ms-2 text-xs font-bold text-gray-900 dark:text-custom-blue">Yes</label>
 
-                        <input checked id="teal-checkbox" type="checkbox" value="" class="w-4 h-4 text-teal-600 bg-custom-blue rounded focus:ring-custom-teal dark:focus:ring-custom-teal dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 ml-8">
-                        <label for="teal-checkbox" class="ms-2 text-sm font-bold text-gray-900 dark:text-custom-blue">No</label>
+                          <input id="no-radio" type="radio" value="no" v-model="continuation" class="w-3 h-3 text-teal-600 bg-custom-blue rounded focus:ring-custom-teal dark:focus:ring-custom-teal dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 ml-8">
+                          <label for="no-radio" class="ms-2 text-xs font-bold text-gray-900 dark:text-custom-blue">No</label>
+                        </div>
+                      </div>
+
+                      <div v-if="continuation === 'yes'">
+                        <label for="additions" class="block mb-1 text-sm font-medium text-custom-blue">
+                          Please explain any additions or ideas for the project continuation:
+                        </label>
+                        <textarea 
+                          id="additions"
+                          placeholder="Type your ideas here..." 
+                          class="bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full h-12 p-2.5"
+                          v-model="extraInfo" 
+                          required
+                        ></textarea>
+                      </div>
+
+                      <div class="pt-4">
+                        <label class="block text-sm font-medium text-custom-blue">
+                          Upload <i>at least</i> one picture of your project (Recommended):
+                          <div class="flex flex-col items-center justify-center w-full h-28 border-2 border-custom-blue rounded-lg cursor-pointer bg-custom-gray dark:bg-custom-gray hover:border-custom-teal dark:border-custom-blue dark:hover:border-custom-teal mt-1 mb-4">
+                            <div class="flex flex-col items-center justify-center pt-8 pb-8">
+                              <svg class="w-5 h-5 mb-2 text-custom-blue dark:text-custom-blue" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                              </svg>
+                              <p class="mb-2 text-xs text-custom-blue dark:text-custom-blue"><span class="font-semibold">Click to upload</span> or drag and drop</p>
+                              <p class="text-xs text-custom-blue dark:text-custom-blue">SVG, PNG, JPG or GIF (MAX. 400x200px)</p>
+                              <span id="file-name" class="pt-2 text-xs font-bold underline text-custom-blue dark:text-custom-blue">No File Selected</span>
+                            </div>
+                            <input id="dropzone-file" type="file" class="hidden" @change="handleFileChange" accept=""/>
+                          </div>
+                        </label>
+
+                        <label for="keywords" class="block mb-1 text-sm font-medium text-custom-blue">
+                          Please type in some keywords related to your project (Optional):
+                        </label>
+                        <input
+                          id="keywords"
+                          type="text"
+                          placeholder="Mobile App, Ionic, Vue.js ..." 
+                          class="bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full h-12 p-2.5 mb-1"
+                          v-model="keywords"
+                        >
+
+                        <div class="col-span-2">
+                          <div class="text-center pt-3">
+                            <button @click="prevStep" class="bg-custom-blue text-white w-20 h-10 rounded-lg mx-3">Back</button>
+                            <button @click="submitForm" class="bg-custom-blue text-white w-20 h-10 rounded-lg">Submit</button>
+                          </div>
+                        </div>
+                        </div>
                     </div>
-                    <div class="text-center pt-64">
-                        <button @click="prevStep" class="bg-custom-blue text-white w-20 h-10 rounded-lg mx-3">Back</button>
-                        <button @click="submitForm" class="bg-custom-blue text-white w-20 h-10 rounded-lg">Submit</button>
-                    </div>
-                </div>
                 <div class="flex text-center items-center justify-center my-56">
                     <div v-if="step === 4">
                         <h3 class="text-mono text-custom-blue text-3xl font-extrabold font-mono pb-5">
@@ -196,6 +238,9 @@ export default {
       projectDescription: '',
       githubLink: '',
       powerPointFile: null, // Placeholder for the PowerPoint file
+      continuation: '',
+      extraInfo: '',
+      keywords: ''
     };
   },
   methods: {
