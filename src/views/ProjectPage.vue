@@ -14,7 +14,7 @@
           <router-link
             to="#"
             @click.prevent="toggleYear(year.text)"
-            class="flex items-center justify-between py-2 px-3 rounded hover:bg-custom-blue font-bold"
+            class="flex items-center justify-between py-2 px-3 rounded hover:bg-custom-blue font-bold font-mono"
           >
             <span class="my-5">{{ year.text }}</span>
             <i :class="year.icon"></i>
@@ -325,5 +325,38 @@ export default {
   mounted() {
     this.fetchProjects();
   },
-};
+}
 </script>
+
+<style>
+.flip-card {
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+  cursor: pointer;
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+</style>
