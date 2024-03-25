@@ -1,5 +1,5 @@
 <template>
-  <div class="flex">
+  <div class="flex h-screen">
     <div
       class="w-64 bg-cyan-950 text-white p-5 space-y-6 h-screen overflow-auto"
     >
@@ -14,12 +14,12 @@
           <router-link
             to="#"
             @click.prevent="toggleYear(year.text)"
-            class="flex items-center justify-between py-2 px-3 rounded hover:bg-custom-blue font-bold"
+            class="flex items-center justify-between py-2 px-3 rounded hover:bg-custom-blue font-bold font-mono"
           >
             <span class="my-5">{{ year.text }}</span>
             <i :class="year.icon"></i>
           </router-link>
-          <ul v-if="year.open" class="pl-4 space-y-3">
+          <ul v-if="year.open" class="pl-4 space-y-3 font-mono">
             <!-- Updated for class filtering -->
             <li v-for="item in year.items" :key="item">
               <router-link
@@ -34,7 +34,7 @@
       </ul>
     </div>
     <!--Main-->
-    <div class="flex-1 p-5 bg-custom-blue overflow-auto">
+    <div class="flex-1 p-9 bg-custom-blue overflow-auto">
       <div
         class="w-full h-1/6 bg-cyan-950 text-center justify-between items-center flex text-4xl font-mono font-bold shadow-2xl"
       >
@@ -70,7 +70,7 @@
             </h3>
           </div>
           <div class="flex items-center">
-            <<input
+            <input
               type="text"
               id="search-input"
               v-model="searchQuery"
@@ -88,48 +88,54 @@
               v-if="!isAnyFilterActive"
               v-for="project in highlightedProjects"
               :key="'highlighted-' + project.id"
-              class="bg-white p-4 rounded-lg shadow-lg"
+              class="flip-card w-[21rem] h-96"
             >
-              <h4 class="font-semibold">{{ project.projectName }}</h4>
-              <p>{{ project.projectDescription }}</p>
-              <p>{{ project.memberNames }}</p>
-              <p>{{ project.year }}</p>
-              <p>{{ project.projectType }}</p>
-              <p>{{ project.semesterType }}</p>
-              <p>{{ project.className }}</p>
-              <a :href="project.githubLink" target="_blank">GitHub Link</a
-              ><br />
-              <a :href="project.powerpoint" target="_blank">PowerPoint Link</a>
-              <button
-                @click="removeProject(project)"
-                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-              >
-                Delete
-              </button>
+            <div class="flip-card-inner">
+              <div class="flip-card-front bg-white rounded-lg p-5">
+                <img src="/default.png" alt="defaultpic" class="w-auto h-auto">
+                <h4 class="font-extrabold pb-5">{{ project.projectName }}</h4>
+                <p>{{ project.projectDescription }}</p>
+              </div>
+              <div class="flip-card-back bg-white rounded-lg p-5 space-y-5">
+                <p><b>Member Names:</b> {{ project.memberNames }}</p>
+                <p><b>Semester:</b> {{ project.semesterType }}</p>
+                <p><b>Class Name:</b> {{ project.className }}</p>
+                <div>
+                  <a :href="project.githubLink" target="_blank" class="text-custom-orange font-bold">GitHub Link</a><br>
+                  <a :href="project.powerpoint" target="_blank" class="text-custom-orange font-bold">PowerPoint Link</a>
+                </div>
+                <div>
+                  <button @click="removeProject(project)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-20">Delete</button>
+                </div>
+              </div>
+            </div>
             </div>
             <!-- Display filtered projects after any filter is applied -->
             <div
               v-else
               v-for="project in filteredProjects"
               :key="'filtered-' + project.id"
-              class="bg-white p-4 rounded-lg shadow-lg"
+              class="flip-card w-[21rem] h-96"
             >
-              <h4 class="font-semibold">{{ project.projectName }}</h4>
-              <p>{{ project.projectDescription }}</p>
-              <p>{{ project.memberNames }}</p>
-              <p>{{ project.year }}</p>
-              <p>{{ project.projectType }}</p>
-              <p>{{ project.semesterType }}</p>
-              <p>{{ project.className }}</p>
-              <a :href="project.githubLink" target="_blank">GitHub Link</a
-              ><br />
-              <a :href="project.powerpoint" target="_blank">PowerPoint Link</a>
-              <button
-                @click="removeProject(project)"
-                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-              >
-                Delete
-              </button>
+            <div class="flip-card-inner">
+              <div class="flip-card-front bg-white rounded-lg p-5">
+                <img src="/default.png" alt="defaultpic" class="w-auto h-auto">
+                <h4 class="font-extrabold pb-5">{{ project.projectName }}</h4>
+                <p>{{ project.projectDescription }}</p>
+              </div>
+              <div class="flip-card-back bg-white rounded-lg p-5 space-y-5">
+                <p><b>Member Names:</b> {{ project.memberNames }}</p>
+                <p><b>Semester:</b> {{ project.semesterType }}</p>
+                <p><b>Class Name:</b> {{ project.className }}</p>
+                <div>
+                  <a :href="project.githubLink" target="_blank" class="text-custom-orange font-bold">GitHub Link</a><br>
+                  <a :href="project.powerpoint" target="_blank" class="text-custom-orange font-bold">PowerPoint Link</a>
+                </div>
+                <div>
+                  <button @click="removeProject(project)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded mt-20">Delete</button>
+                </div>
+              </div>
+            </div>
             </div>
           </div>
         </div>
@@ -327,3 +333,33 @@ export default {
   },
 };
 </script>
+
+<style>
+.flip-card {
+  perspective: 1000px;
+}
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+  cursor: pointer;
+}
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+</style>
+
