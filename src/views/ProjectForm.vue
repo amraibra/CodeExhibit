@@ -4,7 +4,7 @@
             <!--Stepper-->
             <div v-if="step < 4">
                 <div class="w-full p-4">
-                    <div class="flex justify-center pb-6 pt-8">
+                    <div class="flex justify-center pb-2 pt-8">
                         <!--Project Info-->
                         <div class="flex items-center">
                             <div :class="{'bg-custom-blue': step >= 1, 'bg-custom-gray border-2 border-custom-blue': step < 1}" class="flex items-center justify-center w-10 h-10 rounded-full text-custom-gray">
@@ -30,10 +30,10 @@
             </div>
             <form @submit.prevent="nextStep">
                 <div v-if="step === 1">
-                    <h3 class="text-mono text-custom-blue text-xl font-medium pb-5">
+                    <h3 class="text-mono text-custom-blue text-xl font-medium pb-2">
                         Project Information
                     </h3>
-                    <div class="grid gap-8 sm:grid-cols-2">
+                    <div class="grid gap-4 sm:grid-cols-2">
                     <div>
                         <label for="project-name" class="block mb-1 text-sm font-medium text-custom-blue">
                             Project Name:
@@ -95,7 +95,7 @@
                     </div>
                     <div>
                       <label for="projectType" class="block mb-1 text-sm font-medium text-custom-blue">
-                        Project Keywords:
+                        Project Type:
                       </label>
                       <select 
                         name="projectType" 
@@ -137,7 +137,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="grid sm:grid-cols-1 pt-8">
+                <div class="grid sm:grid-cols-1 pt-4">
                     <label for="project-description" class="block mb-1 text-sm font-medium text-custom-blue">Project Description:</label>
                     <textarea 
                         id="project-description"
@@ -145,8 +145,9 @@
                         v-model="projectDescription"
                         required></textarea>
                 </div>
-                <div class="text-center pt-7">
-                    <button class="bg-custom-blue text-white w-20 h-10 rounded-lg">Next</button>
+                <div class="text-center pt-4">
+                    <a href="/projects" class="bg-custom-blue text-white p-3 rounded-lg mx-2">Cancel</a>
+                    <button class="bg-custom-blue text-white w-16 h-11 rounded-lg">Next</button>
                 </div>
                 </div>
                 <div v-if="step === 2">
