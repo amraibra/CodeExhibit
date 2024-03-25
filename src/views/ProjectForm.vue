@@ -70,46 +70,12 @@
                             v-model="semesterType"
                             required>
                             <option value="">Select a semester</option>
-                            <option value="Spring">Spring</option>
-                            <option value="Fall">Fall</option>
+                            <option value="Spring 2024">Spring 2024</option>
+                            <option value="Fall 2023">Fall 2023</option>
+                            <option value="Spring 2023">Spring 2023</option>
+                            <option value="Fall 2022">Fall 2022</option>
+                            <option value="Spring 2022">Spring 2022</option> 
                         </select>
-                    </div>
-                    <div>
-                        <label for="year" class="block mb-1 text-sm font-medium text-custom-blue">
-                            Year:
-                        </label>
-                        <select 
-                            type="text" 
-                            name="year" 
-                            id="year"
-                            class=" appearance-none bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5"
-                            v-model="year"
-                            required>
-                            <option value="">Select a year</option>
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                            <option value="2025">2025</option>
-                        </select>
-                    </div>
-                    <div>
-                      <label for="projectType" class="block mb-1 text-sm font-medium text-custom-blue">
-                        Project Keywords:
-                      </label>
-                      <select 
-                        name="projectType" 
-                        id="projectType"
-                        class="appearance-none bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5"
-                        v-model="projectType"
-                        required>
-                        <option value="">Select project keywords</option>
-                        <option value="Web Application">Web Application</option>
-                        <option value="Mobile Application">Mobile Application</option>
-                        <option value="Games">Games</option>
-                        <option value="Social Media">Social Media</option>
-                        <option value="Other">Other</option>
-                      </select>
                     </div>
                     <div>
                         <label for="class" class="block mb-1 text-sm font-medium text-custom-blue">
@@ -123,17 +89,10 @@
                             v-model="className"
                             required>
                             <option value="">Select a class</option>
-                            <option value="CS114">CS114</option>
-                            <option value="CS203/204">CS203/204</option>
-                            <option value="CS303/304">CS303/304</option>
-                            <option value="CS413/414">CS413/414</option>
-                            <option value="IT145">IT145</option>
-                            <option value="CS250">CS250</option>
-                            <option value="CS320">CS320</option>
-                            <option value="CS340">CS340</option>
-                            <option value="CS360">CS360</option>
-                            <option value="CS465">CS465</option>
-                            <option value="CS499">CS499</option>
+                            <option value="Software Engineering Project">Software Engineering Project</option>
+                            <option value="Jr Software Engineering">Jr Software Engineering</option>
+                            <option value="Softmore Software Engineering">Softmore Software Engineering</option>
+                            <option value="Intro to Programming">Intro to Programming</option>
                         </select>
                     </div>
                 </div>
@@ -275,14 +234,13 @@ export default {
       projectName: '',
       memberNames: '',
       semesterType: '',
-      projectType: '',
       className: '',
       projectDescription: '',
-      year: '',
       githubLink: '',
       powerPointFile: null, // Placeholder for the PowerPoint file
       continuation: '',
       extraInfo: '',
+      keywords: ''
     };
   },
   methods: {
@@ -327,8 +285,6 @@ export default {
         projectName: this.projectName,
         memberNames: this.memberNames,
         semesterType: this.semesterType,
-        projectType: this.projectType,
-        year: this.year,
         className: this.className,
         projectDescription: this.projectDescription,
         githubLink: this.githubLink,
