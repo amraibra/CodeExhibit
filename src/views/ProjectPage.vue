@@ -43,7 +43,7 @@
           <div v-if="!isAuthenticated">
             <button
               @click="showPasswordModal = true"
-              class="bg-custom-orange p-2 rounded-2xl font-mono font-bold" 
+              class="bg-custom-orange p-2 rounded-2xl font-mono font-bold"
             >
               <i class="fas fa-plus w-5"></i>
             </button>
@@ -66,7 +66,7 @@
             <h3
               class="font-mono mt-1 ml-36 text-custom-blue font-extrabold text-2xl"
             >
-              Highlighted Projects
+              Projects
             </h3>
           </div>
           <div class="flex items-center">
@@ -83,61 +83,62 @@
         <div class="bg-custom-blue w-11/12 h-1 mt-10"></div>
         <div class="mt-8">
           <div class="grid grid-cols-3 gap-4 text-black">
-            <!-- Display highlighted projects before any filters are applied -->
+            <!-- Display projects (all or filtered based on user input) -->
             <div
-              v-if="!isAnyFilterActive"
-              v-for="project in highlightedProjects"
-              :key="'highlighted-' + project.id"
-              class="flip-card w-[21rem] h-96"
-            >
-            <div class="flip-card-inner">
-              <div class="flip-card-front bg-white border-2 border-custom-orange rounded-lg p-5">
-                <img src="/default.png" alt="defaultpic" class="w-auto h-auto">
-                <h4 class="font-extrabold pb-5">{{ project.projectName }}</h4>
-                <p>{{ project.projectDescription }}</p>
-              </div>
-              <div class="flip-card-back bg-white border-2 border-custom-orange rounded-lg p-5 space-y-5">
-                <p><b>Member Names:</b> {{ project.memberNames }}</p>
-                <p><b>Semester:</b> {{ project.semesterType }}</p>
-                <p><b>Class Name:</b> {{ project.className }}</p>
-                <p><b>Project Type:</b> {{ project.projectType }}</p>
-                <div>
-                  <a :href="project.githubLink" target="_blank" class="text-custom-orange font-bold">GitHub Link</a><br>
-                  <a :href="project.powerpoint" target="_blank" class="text-custom-orange font-bold">PowerPoint Link</a>
-                </div>
-                <div>
-                  <button @click="removeProject(project)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
-                </div>
-              </div>
-            </div>
-            </div>
-            <!-- Display filtered projects after any filter is applied -->
-            <div
-              v-else
               v-for="project in filteredProjects"
-              :key="'filtered-' + project.id"
+              :key="'project-' + project.id"
               class="flip-card w-[21rem] h-96"
             >
-            <div class="flip-card-inner">
-              <div class="flip-card-front bg-white border-2 border-custom-orange rounded-lg p-5">
-                <img src="/default.png" alt="defaultpic" class="w-auto h-auto">
-                <h4 class="font-extrabold pb-5">{{ project.projectName }}</h4>
-                <p>{{ project.projectDescription }}</p>
-              </div>
-              <div class="flip-card-back bg-white border-2 border-custom-orange rounded-lg p-5 space-y-5">
-                <p><b>Member Names:</b> {{ project.memberNames }}</p>
-                <p><b>Semester:</b> {{ project.semesterType }}</p>
-                <p><b>Class Name:</b> {{ project.className }}</p>
-                <p><b>Project Type:</b> {{ project.projectType }}</p>
-                <div>
-                  <a :href="project.githubLink" target="_blank" class="text-custom-orange font-bold">GitHub Link</a><br>
-                  <a :href="project.powerpoint" target="_blank" class="text-custom-orange font-bold">PowerPoint Link</a>
+              <div class="flip-card-inner">
+                <div
+                  class="flip-card-front bg-white border-2 border-custom-orange rounded-lg p-5"
+                >
+                  <img
+                    v-if="project.imageUrl"
+                    :src="project.imageUrl"
+                    alt="Project Image"
+                    class="project-image"
+                  />
+                  <img
+                    v-else
+                    src="/default.png"
+                    alt="Default Image"
+                    class="project-image"
+                  />
+                  <h4 class="font-extrabold pb-5">{{ project.projectName }}</h4>
+                  <p>{{ project.projectDescription }}</p>
                 </div>
-                <div>
-                  <button @click="removeProject(project)" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Delete</button>
+                <div
+                  class="flip-card-back bg-white border-2 border-custom-orange rounded-lg p-5 space-y-5"
+                >
+                  <p><b>Member Names:</b> {{ project.memberNames }}</p>
+                  <p><b>Semester:</b> {{ project.semesterType }}</p>
+                  <p><b>Class Name:</b> {{ project.className }}</p>
+                  <p><b>Project Type:</b> {{ project.projectType }}</p>
+                  <div>
+                    <a
+                      :href="project.githubLink"
+                      target="_blank"
+                      class="text-custom-orange font-bold"
+                      >GitHub Link</a
+                    ><br />
+                    <a
+                      :href="project.powerpoint"
+                      target="_blank"
+                      class="text-custom-orange font-bold"
+                      >PowerPoint Link</a
+                    >
+                  </div>
+                  <div>
+                    <button
+                      @click="removeProject(project)"
+                      class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
             </div>
           </div>
         </div>
@@ -145,33 +146,33 @@
     </div>
   </div>
   <div
-  v-if="showPasswordModal"
-  class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
->
-  <div class="bg-white p-6 rounded-lg text-custom-blue shadow-lg">
-    <h2 class="text-lg font-bold mb-4">Enter Password</h2>
-    <input
-      type="password"
-      v-model="inputPassword"
-      placeholder="Password"
-      class="bg-gray-100 border-2 border-gray-300 rounded p-2 w-full"
-    />
-    <div class="mt-4 flex justify-center">
-      <button
-        @click="closeModal"
-        class="bg-custom-blue text-white px-4 py-2 rounded"
+    v-if="showPasswordModal"
+    class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
+  >
+    <div class="bg-white p-6 rounded-lg text-custom-blue shadow-lg">
+      <h2 class="text-lg font-bold mb-4">Enter Password</h2>
+      <input
+        type="password"
+        v-model="inputPassword"
+        placeholder="Password"
+        class="bg-gray-100 border-2 border-gray-300 rounded p-2 w-full"
+      />
+      <div class="mt-4 flex justify-center">
+        <button
+          @click="closeModal"
+          class="bg-custom-blue text-white px-4 py-2 rounded"
         >
-        Cancel
-      </button>
-      <button
-        @click="verifyPassword"
-        class="bg-custom-blue text-white px-4 py-2 rounded mx-1"
-      >
-        Submit
-    </button>
+          Cancel
+        </button>
+        <button
+          @click="verifyPassword"
+          class="bg-custom-blue text-white px-4 py-2 rounded mx-1"
+        >
+          Submit
+        </button>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -249,18 +250,18 @@ export default {
   methods: {
     setFilter(category, item) {
       if (this.categoryFilter[category] === item) {
-      // If it is, clear the filter for that category
+        // If it is, clear the filter for that category
         this.categoryFilter[category] = "";
-    } else {
-      // If it's not, set the filter to the clicked item
+      } else {
+        // If it's not, set the filter to the clicked item
         this.categoryFilter[category] = item;
-  }
+      }
     },
     verifyPassword() {
       if (this.inputPassword === this.correctPassword) {
         this.isAuthenticated = true;
         this.closeModal();
-        window.location.href = '/form';
+        window.location.href = "/form";
       } else {
         alert("Incorrect password");
         this.inputPassword = "";
@@ -311,8 +312,8 @@ export default {
     },
     closeModal() {
       this.showPasswordModal = false;
-      this.inputPassword = '';
-    }
+      this.inputPassword = "";
+    },
   },
   computed: {
     filteredProjects() {
@@ -360,9 +361,9 @@ export default {
         );
       });
     },
-    highlightedProjects() {
-      return this.projects.sort(() => 0.5 - Math.random()).slice(0, 3);
-    },
+    // highlightedProjects() {
+    //   return this.projects.sort(() => 0.5 - Math.random()).slice(0, 3);
+    // },
     isAnyFilterActive() {
       return (
         this.categoryFilter.year !== "" ||
@@ -395,7 +396,8 @@ export default {
   transform: rotateY(180deg);
   cursor: pointer;
 }
-.flip-card-front, .flip-card-back {
+.flip-card-front,
+.flip-card-back {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -406,5 +408,10 @@ export default {
   transform: rotateY(180deg);
 }
 
+.project-image {
+  width: 292px; /* Adjust to match the default image size */
+  height: 203px; /* Adjust to match the default image size */
+  padding-bottom: 20px;
+  object-fit: cover; /* This ensures the image covers the space, cropping it if necessary */
+}
 </style>
-
