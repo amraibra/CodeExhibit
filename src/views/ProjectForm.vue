@@ -6,7 +6,7 @@
       <!--Stepper-->
       <div v-if="step < 4">
         <div class="w-full p-4">
-          <div class="flex justify-center pb-2 pt-8">
+          <div class="flex justify-center pb-2 pt-5">
             <!--Project Info-->
             <div class="flex items-center">
               <div
@@ -306,7 +306,7 @@
               required
             />
           </div>
-          <div class="text-center pt-7">
+          <div class="text-center pt-14">
             <button
               @click="prevStep"
               class="bg-custom-blue text-white w-20 h-10 rounded-lg mx-3"
@@ -319,7 +319,7 @@
           </div>
         </div>
         <div v-if="step === 3">
-          <div class="pb-3">
+          <div :class="{ 'pt-3': continuation === 'no', 'pt-1': continuation === 'yes' }" class="pt-3">
             <p class="text-custom-blue text-sm font-medium pb-3">
               Would you want your project to be continued by other students?
             </p>
@@ -355,7 +355,7 @@
           <div v-if="continuation === 'yes'">
             <label
               for="additions"
-              class="block mb-1 text-sm font-medium text-custom-blue"
+              class="block mb-1 text-sm font-medium text-custom-blue pt-3"
             >
               Please explain any additions or ideas for the project
               continuation:
@@ -369,7 +369,7 @@
             ></textarea>
           </div>
 
-          <div class="pt-4">
+          <div :class="{ 'pt-12': continuation === 'no', 'pt-[1.5rem]': continuation === 'yes' }" class="pt-12">
             <label class="block text-sm font-medium text-custom-blue">
               Upload <i>at least</i> one picture of your project (Recommended):
               <div
@@ -415,26 +415,27 @@
                   @change="handleProjectImageChange"
                   accept="image/*"
                 />
-                />
               </div>
             </label>
 
-            <label
-              for="keywords"
-              class="block mb-1 text-sm font-medium text-custom-blue"
-            >
-              Please type in some keywords related to your project (Optional):
-            </label>
-            <input
-              id="keywords"
-              type="text"
-              placeholder="Mobile App, Ionic, Vue.js ..."
-              class="bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full h-12 p-2.5 mb-1"
-              v-model="keywords"
-            />
+            <div :class="{ 'pt-8': continuation === 'no', 'pt-[0.5rem]': continuation === 'yes' }" class="pt-8">
+              <label
+                for="keywords"
+                class="block mb-1 text-sm font-medium text-custom-blue"
+              >
+                Please type in some keywords related to your project (Optional):
+              </label>
+              <input
+                id="keywords"
+                type="text"
+                placeholder="Mobile App, Ionic, Vue.js ..."
+                class="bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full h-12 p-2.5"
+                v-model="keywords"
+              >
+            </div>
 
             <div class="col-span-2">
-              <div class="text-center pt-3">
+              <div :class="{ 'pt-10': continuation === 'no', 'pt-6': continuation === 'yes' }" class="text-center pt-10">
                 <button
                   @click="prevStep"
                   class="bg-custom-blue text-white w-20 h-10 rounded-lg mx-3"
@@ -458,20 +459,19 @@
             >
               Your project has been submitted!
             </h3>
-            <p class="sm text-custom-blue font-medium mt-2">
+            <p class="sm text-custom-blue font-medium mt-2 mb-10">
               Please check the projects page to view your submitted project.
             </p>
-            <button
-              @click="$router.push('/home')"
-              class="bg-custom-blue text-white w-36 h-10 rounded-lg mt-10 mx-2"
-            >
-              Home
-            </button>
-            <button
-              class="bg-custom-blue text-white w-36 h-10 rounded-lg mt-10 p-2"
-            >
-              Upload Project
-            </button>
+            <a
+              href="/home"
+              class="bg-custom-blue text-white p-3 rounded-lg mt-10 mx-2"
+            >Home
+            </a>
+            <a
+              href="/form"
+              class="bg-custom-blue text-white p-3 rounded-lg mt-10"
+            >Upload Project
+            </a>
           </div>
         </div>
       </form>
@@ -510,9 +510,9 @@ export default {
   },
   methods: {
     nextStep() {
-      if (this.step < 3) {
+      if (this.step <= 3) {
         this.step++;
-      } else {
+      } else if (this.step === 3) {
         this.submitForm(); // Call submitForm when moving to the last step
       }
     },

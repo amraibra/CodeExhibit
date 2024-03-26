@@ -80,7 +80,7 @@
             <div
               class="text-image-container original-content relative z-20 px-[3.125rem] flex flex-col md:flex-row items-center justify-center h-full"
             >
-              <div class="grid grid-cols-3 gap-4 text-black">
+              <div class="grid grid-cols-3 gap-4 text-black pr-40">
                 <!-- Display highlighted projects dynamically -->
                 <div
                   v-for="project in highlightedProjects"
