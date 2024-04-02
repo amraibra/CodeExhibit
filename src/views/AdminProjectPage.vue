@@ -39,23 +39,18 @@
         class="w-full h-1/6 bg-cyan-950 text-center justify-between items-center flex text-4xl font-mono font-bold shadow-2xl"
       >
         <div class="flex-grow text-center ml-8">Showcase Projects</div>
+        <div class="text-sm mr-8"><button @click="logout" class="bg-red-500 p-2 ml-4 rounded-2xl font-mono font-bold">
+    Logout
+  </button>
+        </div>
         <div class="text-sm mr-8">
-          <div v-if="!isAuthenticated">
-            <button
-              @click="showPasswordModal = true"
-              class="bg-custom-orange p-2 rounded-2xl font-mono font-bold"
-            >
-              <i class="fas fa-plus w-5"></i>
-            </button>
-          </div>
-          <div v-if="isAuthenticated">
+          
             <a
               href="/form"
               class="bg-custom-orange p-2 rounded-2xl font-mono font-bold"
             >
               <i class="fas fa-plus w-5"></i>
             </a>
-          </div>
         </div>
       </div>
       <div
@@ -128,6 +123,14 @@
                       class="text-custom-orange font-bold"
                       >PowerPoint Link</a
                     >
+                  </div>
+                  <div>
+                    <button
+                      @click="removeProject(project)"
+                      class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                    >
+                      Delete
+                    </button>
                   </div>
                 </div>
               </div>
@@ -306,6 +309,11 @@ export default {
       this.showPasswordModal = false;
       this.inputPassword = "";
     },
+    logout() {
+    this.isAuthenticated = false;
+    localStorage.removeItem('isAdminLoggedIn'); // Clear the login flag from localStorage
+    this.$router.push('/home').then(() => window.location.reload()); // Redirect to the homepage or login page
+  },
   },
   computed: {
     filteredProjects() {
