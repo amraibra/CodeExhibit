@@ -14,12 +14,12 @@
           <router-link
             to="#"
             @click.prevent="toggleYear(year.text)"
-            class="flex items-center justify-between py-2 px-3 rounded hover:bg-custom-blue font-bold font-mono"
+            class="flex items-center justify-between py-2 px-3 rounded hover:bg-custom-blue font-bold font-londrina text-xl"
           >
             <span class="my-5">{{ year.text }}</span>
             <i :class="year.icon"></i>
           </router-link>
-          <ul v-if="year.open" class="pl-4 space-y-3 font-mono">
+          <ul v-if="year.open" class="pl-4 space-y-3 font-londrina text-md">
             <!-- Updated for class filtering -->
             <li v-for="item in year.items" :key="item">
               <router-link
@@ -38,12 +38,12 @@
       <div
         class="w-full h-1/6 bg-cyan-950 text-center justify-between items-center flex text-4xl font-mono font-bold shadow-2xl"
       >
-        <div class="flex-grow text-center ml-8">Showcase Projects</div>
+        <div class="flex-grow text-center ml-8 font-londrina">Showcase Projects</div>
         <div class="text-sm mr-8">
           <div v-if="!isAuthenticated">
             <button
               @click="showPasswordModal = true"
-              class="bg-custom-orange p-2 rounded-2xl font-mono font-bold"
+              class="bg-custom-orange p-2 rounded-2xl font-londrina font-bold"
             >
               <i class="fas fa-plus w-5"></i>
             </button>
@@ -64,7 +64,7 @@
         <div class="flex w-full justify-between items-center px-20 mt-10">
           <div class="flex-grow">
             <h3
-              class="font-mono mt-1 ml-36 text-custom-blue font-extrabold text-2xl"
+              class="mt-1 ml-36 text-custom-blue font-extrabold text-4xl font-londrina"
             >
               Projects
             </h3>
@@ -75,7 +75,7 @@
               id="search-input"
               v-model="searchQuery"
               placeholder="Search..."
-              class="bg-gray-50 border-2 border-custom-orange rounded-l w-96 text-black p-1 font-mono"
+              class="bg-gray-50 border-2 border-custom-orange rounded-lg text-black p-1 font-londrina"
             />
             <i class="fas fa-search text-black ml-3 mt-2 text-lg"></i>
           </div>
@@ -105,38 +105,50 @@
                     alt="Default Image"
                     class="project-image"
                   />
-                  <h4 class="font-extrabold pb-5">{{ project.projectName }}</h4>
-                  <p>{{ project.projectDescription }}</p>
-                </div>
-                <div
-                  class="flip-card-back bg-white border-2 border-custom-orange rounded-lg p-5 space-y-5"
-                >
-                  <p><b>Member Names:</b> {{ project.memberNames }}</p>
-                  <p><b>Semester:</b> {{ project.semesterType }}</p>
-                  <p><b>Class Name:</b> {{ project.className }}</p>
-                  <p><b>Project Type:</b> {{ project.projectType }}</p>
-                  <div>
-                    <a
-                      :href="project.githubLink"
-                      target="_blank"
-                      class="text-custom-orange font-bold"
-                      >GitHub Link</a
-                    ><br />
-                    <a
-                      :href="project.powerpoint"
-                      target="_blank"
-                      class="text-custom-orange font-bold"
-                      >PowerPoint Link</a
-                    >
+                  <div class="font-londrina">
+                    <h4 class="font-extrabold text-2xl pb-1">{{ project.projectName }}</h4>
+                    <p class="text-xs text-gray-400 font-bold pb-3">{{ project.memberNames }}</p>
+                    <p>{{ project.projectDescription }}</p>
                   </div>
                 </div>
+                <div
+                  class="flip-card-back bg-white border-2 border-custom-orange rounded-lg p-5"
+                >
+                <h1 class="text-xl font-extrabold mt-2 font-londrina">Project Information:</h1>
+                <div class="mt-4 font-londrina cursor-default mb-5">
+                  <p><b>Semester:</b></p>
+                  <p class="text-custom-orange">{{ project.semesterType }}</p>
+                  <p class="pt-3"><b>Class Name:</b></p>
+                  <p class="text-custom-orange">{{ project.className }}</p>
+                  <p class="pt-3"><b>Project Type:</b></p>
+                  <p class="text-custom-orange">{{ project.projectType }}</p>
+                  <p class="pt-3"><b>Keywords:</b></p>
+                  <p class="text-custom-orange"> ... </p>
+                </div>
+                    <a
+                    :href="project.githubLink"
+                    target="_blank"
+                    class="text-custom-orange text-2xl font-bold mr-2"
+                    >
+                    <i class="fab fa-github"></i>
+                    </a
+                  >
+                  <a
+                    :href="project.powerpoint"
+                    target="_blank"
+                    class="text-custom-orange text-2xl font-bold"
+                    >
+                    <i class="fas fa-file-powerpoint"></i>
+                    </a
+                  >
+                </div>
               </div>
+            </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
   <div
     v-if="showPasswordModal"
     class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
@@ -386,7 +398,6 @@ export default {
 }
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
-  cursor: pointer;
 }
 .flip-card-front,
 .flip-card-back {
@@ -406,4 +417,12 @@ export default {
   padding-bottom: 20px;
   object-fit: cover; /* This ensures the image covers the space, cropping it if necessary */
 }
+
+.flip-card,
+.flip-card-inner,
+.flip-card-front,
+.flip-card-back {
+  cursor: default; /* Set the cursor to default */
+}
+
 </style>
