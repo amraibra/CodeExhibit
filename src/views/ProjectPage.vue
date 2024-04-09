@@ -38,14 +38,14 @@
       <div
         class="w-full h-36 bg-cyan-950 text-center justify-between items-center flex text-4xl shadow-2xl"
       >
-        <div class="flex-grow text-center ml-8 font-londrina">Showcase Projects</div>
+        <div class="flex-grow text-center text-white dark:text-white ml-8 font-londrina">Showcase Projects</div>
         <div class="text-sm mr-8">
           <div v-if="!isAuthenticated">
             <button
               @click="showPasswordModal = true"
               class="bg-custom-orange p-2 rounded-2xl font-londrina"
             >
-              <i class="fas fa-plus w-5"></i>
+              <i class="fas fa-plus text-white dark:text-white w-5"></i>
             </button>
           </div>
           <div v-if="isAuthenticated">
@@ -82,12 +82,12 @@
         </div>
         <div class="bg-custom-blue w-11/12 h-1 mt-10"></div>
         <div class="mt-8 flex flex-wrap">
-          <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 text-black">
+          <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-col-4 gap-4 text-black">
             <!-- Display projects (all or filtered based on user input) -->
             <div
               v-for="project in filteredProjects"
               :key="'project-' + project.id"
-              class="flip-card xl:w-[22rem] lg:w-72 h-96 md:w-72 sm:w-80"
+              class="flip-card xl:w-80 lg:w-72 h-96 md:w-80 sm:w-80"
             >
               <div class="flip-card-inner">
                 <div
