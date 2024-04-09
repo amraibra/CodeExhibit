@@ -83,12 +83,12 @@
         </div>
         <div class="bg-custom-blue w-11/12 h-1 mt-10"></div>
         <div class="mt-8 flex flex-wrap">
-          <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-col-4 gap-4 text-black">
+          <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4  gap-4 text-black">
             <!-- Display projects (all or filtered based on user input) -->
             <div
               v-for="project in filteredProjects"
               :key="'project-' + project.id"
-              class="flip-card xl:w-80 lg:w-72 h-96 md:w-80 sm:w-80"
+              class="flip-card xl:w-80 lg:w-80 h-96 md:w-80 sm:w-80"
             >
               <div class="flip-card-inner">
                 <div
