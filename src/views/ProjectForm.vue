@@ -284,8 +284,8 @@
                   id="dropzone-file"
                   type="file"
                   class="hidden"
-                  @change="handleProjectImageChange"
-                  accept="image/*"
+                  @change="handleFileChange"
+                  accept=".ppt,.pptx,.pdf"
                 />
               </div>
             </label>
