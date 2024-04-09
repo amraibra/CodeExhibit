@@ -6,7 +6,7 @@
       <!--Stepper-->
       <div v-if="step < 4">
         <div class="w-full p-4">
-          <div class="flex justify-center lg:pt-10 xl:pt-8 2xl:pt-20">
+          <div class="flex justify-center lg:pt-10 xl:pt-8 2xl:pt-10">
             <!--Project Info-->
             <div class="flex items-center">
               <div
@@ -79,7 +79,7 @@
         </div>
       </div>
       <form @submit.prevent="nextStep">
-        <div v-if="step === 1" class="2xl:pt-20">
+        <div v-if="step === 1" class="2xl:pt-4">
           <h3 class="text-mono text-custom-blue text-xl font-medium md:pb-4 lg:pb-4 xl:pb-4 2xl:pb-4">
             Project Information
           </h3>
@@ -226,13 +226,13 @@
               required
             ></textarea>
           </div>
-          <div class="text-center md:pt-6 xl:pt-4 2xl:pt-20">
+          <div class="text-center md:pt-6 xl:pt-4 2xl:pt-14">
             <a
               href="/projects"
-              class="bg-custom-blue text-white p-3 rounded-lg mx-2"
+              class="bg-custom-blue text-white p-2.5 rounded-lg mx-2"
               >Cancel</a
             >
-            <button class="bg-custom-blue text-white w-16 h-[2.69rem] rounded-lg">
+            <button class="bg-custom-blue text-white w-16 h-[2.65rem] rounded-lg">
               Next
             </button>
           </div>
@@ -400,7 +400,7 @@
               </div>
             </div>
         </div>
-        <div class="flex text-center items-center justify-center my-56">
+        <div class="flex text-center items-center justify-center my-56 2xl:my-64">
           <div v-if="step === 4">
             <h3
               class="text-mono text-custom-blue text-3xl font-extrabold font-mono xl:pb-5"
