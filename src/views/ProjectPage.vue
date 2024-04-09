@@ -5,7 +5,7 @@
     >
       <a href="/home" class="flex mt-2">
         <i class="fas fa-home mr-3 mt-2"></i>
-        <h2 class="text-2xl font-semibold font-londrina text-custom-orange">
+        <h2 class="text-2xl font-londrina text-custom-orange">
           CodeExhibit
         </h2>
       </a>
@@ -14,7 +14,7 @@
           <router-link
             to="#"
             @click.prevent="toggleYear(year.text)"
-            class="flex items-center justify-between py-2 px-3 rounded hover:bg-custom-blue font-bold font-londrina text-xl"
+            class="flex items-center justify-between py-2 px-3 rounded hover:bg-custom-blue font-londrina text-xl"
           >
             <span class="my-5">{{ year.text }}</span>
             <i :class="year.icon"></i>
@@ -25,7 +25,7 @@
               <router-link
                 to="#"
                 @click.prevent="setFilter(year.type, item)"
-                class="block py-1 px-2 rounded hover:bg-custom-blue font-bold"
+                class="block py-1 px-2 rounded hover:bg-custom-blue"
                 >{{ item }}</router-link
               >
             </li>
@@ -36,14 +36,14 @@
     <!--Main-->
     <div class="flex-1 p-8 bg-custom-blue overflow-auto">
       <div
-        class="w-full h-1/6 bg-cyan-950 text-center justify-between items-center flex text-4xl font-mono font-bold shadow-2xl"
+        class="w-full h-36 bg-cyan-950 text-center justify-between items-center flex text-4xl shadow-2xl"
       >
         <div class="flex-grow text-center ml-8 font-londrina">Showcase Projects</div>
         <div class="text-sm mr-8">
           <div v-if="!isAuthenticated">
             <button
               @click="showPasswordModal = true"
-              class="bg-custom-orange p-2 rounded-2xl font-londrina font-bold"
+              class="bg-custom-orange p-2 rounded-2xl font-londrina"
             >
               <i class="fas fa-plus w-5"></i>
             </button>
@@ -64,7 +64,7 @@
         <div class="flex w-full justify-between items-center px-20 mt-10">
           <div class="flex-grow">
             <h3
-              class="mt-1 ml-36 text-custom-blue font-extrabold text-4xl font-londrina"
+              class="mt-1 ml-36 text-custom-blue text-4xl font-londrina"
             >
               Projects
             </h3>
@@ -106,16 +106,16 @@
                     class="project-image"
                   />
                   <div class="font-londrina">
-                    <h4 class="font-extrabold text-2xl pb-1">{{ project.projectName }}</h4>
-                    <p class="text-xs text-gray-400 font-bold pb-3">{{ project.memberNames }}</p>
+                    <h4 class="text-2xl pb-1">{{ project.projectName }}</h4>
+                    <p class="text-xs text-gray-400 pb-3 font-thin">{{ project.memberNames }}</p>
                     <p>{{ project.projectDescription }}</p>
                   </div>
                 </div>
                 <div
                   class="flip-card-back bg-white border-2 border-custom-orange rounded-lg p-5"
                 >
-                <h1 class="text-xl font-extrabold mt-2 font-londrina">Project Information:</h1>
-                <div class="mt-4 font-londrina cursor-default mb-5">
+                <h1 class="text-xl font-londrina font-thin"><u>Project Information:</u></h1>
+                <div class="mt-4 font-londrina cursor-default mb-3 font-thin text-lg">
                   <p><b>Semester:</b></p>
                   <p class="text-custom-orange">{{ project.semesterType }}</p>
                   <p class="pt-3"><b>Class Name:</b></p>
@@ -128,7 +128,7 @@
                     <a
                     :href="project.githubLink"
                     target="_blank"
-                    class="text-custom-orange text-2xl font-bold mr-2"
+                    class="text-custom-orange text-xl font-bold mr-2"
                     >
                     <i class="fab fa-github"></i>
                     </a
@@ -136,7 +136,7 @@
                   <a
                     :href="project.powerpoint"
                     target="_blank"
-                    class="text-custom-orange text-2xl font-bold"
+                    class="text-custom-orange text-xl font-bold"
                     >
                     <i class="fas fa-file-powerpoint"></i>
                     </a
@@ -180,11 +180,8 @@
 </template>
 
 <script>
-import { onMounted, ref } from "vue";
 import { database } from "../firebase"; // Your existing import
-import { ref as databaseRef, get, child, remove } from "firebase/database";
-import { IonRefresher } from "@ionic/vue";
-import router from "@/router";
+import { ref as databaseRef, get, remove } from "firebase/database";
 
 export default {
   data() {
