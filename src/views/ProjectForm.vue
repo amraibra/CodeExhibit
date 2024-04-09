@@ -80,7 +80,9 @@
       </div>
       <form @submit.prevent="nextStep">
         <div v-if="step === 1" class="2xl:pt-4">
-          <h3 class="text-mono text-custom-blue text-xl font-medium md:pb-4 lg:pb-4 xl:pb-4 2xl:pb-4">
+          <h3
+            class="text-mono text-custom-blue text-xl font-medium md:pb-4 lg:pb-4 xl:pb-4 2xl:pb-4"
+          >
             Project Information
           </h3>
           <div class="grid gap-4 sm:grid-cols-2">
@@ -91,15 +93,14 @@
               >
                 Project Name:
               </label>
-              <input 
-              class="bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5 hover:border-custom-teal"
-              v-model="projectName"
-              placeholder="CodeExhibit"
-              id="project-name"
-              name="projectname"
-              required
-              >
-
+              <input
+                class="bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5 hover:border-custom-teal"
+                v-model="projectName"
+                placeholder="CodeExhibit"
+                id="project-name"
+                name="projectname"
+                required
+              />
             </div>
             <div>
               <label
@@ -232,7 +233,9 @@
               class="bg-custom-blue text-white p-2.5 rounded-lg mx-2"
               >Cancel</a
             >
-            <button class="bg-custom-blue text-white w-16 h-[2.65rem] rounded-lg">
+            <button
+              class="bg-custom-blue text-white w-16 h-[2.65rem] rounded-lg"
+            >
               Next
             </button>
           </div>
@@ -242,7 +245,7 @@
             Github & PowerPoint Links
           </h3>
           <div class="flex items-center justify-center w-full">
-             <label class="block text-sm font-medium text-custom-blue">
+            <label class="block text-sm font-medium text-custom-blue">
               Upload your SETA showcase presentation:
               <div
                 class="flex flex-col items-center justify-center w-[415px] h-48 border-2 border-custom-blue rounded-lg cursor-pointer bg-custom-gray dark:bg-custom-gray hover:border-custom-teal dark:border-custom-blue dark:hover:border-custom-teal mt-1 mb-4"
@@ -265,9 +268,7 @@
                       d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
                     />
                   </svg>
-                  <p
-                    class="mb-2 text-custom-blue dark:text-custom-blue"
-                  >
+                  <p class="mb-2 text-custom-blue dark:text-custom-blue">
                     <span class="font-semibold">Click to upload</span> or drag
                     and drop
                   </p>
@@ -285,7 +286,7 @@
                   type="file"
                   class="hidden"
                   @change="handleFileChange"
-                  accept=".ppt,.pptx,.pdf"
+                  accept=".pptx,.ppt,.pdf"
                 />
               </div>
             </label>
@@ -323,84 +324,81 @@
           <h3 class="text-mono text-custom-blue text-xl font-medium pb-8">
             Extras
           </h3>
-            <label class="block text-sm font-medium text-custom-blue">
-              Upload a picture of your landing page (Recommended):
-              <div
-                class="flex flex-col items-center justify-center w-full h-48 border-2 border-custom-blue rounded-lg cursor-pointer bg-custom-gray dark:bg-custom-gray hover:border-custom-teal dark:border-custom-blue dark:hover:border-custom-teal mt-1 mb-4"
-              >
-                <div
-                  class="flex flex-col items-center justify-center pt-6 pb-6"
+          <label class="block text-sm font-medium text-custom-blue">
+            Upload a picture of your landing page (Recommended):
+            <div
+              class="flex flex-col items-center justify-center w-full h-48 border-2 border-custom-blue rounded-lg cursor-pointer bg-custom-gray dark:bg-custom-gray hover:border-custom-teal dark:border-custom-blue dark:hover:border-custom-teal mt-1 mb-4"
+            >
+              <div class="flex flex-col items-center justify-center pt-6 pb-6">
+                <svg
+                  class="w-7 h-7 mb-2 text-custom-blue dark:text-custom-blue"
+                  aria-hidden="true"
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 20 16"
                 >
-                  <svg
-                    class="w-7 h-7 mb-2 text-custom-blue dark:text-custom-blue"
-                    aria-hidden="true"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 20 16"
-                  >
-                    <path
-                      stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
-                    />
-                  </svg>
-                  <p
-                    class="mb-2 text-custom-blue dark:text-custom-blue"
-                  >
-                    <span class="font-semibold">Click to upload</span> or drag
-                    and drop
-                  </p>
-                  <p class="text-custom-blue dark:text-custom-blue">
-                    SVG, PNG, JPG or GIF (MAX. 400x200px)
-                  </p>
-                  <span
-                    id="file-name"
-                    class="pt-2 font-bold underline text-custom-blue dark:text-custom-blue"
-                    >No File Selected</span
-                  >
-                </div>
-                <input
-                  id="dropzone-file"
-                  type="file"
-                  class="hidden"
-                  @change="handleProjectImageChange"
-                  accept="image/*"
-                />
+                  <path
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"
+                  />
+                </svg>
+                <p class="mb-2 text-custom-blue dark:text-custom-blue">
+                  <span class="font-semibold">Click to upload</span> or drag and
+                  drop
+                </p>
+                <p class="text-custom-blue dark:text-custom-blue">
+                  SVG, PNG, JPG or GIF (MAX. 400x200px)
+                </p>
+                <span
+                  id="file-name"
+                  class="pt-2 font-bold underline text-custom-blue dark:text-custom-blue"
+                  >No File Selected</span
+                >
               </div>
+              <input
+                id="dropzone-file"
+                type="file"
+                class="hidden"
+                @change="handleProjectImageChange"
+                accept="image/*"
+              />
+            </div>
+          </label>
+
+          <div class="pt-8">
+            <label
+              for="keywords"
+              class="block mb-1 text-sm font-medium text-custom-blue"
+            >
+              Please type in some keywords related to your project (Optional):
             </label>
-
-            <div class="pt-8">
-              <label
-                for="keywords"
-                class="block mb-1 text-sm font-medium text-custom-blue"
+            <input class="w-full bg-custom-gray border-2 border-custom-blue
+            rounded-lg hover:border-custom-teal h-10 p-2.5 text-custom-blue"
+            placeholder="Ionic, Python, Java"
+          </div>
+          <div class="col-span-2">
+            <div class="text-center xl:pt-6 2xl:pt-20">
+              <button
+                @click="prevStep"
+                class="bg-custom-blue text-white w-20 h-10 rounded-lg mx-3"
               >
-                Please type in some keywords related to your project (Optional):
-              </label>
-              <input 
-              class="w-full bg-custom-gray border-2 border-custom-blue rounded-lg hover:border-custom-teal h-10 p-2.5 text-custom-blue"
-              placeholder="Ionic, Python, Java"
-
+                Back
+              </button>
+              <button
+                @click="submitForm"
+                class="bg-custom-blue text-white w-20 h-10 rounded-lg"
+              >
+                Submit
+              </button>
             </div>
-            <div class="col-span-2">
-              <div class="text-center xl:pt-6 2xl:pt-20">
-                <button
-                  @click="prevStep"
-                  class="bg-custom-blue text-white w-20 h-10 rounded-lg mx-3"
-                >
-                  Back
-                </button>
-                <button
-                  @click="submitForm"
-                  class="bg-custom-blue text-white w-20 h-10 rounded-lg"
-                >
-                  Submit
-                </button>
-              </div>
-            </div>
+          </div>
         </div>
-        <div class="flex text-center items-center justify-center my-56 2xl:my-64">
+        <div
+          class="flex text-center items-center justify-center my-56 2xl:my-64"
+        >
           <div v-if="step === 4">
             <h3
               class="text-mono text-custom-blue text-3xl font-extrabold font-mono xl:pb-5"
@@ -413,12 +411,12 @@
             <a
               href="/home"
               class="bg-custom-blue text-white p-3 rounded-lg xl:mt-10 mx-2"
-            >Home
+              >Home
             </a>
             <a
               href="/form"
               class="bg-custom-blue text-white p-3 rounded-lg xl:mt-10"
-            >Upload Project
+              >Upload Project
             </a>
           </div>
         </div>
