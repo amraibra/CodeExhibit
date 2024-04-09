@@ -25,7 +25,8 @@
               <router-link
                 to="#"
                 @click.prevent="setFilter(year.type, item)"
-                class="block py-1 px-2 rounded hover:bg-custom-blue"
+                :class="{'block py-1 px-2 rounded hover:bg-custom-blue': true,
+                'bg-custom-teal text-white': activeFilters[year.type] && categoryFilter[year.type] === item}"
                 >{{ item }}</router-link
               >
             </li>
@@ -186,6 +187,12 @@ import { ref as databaseRef, get, remove } from "firebase/database";
 export default {
   data() {
     return {
+      activeFilters: {
+        year: false,
+        semester: false,
+        class: false,
+        keyword: false,
+      },
       projects: [],
       categoryFilter: {
         year: "",
@@ -253,9 +260,11 @@ export default {
       if (this.categoryFilter[category] === item) {
         // If it is, clear the filter for that category
         this.categoryFilter[category] = "";
+        this.activeFilters[category] = false;
       } else {
         // If it's not, set the filter to the clicked item
         this.categoryFilter[category] = item;
+        this.activeFilters[category] = true;
       }
     },
     verifyPassword() {
