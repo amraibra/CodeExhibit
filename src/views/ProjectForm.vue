@@ -243,7 +243,7 @@
           </h3>
           <div class="flex items-center justify-center w-full">
              <label class="block text-sm font-medium text-custom-blue">
-              Upload a picture of your landing page (Recommended):
+              Upload your SETA showcase presentation:
               <div
                 class="flex flex-col items-center justify-center w-[415px] h-48 border-2 border-custom-blue rounded-lg cursor-pointer bg-custom-gray dark:bg-custom-gray hover:border-custom-teal dark:border-custom-blue dark:hover:border-custom-teal mt-1 mb-4"
               >
