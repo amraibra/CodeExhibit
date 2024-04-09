@@ -59,12 +59,12 @@
         </div>
       </div>
       <div
-        class="bg-custom-gray w-full h-auto mt-10 pb-8 flex flex-col items-center"
+        class="bg-custom-gray w-auto h-auto mt-10 pb-8 flex flex-col items-center"
       >
         <div class="flex w-full justify-between items-center px-20 mt-10">
           <div class="flex-grow">
             <h3
-              class="mt-1 ml-36 text-custom-blue text-4xl font-londrina"
+              class="mt-1 sm:ml-2 md:ml-20 lg:ml-28 xl:ml-56 mr-5 text-custom-blue text-4xl font-londrina"
             >
               Projects
             </h3>
@@ -81,13 +81,13 @@
           </div>
         </div>
         <div class="bg-custom-blue w-11/12 h-1 mt-10"></div>
-        <div class="mt-8">
-          <div class="grid grid-cols-3 gap-4 text-black">
+        <div class="mt-8 flex flex-wrap">
+          <div class="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 text-black">
             <!-- Display projects (all or filtered based on user input) -->
             <div
               v-for="project in filteredProjects"
               :key="'project-' + project.id"
-              class="flip-card w-[21rem] h-96"
+              class="flip-card xl:w-[22rem] lg:w-72 h-96 md:w-72 sm:w-80"
             >
               <div class="flip-card-inner">
                 <div
@@ -97,7 +97,7 @@
                     v-if="project.imageUrl"
                     :src="project.imageUrl"
                     alt="Project Image"
-                    class="project-image"
+                    class="project-image xl:ml-2"
                   />
                   <img
                     v-else
@@ -384,6 +384,7 @@ export default {
 <style>
 .flip-card {
   perspective: 1000px;
+  margin-bottom: 1rem;
 }
 .flip-card-inner {
   position: relative;
@@ -409,9 +410,8 @@ export default {
 }
 
 .project-image {
-  width: 292px; /* Adjust to match the default image size */
-  height: 203px; /* Adjust to match the default image size */
-  padding-bottom: 20px;
+  width: auto; /* Adjust to match the default image size */
+  height: auto; /* Adjust to match the default image size */
   object-fit: cover; /* This ensures the image covers the space, cropping it if necessary */
 }
 
