@@ -80,7 +80,7 @@
       </div>
       <form @submit.prevent="nextStep">
         <div v-if="step === 1">
-          <h3 class="text-mono text-custom-blue text-xl font-medium pb-2">
+          <h3 class="text-mono text-custom-blue text-xl font-medium pb-8">
             Project Information
           </h3>
           <div class="grid gap-4 sm:grid-cols-2">
@@ -91,15 +91,15 @@
               >
                 Project Name:
               </label>
-              <input
-                type="text"
-                name="project name"
-                id="project-name"
-                placeholder="CodeExhibit"
-                class="bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5"
-                v-model="projectName"
-                required
-              />
+              <input 
+              class="bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5 hover:border-custom-teal"
+              v-model="projectName"
+              placeholder="CodeExhibit"
+              id="project-name"
+              name="projectname"
+              required
+              >
+
             </div>
             <div>
               <label
@@ -112,7 +112,7 @@
                 name="members"
                 id="members"
                 placeholder="Samuel Tyler"
-                class="bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5"
+                class="bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5 hover:border-custom-teal"
                 v-model="memberNames"
                 required
               />
@@ -128,7 +128,7 @@
                 type="text"
                 name="semester"
                 id="semester"
-                class="appearance-none bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5"
+                class="appearance-none bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5 hover:border-custom-teal"
                 v-model="semesterType"
                 required
               >
@@ -148,7 +148,7 @@
                 type="text"
                 name="year"
                 id="year"
-                class="appearance-none bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5"
+                class="appearance-none bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5 hover:border-custom-teal"
                 v-model="year"
                 required
               >
@@ -170,7 +170,7 @@
               <select
                 name="projectType"
                 id="projectType"
-                class="appearance-none bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5"
+                class="appearance-none bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5 hover:border-custom-teal"
                 v-model="projectType"
                 required
               >
@@ -193,7 +193,7 @@
                 type="text"
                 name="class"
                 id="class"
-                class="appearance-none bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5"
+                class="appearance-none bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5 hover:border-custom-teal"
                 v-model="className"
                 required
               >
@@ -220,37 +220,38 @@
             >
             <textarea
               id="project-description"
-              class="bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2"
+              class="bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full p-2.5 hover:border-custom-teal"
               v-model="projectDescription"
+              placeholder="Type your description here..."
               required
             ></textarea>
           </div>
-          <div class="text-center pt-4">
+          <div class="text-center pt-10">
             <a
               href="/projects"
               class="bg-custom-blue text-white p-3 rounded-lg mx-2"
               >Cancel</a
             >
-            <button class="bg-custom-blue text-white w-16 h-11 rounded-lg">
+            <button class="bg-custom-blue text-white w-16 h-[2.89rem] rounded-lg">
               Next
             </button>
           </div>
         </div>
         <div v-if="step === 2">
-          <h3 class="text-mono text-custom-blue text-xl font-medium pb-5">
+          <h3 class="text-mono text-custom-blue text-xl font-medium pb-8">
             Github & PowerPoint Links
           </h3>
           <div class="flex items-center justify-center w-full">
-            <label class="block text-sm font-medium text-custom-blue">
-              Showcase Presentation:
+             <label class="block text-sm font-medium text-custom-blue">
+              Upload a picture of your landing page (Recommended):
               <div
-                class="flex flex-col items-center justify-center w-96 h-1/4 border-2 border-custom-blue rounded-lg cursor-pointer bg-custom-gray dark:bg-custom-gray hover:border-custom-teal dark:border-custom-blue dark:hover:border-custom-teal mt-1"
+                class="flex flex-col items-center justify-center w-[415px] h-48 border-2 border-custom-blue rounded-lg cursor-pointer bg-custom-gray dark:bg-custom-gray hover:border-custom-teal dark:border-custom-blue dark:hover:border-custom-teal mt-1 mb-4"
               >
                 <div
-                  class="flex flex-col items-center justify-center pt-5 pb-6"
+                  class="flex flex-col items-center justify-center pt-6 pb-6"
                 >
                   <svg
-                    class="w-8 h-8 mb-4 text-custom-blue dark:text-custom-blue"
+                    class="w-7 h-7 mb-2 text-custom-blue dark:text-custom-blue"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -265,17 +266,17 @@
                     />
                   </svg>
                   <p
-                    class="mb-2 text-sm text-custom-blue dark:text-custom-blue"
+                    class="mb-2 text-custom-blue dark:text-custom-blue"
                   >
                     <span class="font-semibold">Click to upload</span> or drag
                     and drop
                   </p>
-                  <p class="text-xs text-custom-blue dark:text-custom-blue">
-                    SVG, PNG, JPG or GIF (MAX. 800x400px)
+                  <p class="text-custom-blue dark:text-custom-blue">
+                    SVG, PNG, JPG or GIF (MAX. 400x200px)
                   </p>
                   <span
                     id="file-name"
-                    class="pt-2 text-sm font-bold underline text-custom-blue dark:text-custom-blue"
+                    class="pt-2 font-bold underline text-custom-blue dark:text-custom-blue"
                     >No File Selected</span
                   >
                 </div>
@@ -283,13 +284,13 @@
                   id="dropzone-file"
                   type="file"
                   class="hidden"
-                  @change="handleFileChange"
-                  accept=".ppt,.pptx"
+                  @change="handleProjectImageChange"
+                  accept="image/*"
                 />
               </div>
             </label>
           </div>
-          <div class="mt-10">
+          <div class="mt-5">
             <label
               for="github-link"
               class="block mb-1 text-sm font-medium text-custom-blue"
@@ -306,7 +307,7 @@
               required
             />
           </div>
-          <div class="text-center pt-14">
+          <div class="text-center pt-20">
             <button
               @click="prevStep"
               class="bg-custom-blue text-white w-20 h-10 rounded-lg mx-3"
@@ -319,67 +320,19 @@
           </div>
         </div>
         <div v-if="step === 3">
-          <div :class="{ 'pt-3': continuation === 'no', 'pt-1': continuation === 'yes' }" class="pt-3">
-            <p class="text-custom-blue text-sm font-medium pb-3">
-              Would you want your project to be continued by other students?
-            </p>
-            <div class="flex items-center me-4 justify-center">
-              <input
-                id="yes-radio"
-                type="radio"
-                value="yes"
-                v-model="continuation"
-                class="w-3 h-3 text-teal-600 bg-custom-blue rounded focus:ring-custom-teal dark:focus:ring-custom-teal dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"
-              />
-              <label
-                for="yes-radio"
-                class="ms-2 text-xs font-bold text-gray-900 dark:text-custom-blue"
-                >Yes</label
-              >
-
-              <input
-                id="no-radio"
-                type="radio"
-                value="no"
-                v-model="continuation"
-                class="w-3 h-3 text-teal-600 bg-custom-blue rounded focus:ring-custom-teal dark:focus:ring-custom-teal dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 ml-8"
-              />
-              <label
-                for="no-radio"
-                class="ms-2 text-xs font-bold text-gray-900 dark:text-custom-blue"
-                >No</label
-              >
-            </div>
-          </div>
-
-          <div v-if="continuation === 'yes'">
-            <label
-              for="additions"
-              class="block mb-1 text-sm font-medium text-custom-blue pt-3"
-            >
-              Please explain any additions or ideas for the project
-              continuation:
-            </label>
-            <textarea
-              id="additions"
-              placeholder="Type your ideas here..."
-              class="bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full h-12 p-2.5"
-              v-model="extraInfo"
-              required
-            ></textarea>
-          </div>
-
-          <div :class="{ 'pt-12': continuation === 'no', 'pt-[1.5rem]': continuation === 'yes' }" class="pt-12">
+          <h3 class="text-mono text-custom-blue text-xl font-medium pb-8">
+            Extras
+          </h3>
             <label class="block text-sm font-medium text-custom-blue">
-              Upload <i>at least</i> one picture of your project (Recommended):
+              Upload a picture of your landing page (Recommended):
               <div
-                class="flex flex-col items-center justify-center w-full h-28 border-2 border-custom-blue rounded-lg cursor-pointer bg-custom-gray dark:bg-custom-gray hover:border-custom-teal dark:border-custom-blue dark:hover:border-custom-teal mt-1 mb-4"
+                class="flex flex-col items-center justify-center w-full h-48 border-2 border-custom-blue rounded-lg cursor-pointer bg-custom-gray dark:bg-custom-gray hover:border-custom-teal dark:border-custom-blue dark:hover:border-custom-teal mt-1 mb-4"
               >
                 <div
-                  class="flex flex-col items-center justify-center pt-8 pb-8"
+                  class="flex flex-col items-center justify-center pt-6 pb-6"
                 >
                   <svg
-                    class="w-5 h-5 mb-2 text-custom-blue dark:text-custom-blue"
+                    class="w-7 h-7 mb-2 text-custom-blue dark:text-custom-blue"
                     aria-hidden="true"
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -394,17 +347,17 @@
                     />
                   </svg>
                   <p
-                    class="mb-2 text-xs text-custom-blue dark:text-custom-blue"
+                    class="mb-2 text-custom-blue dark:text-custom-blue"
                   >
                     <span class="font-semibold">Click to upload</span> or drag
                     and drop
                   </p>
-                  <p class="text-xs text-custom-blue dark:text-custom-blue">
+                  <p class="text-custom-blue dark:text-custom-blue">
                     SVG, PNG, JPG or GIF (MAX. 400x200px)
                   </p>
                   <span
                     id="file-name"
-                    class="pt-2 text-xs font-bold underline text-custom-blue dark:text-custom-blue"
+                    class="pt-2 font-bold underline text-custom-blue dark:text-custom-blue"
                     >No File Selected</span
                   >
                 </div>
@@ -418,24 +371,21 @@
               </div>
             </label>
 
-            <div :class="{ 'pt-8': continuation === 'no', 'pt-[0.5rem]': continuation === 'yes' }" class="pt-8">
+            <div class="pt-8">
               <label
                 for="keywords"
                 class="block mb-1 text-sm font-medium text-custom-blue"
               >
                 Please type in some keywords related to your project (Optional):
               </label>
-              <input
-                id="keywords"
-                type="text"
-                placeholder="Mobile App, Ionic, Vue.js ..."
-                class="bg-custom-gray border-2 border-custom-blue text-custom-blue rounded-lg block w-full h-12 p-2.5"
-                v-model="keywords"
-              >
+              <input 
+              class="w-full bg-custom-gray border-2 border-custom-blue rounded-lg hover:border-custom-teal h-10 p-2.5 text-custom-blue"
+              placeholder="Ionic, Python, Java"
+
             </div>
 
             <div class="col-span-2">
-              <div :class="{ 'pt-10': continuation === 'no', 'pt-6': continuation === 'yes' }" class="text-center pt-10">
+              <div class="text-center pt-10">
                 <button
                   @click="prevStep"
                   class="bg-custom-blue text-white w-20 h-10 rounded-lg mx-3"
@@ -450,7 +400,6 @@
                 </button>
               </div>
             </div>
-          </div>
         </div>
         <div class="flex text-center items-center justify-center my-56">
           <div v-if="step === 4">
