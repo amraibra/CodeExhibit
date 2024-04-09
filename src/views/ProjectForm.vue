@@ -6,7 +6,7 @@
       <!--Stepper-->
       <div v-if="step < 4">
         <div class="w-full p-4">
-          <div class="flex justify-center pb-2 pt-5">
+          <div class="flex justify-center lg:pt-10 xl:pt-8 2xl:pt-20">
             <!--Project Info-->
             <div class="flex items-center">
               <div
@@ -79,8 +79,8 @@
         </div>
       </div>
       <form @submit.prevent="nextStep">
-        <div v-if="step === 1">
-          <h3 class="text-mono text-custom-blue text-xl font-medium pb-8">
+        <div v-if="step === 1" class="2xl:pt-20">
+          <h3 class="text-mono text-custom-blue text-xl font-medium md:pb-4 lg:pb-4 xl:pb-4 2xl:pb-4">
             Project Information
           </h3>
           <div class="grid gap-4 sm:grid-cols-2">
@@ -226,13 +226,13 @@
               required
             ></textarea>
           </div>
-          <div class="text-center pt-10">
+          <div class="text-center md:pt-6 xl:pt-4 2xl:pt-20">
             <a
               href="/projects"
               class="bg-custom-blue text-white p-3 rounded-lg mx-2"
               >Cancel</a
             >
-            <button class="bg-custom-blue text-white w-16 h-[2.89rem] rounded-lg">
+            <button class="bg-custom-blue text-white w-16 h-[2.69rem] rounded-lg">
               Next
             </button>
           </div>
@@ -307,7 +307,7 @@
               required
             />
           </div>
-          <div class="text-center pt-20">
+          <div class="text-center xl:pt-6 2xl:pt-20">
             <button
               @click="prevStep"
               class="bg-custom-blue text-white w-20 h-10 rounded-lg mx-3"
@@ -383,9 +383,8 @@
               placeholder="Ionic, Python, Java"
 
             </div>
-
             <div class="col-span-2">
-              <div class="text-center pt-10">
+              <div class="text-center xl:pt-6 2xl:pt-20">
                 <button
                   @click="prevStep"
                   class="bg-custom-blue text-white w-20 h-10 rounded-lg mx-3"
@@ -404,21 +403,21 @@
         <div class="flex text-center items-center justify-center my-56">
           <div v-if="step === 4">
             <h3
-              class="text-mono text-custom-blue text-3xl font-extrabold font-mono pb-5"
+              class="text-mono text-custom-blue text-3xl font-extrabold font-mono xl:pb-5"
             >
               Your project has been submitted!
             </h3>
-            <p class="sm text-custom-blue font-medium mt-2 mb-10">
+            <p class="sm text-custom-blue font-medium mt-2 xl:mb-10">
               Please check the projects page to view your submitted project.
             </p>
             <a
               href="/home"
-              class="bg-custom-blue text-white p-3 rounded-lg mt-10 mx-2"
+              class="bg-custom-blue text-white p-3 rounded-lg xl:mt-10 mx-2"
             >Home
             </a>
             <a
               href="/form"
-              class="bg-custom-blue text-white p-3 rounded-lg mt-10"
+              class="bg-custom-blue text-white p-3 rounded-lg xl:mt-10"
             >Upload Project
             </a>
           </div>
