@@ -85,7 +85,7 @@
                 <div
                   v-for="project in highlightedProjects"
                   :key="'highlighted-project-' + project.id"
-                  class="flip-card w-[21rem] h-96"
+                  class="flip-card xl:w-80 lg:w-72 h-96 md:w-80 sm:w-80"
                 >
                   <div class="flip-card-inner">
                     <div
@@ -95,7 +95,7 @@
                         v-if="project.imageUrl"
                         :src="project.imageUrl"
                         alt="Project Image"
-                        class="project-image"
+                        class="project-image xl:ml-2"
                       />
                       <img
                         v-else
@@ -103,32 +103,52 @@
                         alt="Default Image"
                         class="project-image"
                       />
-                      <h4 class="font-extrabold pb-5">
-                        {{ project.projectName }}
-                      </h4>
-                      <p>{{ project.projectDescription }}</p>
+                      <div class="font-londrina">
+                        <h4 class="text-2xl pb-1">{{ project.projectName }}</h4>
+                        <p class="text-xs text-gray-400 pb-3 font-thin">
+                          {{ project.memberNames }}
+                        </p>
+                        <p>{{ project.projectDescription }}</p>
+                      </div>
                     </div>
                     <div
-                      class="flip-card-back bg-white border-2 border-custom-orange rounded-lg p-5 space-y-5"
+                      class="flip-card-back bg-white border-2 border-custom-orange rounded-lg p-5"
                     >
-                      <p><b>Member Names:</b> {{ project.memberNames }}</p>
-                      <p><b>Semester:</b> {{ project.semesterType }}</p>
-                      <p><b>Class Name:</b> {{ project.className }}</p>
-                      <p><b>Project Type:</b> {{ project.projectType }}</p>
-                      <div>
-                        <a
-                          :href="project.githubLink"
-                          target="_blank"
-                          class="text-custom-orange font-bold"
-                          >GitHub Link</a
-                        ><br />
-                        <a
-                          :href="project.powerpoint"
-                          target="_blank"
-                          class="text-custom-orange font-bold"
-                          >PowerPoint Link</a
-                        >
+                      <h1 class="text-xl font-londrina font-thin">
+                        <u>Project Information:</u>
+                      </h1>
+                      <div
+                        class="mt-4 font-londrina cursor-default mb-3 font-thin text-lg"
+                      >
+                        <p><b>Semester:</b></p>
+                        <p class="text-custom-orange">
+                          {{ project.semesterType }}
+                        </p>
+                        <p class="pt-3"><b>Class Name:</b></p>
+                        <p class="text-custom-orange">
+                          {{ project.className }}
+                        </p>
+                        <p class="pt-3"><b>Project Type:</b></p>
+                        <p class="text-custom-orange">
+                          {{ project.projectType }}
+                        </p>
+                        <p class="pt-3"><b>Keywords:</b></p>
+                        <p class="text-custom-orange">...</p>
                       </div>
+                      <a
+                        :href="project.githubLink"
+                        target="_blank"
+                        class="text-custom-orange text-xl font-bold mr-2"
+                      >
+                        <i class="fab fa-github"></i>
+                      </a>
+                      <a
+                        :href="project.powerpoint"
+                        target="_blank"
+                        class="text-custom-orange text-xl font-bold"
+                      >
+                        <i class="fas fa-file-powerpoint"></i>
+                      </a>
                     </div>
                   </div>
                 </div>
