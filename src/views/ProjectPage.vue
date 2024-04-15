@@ -33,6 +33,12 @@
           </ul>
         </li>
       </ul>
+      <div class="absolute bottom-0 pl-40 text-custom-gray font-bold text-md font-londrina">
+        <a href="/adminLogin">
+          Admin
+          <i class="fas fa-cog text-lg pl-1"></i>
+        </a>
+      </div>
     </div>
     <!--Main-->
     <div class="flex-1 p-8 bg-custom-blue overflow-auto">
