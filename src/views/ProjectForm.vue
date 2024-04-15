@@ -6,7 +6,7 @@
       <!--Stepper-->
       <div v-if="step < 4">
         <div class="w-full p-4">
-          <div class="flex justify-center lg:pt-10 xl:pt-8 2xl:pt-10">
+          <div class="flex justify-center sm:pt-4 md:pt-4 lg:pt-4 xl:pt-4 2xl:pt-4">
             <!--Project Info-->
             <div class="flex items-center">
               <div
@@ -79,9 +79,9 @@
         </div>
       </div>
       <form @submit.prevent="nextStep">
-        <div v-if="step === 1" class="2xl:pt-4">
+        <div v-if="step === 1">
           <h3
-            class="text-mono text-custom-blue text-xl font-medium md:pb-4 lg:pb-4 xl:pb-4 2xl:pb-4"
+            class="text-mono text-custom-blue text-xl font-medium sm:pb-4 md:pb-4 lg:pb-4 xl:pb-4 2xl:pb-4"
           >
             Project Information
           </h3>
@@ -227,14 +227,14 @@
               required
             ></textarea>
           </div>
-          <div class="text-center md:pt-6 xl:pt-4 2xl:pt-14">
+          <div class="text-center sm:pt-6 md:pt-6 xl:pt-6 2xl:pt-6">
             <a
               href="/projects"
-              class="bg-custom-blue text-white p-2.5 rounded-lg mx-2"
+              class="bg-custom-blue text-white p-3 rounded-lg mx-2"
               >Cancel</a
             >
             <button
-              class="bg-custom-blue text-white w-16 h-[2.65rem] rounded-lg"
+              class="bg-custom-blue text-white w-14 h-[2.63rem] rounded-lg"
             >
               Next
             </button>
@@ -308,7 +308,7 @@
               required
             />
           </div>
-          <div class="text-center xl:pt-6 2xl:pt-20">
+          <div class="text-center sm:pt-6 md:pt-6 lg:pt-6 xl:pt-6 2xl:pt-6">
             <button
               @click="prevStep"
               class="bg-custom-blue text-white w-20 h-10 rounded-lg mx-3"
@@ -368,7 +368,7 @@
             </div>
           </label>
 
-          <div class="pt-8">
+          <div class="pt-6">
             <label
               for="keywords"
               class="block mb-1 text-sm font-medium text-custom-blue"
@@ -376,11 +376,11 @@
               Please type in some keywords related to your project (Optional):
             </label>
             <input class="w-full bg-custom-gray border-2 border-custom-blue
-            rounded-lg hover:border-custom-teal h-10 p-2.5 text-custom-blue"
+            rounded-lg hover:border-custom-teal h-12 p-2.5 text-custom-blue"
             placeholder="Ionic, Python, Java"
           </div>
           <div class="col-span-2">
-            <div class="text-center xl:pt-6 2xl:pt-20">
+            <div class="text-center sm:pt-6 md:pt-6 lg:pt-6 xl:pt-6 2xl:pt-6">
               <button
                 @click="prevStep"
                 class="bg-custom-blue text-white w-20 h-10 rounded-lg mx-3"
@@ -397,27 +397,29 @@
           </div>
         </div>
         <div
-          class="flex text-center items-center justify-center my-56 2xl:my-64"
+          class="flex text-center items-center justify-center pt-60"
         >
-          <div v-if="step === 4">
+          <div v-if="step === 4" class="space-y-4">
             <h3
-              class="text-mono text-custom-blue text-3xl font-extrabold font-mono xl:pb-5"
+              class="text-mono text-custom-blue text-4xl font-bold"
             >
               Your project has been submitted!
             </h3>
-            <p class="sm text-custom-blue font-medium mt-2 xl:mb-10">
+            <p class="sm text-custom-blue font-medium mt-2">
               Please check the projects page to view your submitted project.
             </p>
-            <a
-              href="/home"
-              class="bg-custom-blue text-white p-3 rounded-lg xl:mt-10 mx-2"
-              >Home
-            </a>
-            <a
-              href="/form"
-              class="bg-custom-blue text-white p-3 rounded-lg xl:mt-10"
-              >Upload Project
-            </a>
+            <div class="pt-4">
+              <a
+                href="/projects"
+                class="bg-custom-blue text-white p-3 rounded-lg mx-2"
+                >Projects
+              </a>
+              <a
+                href="/form"
+                class="bg-custom-blue text-white p-3 rounded-lg"
+                >Upload
+              </a>
+            </div>
           </div>
         </div>
       </form>
@@ -488,9 +490,15 @@ export default {
       }
     },
     handleFileChange(event) {
+    if (event.target.files.length > 0) {
       this.powerPointFile = event.target.files[0];
-      console.log("File selected:", this.powerPointFile); // Debug line
-    },
+      // Update the text content of the file-name element with the name of the selected file
+      document.getElementById("file-name").textContent = this.powerPointFile.name;
+    } else {
+      // If no file is selected, reset the displayed file name
+      document.getElementById("file-name").textContent = "No File Selected";
+    }
+  },
     async uploadPowerPoint(file) {
       console.log("Uploading file:", file); // Debug line
       if (!file) {
