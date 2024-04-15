@@ -5,6 +5,8 @@ import InfoPage from '../views/InfoPage.vue';
 import ProjectPage from '../views/ProjectPage.vue';
 import ContactPage from '@/views/ContactPage.vue';
 import ProjectForm from '@/views/ProjectForm.vue';
+import AdminLoginPage from '@/views/AdminLoginPage.vue';
+import AdminProjectPage from '@/views/AdminProjectPage.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -35,6 +37,19 @@ const routes: Array<RouteRecordRaw> = [
     path: '/form',
     name: 'Form',
     component: ProjectForm
+  },
+
+  {
+    path: '/adminlogin',
+    name: 'AdminLogin',
+    component: AdminLoginPage
+  },
+
+  {
+    path: '/adminprojects',
+    name: 'AdminProjectPage',
+    component: AdminProjectPage,
+    meta: { requiresAdmin: true } 
   }
 ]
 
@@ -42,5 +57,16 @@ const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  const isLoggedIn = localStorage.getItem('isAdminLoggedIn');
+  const requiresAuth = to.meta.requiresAdmin;
+
+  if (requiresAuth && !isLoggedIn) {
+    next('/adminlogin');
+  } else {
+    next();
+  }
+});
 
 export default router
