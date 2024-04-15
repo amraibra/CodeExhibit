@@ -25,7 +25,7 @@
               <router-link
                 to="#"
                 @click.prevent="setFilter(year.type, item)"
-                :class="{'block py-1 px-2 rounded hover:bg-custom-blue': true,
+                :class="{'block py-1 px-2 rounded hover:bg-custom-teal': true,
                 'bg-custom-teal text-white': activeFilters[year.type] && categoryFilter[year.type] === item}"
                 >{{ item }}</router-link
               >
