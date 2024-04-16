@@ -1,6 +1,5 @@
 <template>
     <div class="admin-login-container" v-if="isVisible">
-      <h2>Admin Login</h2>
       <form @submit.prevent="login">
         <div class="form-group">
           <label for="username">Username:</label>
@@ -10,9 +9,9 @@
           <label for="password">Password:</label>
           <input type="password" id="password" v-model="password" required>
         </div>
-        <button type="submit">Login</button>
+        <button type="submit" class="bg-custom-blue rounded text-white p-2 hover:bg-custom-teal">Login</button>
       </form>
-      <p v-if="error" class="error-message">{{ error }}</p>
+      <p v-if="error" class="error-message pt-2">{{ error }}</p>
     </div>
   </template>
   
@@ -60,12 +59,14 @@
   </script>
   
   <style>
+
   .admin-login-container {
     max-width: 400px;
     margin: 0 auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    background-color: #ccc;
   }
   
   .form-group {
@@ -84,16 +85,7 @@
     border: 1px solid #ccc;
     border-radius: 4px;
   }
-  
-  button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
+
   .error-message {
     color: red;
   }

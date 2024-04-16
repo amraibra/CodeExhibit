@@ -67,7 +67,7 @@
           <div class="text-content flex-1">
             <h1
               style="font-size: 3.75888rem"
-              class="font-inter font-bold text-white mb-3"
+              class="font-inter font-bold text-white pb-24"
             >
               <span class="text-custom-orange">Project</span> Today,<br />
               <span class="text-custom-orange">Portfolio</span> Tomorrow:<br />
@@ -80,7 +80,7 @@
             <div
               class="text-image-container original-content relative z-20 px-[3.125rem] flex flex-col md:flex-row items-center justify-center h-full"
             >
-              <div class="grid grid-cols-3 gap-4 text-black pr-40">
+              <div class="grid grid-cols-3 gap-4 text-black pr-64 pb-36">
                 <!-- Display highlighted projects dynamically -->
                 <div
                   v-for="project in highlightedProjects"
@@ -165,7 +165,7 @@
           class="centered-content new-content absolute z-20 w-[50%] h-[50%] top-[calc(75% + 25vh)] left-[25%] flex items-center justify-center gap-8"
         >
           <!-- Image Content for art2 -->
-          <div class="image-content w-1/2 flex flex-col items-center">
+          <div class="image-content w-1/2 flex flex-col pt-36 -ml-64">
             <img
               :src="images[currentImageIndex]"
               alt="Descriptive Alt Text"
@@ -188,7 +188,7 @@
           </div>
 
           <!-- Text Content for art2 -->
-          <div class="text-content w-1/2 text-right">
+          <div class="text-content w-1/2 mr-20 pl-10 mt-36">
             <h1
               class="text-white"
               style="
@@ -211,31 +211,6 @@
         </div>
       </div>
     </ion-content>
-
-    <ion-footer class="bg-custom-blue text-white flex items-center p-6">
-      <div class="flex-1 flex items-center mx-2">
-        <img src="/gmail.png" alt="email" class="h-7 w-7 mr-2" />
-        <span class="text-sm font-semibold font-mono"
-          >support@codeexhibit.com</span
-        >
-      </div>
-      <div class="flex-1 flex justify-center">
-        <div class="text-base font-semibold font-mono">
-          Ready to <b class="text-custom-orange">Show</b> the World?
-        </div>
-      </div>
-      <div class="flex-1 flex justify-end items-center">
-        <a href="https://instagram.com" class="mx-1.5">
-          <img src="/instagram.png" alt="insta" class="h-7 w-7" />
-        </a>
-        <a href="https://tiktok.com" class="mx-1.5">
-          <img src="/tiktok.png" alt="x" class="h-7 w-7" />
-        </a>
-        <a href="https://facebook.com" class="mx-1.5">
-          <img src="/facebook.png" alt="facebook" class="h-7 w-7" />
-        </a>
-      </div>
-    </ion-footer>
   </ion-page>
 </template>
 

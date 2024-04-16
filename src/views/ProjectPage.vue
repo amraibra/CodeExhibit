@@ -25,7 +25,7 @@
               <router-link
                 to="#"
                 @click.prevent="setFilter(year.type, item)"
-                :class="{'block py-1 px-2 rounded hover:bg-custom-blue': true,
+                :class="{'block py-1 px-2 rounded hover:bg-custom-teal': true,
                 'bg-custom-teal text-white': activeFilters[year.type] && categoryFilter[year.type] === item}"
                 >{{ item }}</router-link
               >
@@ -33,6 +33,12 @@
           </ul>
         </li>
       </ul>
+      <div class="absolute bottom-0 pl-40 text-custom-gray font-bold text-md font-londrina">
+        <a href="/adminLogin">
+          Admin
+          <i class="fas fa-cog text-lg pl-1"></i>
+        </a>
+      </div>
     </div>
     <!--Main-->
     <div class="flex-1 p-8 bg-custom-blue overflow-auto">
@@ -124,7 +130,7 @@
                   <p class="pt-3"><b>Project Type:</b></p>
                   <p class="text-custom-orange">{{ project.projectType }}</p>
                   <p class="pt-3"><b>Keywords:</b></p>
-                  <p class="text-custom-orange"> ... </p>
+                  <p class="text-custom-orange">{{ project.keywords }}</p>
                 </div>
                     <a
                     :href="project.githubLink"
@@ -346,6 +352,9 @@ export default {
               ?.toLowerCase()
               .includes(this.searchQuery.toLowerCase()) ||
             project.projectDescription
+              ?.toLowerCase()
+              .includes(this.searchQuery.toLowerCase()) ||
+            project.keywords
               ?.toLowerCase()
               .includes(this.searchQuery.toLowerCase()) ||
             project.memberNames
