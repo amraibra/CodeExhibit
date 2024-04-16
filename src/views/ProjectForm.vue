@@ -378,6 +378,8 @@
             <input class="w-full bg-custom-gray border-2 border-custom-blue
             rounded-lg hover:border-custom-teal h-12 p-2.5 text-custom-blue"
             placeholder="Ionic, Python, Java"
+            v-model="keywords"
+            >
           </div>
           <div class="col-span-2">
             <div class="text-center sm:pt-6 md:pt-6 lg:pt-6 xl:pt-6 2xl:pt-6">
@@ -454,6 +456,7 @@ export default {
       projectImageFile: null,
       continuation: "",
       extraInfo: "",
+      keywords: ""
     };
   },
   methods: {
@@ -557,6 +560,7 @@ export default {
         imageUrl: projectImageUrl, // URL from the uploaded project image
         continuation: this.continuation,
         extraInfo: this.extraInfo ? this.extraInfo : "", // Optional additional info
+        keywords: this.keywords
       };
 
       // Generate a key for the new project entry based on the project name

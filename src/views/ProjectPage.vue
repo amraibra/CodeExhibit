@@ -130,7 +130,7 @@
                   <p class="pt-3"><b>Project Type:</b></p>
                   <p class="text-custom-orange">{{ project.projectType }}</p>
                   <p class="pt-3"><b>Keywords:</b></p>
-                  <p class="text-custom-orange"> ... </p>
+                  <p class="text-custom-orange">{{ project.keywords }}</p>
                 </div>
                     <a
                     :href="project.githubLink"
@@ -352,6 +352,9 @@ export default {
               ?.toLowerCase()
               .includes(this.searchQuery.toLowerCase()) ||
             project.projectDescription
+              ?.toLowerCase()
+              .includes(this.searchQuery.toLowerCase()) ||
+            project.keywords
               ?.toLowerCase()
               .includes(this.searchQuery.toLowerCase()) ||
             project.memberNames
