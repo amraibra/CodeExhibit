@@ -44,11 +44,14 @@
             <div class="bg-custom-gray h-96 w-1/4  rounded text-center justify-center items-center mx-8 shadow-lg text-custom-blue border-2 border-custom-orange">
               <h2 class="text-xl font-extrabold mb-2 mt-16 font-mono">Email</h2>
               <p class="text-base mx-5 mb-5"> If you have any questions regarding CodeExhibit, please contact us through email.
-                Typically we take 2-3 business days to send a response. If we cannot get back to you in that time, feel free to reference
+                Typically we take 1-2 business days to send a response. If we cannot get back to you in that time, feel free to reference
                 our call section. 
                 We can be reached at:
               </p>
-              <p><b>support@codeexhibit.com</b></p>
+              <p><b>amra.ibrahimovic@snhu.edu</b></p>
+              <p><b>paul.antuono@snhu.edu</b></p>
+              <p><b>samuel.tyler@snhu.edu</b></p>
+              <p><b>b.kim@snhu.edu</b></p>
             </div>
             <!-- Card 3 -->
             <div class="bg-custom-gray h-96 w-1/4  rounded text-center justify-center items-center mx-8 shadow-lg text-custom-blue border-2 border-custom-orange">
