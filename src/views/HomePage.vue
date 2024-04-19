@@ -112,43 +112,36 @@
                       </div>
                     </div>
                     <div
-                      class="flip-card-back bg-white border-2 border-custom-orange rounded-lg p-5"
+                    class="flip-card-back bg-white border-2 border-custom-orange rounded-lg p-3 flex flex-col"
+                  >
+                  <h1 class="text-xl font-londrina font-thin"><u>Project Information:</u></h1>
+                  <div class="mt-1 font-londrina cursor-default font-thin text-lg">
+                    <p><b>Semester:</b></p>
+                    <p class="text-custom-orange">{{ project.semesterType }}</p>
+                    <p class="pt-3"><b>Class Name:</b></p>
+                    <p class="text-custom-orange">{{ project.className }}</p>
+                    <p class="pt-3"><b>Project Type:</b></p>
+                    <p class="text-custom-orange">{{ project.projectType }}</p>
+                    <p class="pt-3"><b>Keywords:</b></p>
+                    <p class="text-custom-orange pb-2">{{ project.keywords }}</p>
+                  </div>
+                    <div class="mt-auto pt-1">
+                      <a
+                      :href="project.githubLink"
+                      target="_blank"
+                      class="text-custom-orange text-xl font-bold mr-2"
+                      >
+                      <i class="fab fa-github"></i>
+                      </a
                     >
-                      <h1 class="text-xl font-londrina font-thin">
-                        <u>Project Information:</u>
-                      </h1>
-                      <div
-                        class="mt-4 font-londrina cursor-default mb-3 font-thin text-lg"
+                    <a
+                      :href="project.powerpoint"
+                      target="_blank"
+                      class="text-custom-orange text-xl font-bold"
                       >
-                        <p><b>Semester:</b></p>
-                        <p class="text-custom-orange">
-                          {{ project.semesterType }}
-                        </p>
-                        <p class="pt-3"><b>Class Name:</b></p>
-                        <p class="text-custom-orange">
-                          {{ project.className }}
-                        </p>
-                        <p class="pt-3"><b>Project Type:</b></p>
-                        <p class="text-custom-orange">
-                          {{ project.projectType }}
-                        </p>
-                        <p class="pt-3"><b>Keywords:</b></p>
-                        <p class="text-custom-orange">...</p>
-                      </div>
-                      <a
-                        :href="project.githubLink"
-                        target="_blank"
-                        class="text-custom-orange text-xl font-bold mr-2"
-                      >
-                        <i class="fab fa-github"></i>
-                      </a>
-                      <a
-                        :href="project.powerpoint"
-                        target="_blank"
-                        class="text-custom-orange text-xl font-bold"
-                      >
-                        <i class="fas fa-file-powerpoint"></i>
-                      </a>
+                      <i class="fas fa-file-powerpoint"></i>
+                      </a
+                    >
                     </div>
                   </div>
                 </div>
@@ -156,6 +149,7 @@
             </div>
           </div>
         </div>
+      </div>
 
         <!-- New setup for rectangle2 and art2 -->
         <div
