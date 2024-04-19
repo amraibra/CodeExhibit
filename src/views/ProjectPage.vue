@@ -104,7 +104,7 @@
                     v-if="project.imageUrl"
                     :src="project.imageUrl"
                     alt="Project Image"
-                    class="project-image xl:ml-2"
+                    class="project-image"
                   />
                   <img
                     v-else
@@ -119,10 +119,10 @@
                   </div>
                 </div>
                 <div
-                  class="flip-card-back bg-white border-2 border-custom-orange rounded-lg p-5"
+                  class="flip-card-back bg-white border-2 border-custom-orange rounded-lg p-3 flex flex-col"
                 >
                 <h1 class="text-xl font-londrina font-thin"><u>Project Information:</u></h1>
-                <div class="mt-4 font-londrina cursor-default mb-3 font-thin text-lg">
+                <div class="mt-1 font-londrina cursor-default font-thin text-lg">
                   <p><b>Semester:</b></p>
                   <p class="text-custom-orange">{{ project.semesterType }}</p>
                   <p class="pt-3"><b>Class Name:</b></p>
@@ -130,8 +130,9 @@
                   <p class="pt-3"><b>Project Type:</b></p>
                   <p class="text-custom-orange">{{ project.projectType }}</p>
                   <p class="pt-3"><b>Keywords:</b></p>
-                  <p class="text-custom-orange">{{ project.keywords }}</p>
+                  <p class="text-custom-orange pb-2">{{ project.keywords }}</p>
                 </div>
+                  <div class="mt-auto pt-1">
                     <a
                     :href="project.githubLink"
                     target="_blank"
@@ -148,6 +149,7 @@
                     <i class="fas fa-file-powerpoint"></i>
                     </a
                   >
+                </div>
                 </div>
               </div>
             </div>
@@ -415,6 +417,7 @@ export default {
 .flip-card:hover .flip-card-inner {
   transform: rotateY(180deg);
 }
+
 .flip-card-front,
 .flip-card-back {
   position: absolute;
@@ -425,6 +428,12 @@ export default {
 }
 .flip-card-back {
   transform: rotateY(180deg);
+  display: flex;
+  flex-direction: column;
+}
+
+.flip-card-back .mt-auto {
+  margin-top: auto;
 }
 
 .project-image {
