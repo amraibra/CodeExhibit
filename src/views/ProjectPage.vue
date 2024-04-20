@@ -262,7 +262,7 @@ export default {
       searchQuery: "",
       inputPassword: "",
       isAuthenticated: false,
-      correctPassword: "tempadmin",
+      correctPassword: "showcase2024",
       showPasswordModal: false,
     };
   },

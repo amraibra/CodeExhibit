@@ -39,9 +39,13 @@
         class="w-full h-1/6 bg-cyan-950 text-center justify-between items-center flex text-4xl font-mono font-bold shadow-2xl"
       >
         <div class="flex-grow text-center ml-8">Showcase Projects</div>
-        <div class="text-sm mr-8"><button @click="logout" class="bg-red-500 p-2 ml-4 rounded-2xl font-mono font-bold">
+        <div class="text-sm mr-8">
+            <button @click="showPasswordChange = true" class="bg-blue-500 p-2 ml-4 rounded-2xl font-mono font-bold">
+    Change Password
+  </button><button @click="logout" class="bg-red-500 p-2 ml-4 rounded-2xl font-mono font-bold">
     Logout
   </button>
+  
         </div>
         <div class="text-sm mr-8">
           
@@ -140,6 +144,26 @@
       </div>
     </div>
   </div>
+  <!-- Password Change Section -->
+<div v-if="showPasswordChange" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center">
+  <div class="bg-white p-6 rounded-lg shadow-lg">
+    <h2 class="text-lg font-bold mb-4">Change Password</h2>
+    <input
+      type="password"
+      v-model="newPassword"
+      placeholder="New Password"
+      class="bg-gray-100 border-2 border-gray-300 rounded p-2 w-full mb-4"
+    />
+    <div class="flex justify-center">
+      <button
+        @click="updatePassword(newPassword); showPasswordChange = false"
+        class="bg-blue-500 text-white px-4 py-2 rounded"
+      >
+        Update Password
+      </button>
+    </div>
+  </div>
+</div>
   <div
     v-if="showPasswordModal"
     class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center"
@@ -240,6 +264,8 @@ export default {
       isAuthenticated: false,
       correctPassword: "tempadmin",
       showPasswordModal: false,
+      newPassword: '',
+      showPasswordChange: false,
     };
   },
   methods: {
@@ -313,6 +339,11 @@ export default {
     this.isAuthenticated = false;
     localStorage.removeItem('isAdminLoggedIn'); // Clear the login flag from localStorage
     this.$router.push('/home').then(() => window.location.reload()); // Redirect to the homepage or login page
+  },
+  updatePassword(newPassword) {
+    // ideally make an API call backend to securely update the password
+    this.newPassword = this.correctPassword;
+    alert('Password updated successfully!');
   },
   },
   computed: {
