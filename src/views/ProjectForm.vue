@@ -399,7 +399,7 @@
           </div>
         </div>
         <div
-          class="flex text-center items-center justify-center pt-60"
+          class="flex text-center items-center justify-center pt-60 2xl:mt-48"
         >
           <div v-if="step === 4" class="space-y-4">
             <h3
