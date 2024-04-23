@@ -228,17 +228,17 @@
             ></textarea>
           </div>
           <div class="text-center sm:pt-6 md:pt-6 xl:pt-6 2xl:pt-6">
-            <a
-              href="/projects"
-              class="bg-custom-blue text-white p-3 rounded-lg mx-2"
-              >Cancel</a
+            <button onclick="window.location.href='/projects'"
+              class="bg-custom-blue text-white w-20 h-10 rounded-lg mx-3"
             >
+              Cancel
+            </button>
             <button
-              class="bg-custom-blue text-white w-14 h-[2.9rem] rounded-lg"
+              class="bg-custom-blue text-white w-20 h-10 rounded-lg"
             >
               Next
             </button>
-          </div>
+          </div>             
         </div>
         <div v-if="step === 2">
           <h3 class="text-mono text-custom-blue text-xl font-medium pb-8">
