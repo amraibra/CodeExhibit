@@ -209,11 +209,8 @@
 </template>
 
 <script>
-import { onMounted, ref } from "vue";
 import { database } from "../firebase"; // Your existing import
 import { ref as databaseRef, get, child, remove } from "firebase/database";
-import { IonRefresher } from "@ionic/vue";
-import router from "@/router";
 
 export default {
   data() {
@@ -221,18 +218,15 @@ export default {
       images: Array.from({ length: 25 }, (_, i) => `/snhu${i + 1}.jpg`),
       currentImageIndex: 0,
       projects: [],
+      highlightedProjects: [], // Initialize the highlighted projects array
     };
   },
   methods: {
     nextImage() {
-      // Increment the currentImageIndex, wrap around if at the end
-      this.currentImageIndex =
-        (this.currentImageIndex + 1) % this.images.length;
+      this.currentImageIndex = (this.currentImageIndex + 1) % this.images.length;
     },
     prevImage() {
-      // Decrement the currentImageIndex, wrap around if at the beginning
-      this.currentImageIndex =
-        (this.currentImageIndex + this.images.length - 1) % this.images.length;
+      this.currentImageIndex = (this.currentImageIndex + this.images.length - 1) % this.images.length;
     },
     fetchProjects() {
       const projectsRef = databaseRef(database, "projects/");
@@ -245,8 +239,9 @@ export default {
               id: key,
             }));
 
-            // Store all projects instead of just a random subset
             this.projects = projectsArray;
+            // Set highlighted projects here:
+            this.highlightedProjects = projectsArray.sort(() => 0.5 - Math.random()).slice(0, 3);
           } else {
             console.log("No data available");
           }
@@ -256,17 +251,11 @@ export default {
         });
     },
   },
-  computed: {
-    highlightedProjects() {
-      return this.projects.sort(() => 0.5 - Math.random()).slice(0, 3);
-    },
-  },
   mounted() {
     this.fetchProjects();
   },
 };
 </script>
-
 <style>
 .flip-card {
   perspective: 1000px;
