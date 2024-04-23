@@ -89,7 +89,7 @@
         </div>
         <div class="bg-custom-blue w-11/12 h-1 mt-10"></div>
         <div class="mt-8 flex flex-wrap">
-          <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4  gap-4 text-black">
+          <div class="grid sm:grid-cols-1 md:grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 text-black">
             <!-- Display projects (all or filtered based on user input) -->
             <div
               v-for="project in filteredProjects"
@@ -115,7 +115,9 @@
                   <div class="font-londrina">
                     <h4 class="text-2xl pb-1">{{ project.projectName }}</h4>
                     <p class="text-xs text-gray-400 pb-3 font-thin">{{ project.memberNames }}</p>
-                    <p>{{ project.projectDescription }}</p>
+                    <div class="overflow-y-auto max-h-24 text-sm px-1">
+                      <p>{{ project.projectDescription }}</p>
+                    </div>
                   </div>
                 </div>
                 <div
@@ -169,6 +171,7 @@
         v-model="inputPassword"
         placeholder="Password"
         class="bg-gray-100 border-2 border-gray-300 rounded p-2 w-full"
+        @keyup.enter="verifyPassword"
       />
       <div class="mt-4 flex justify-center">
         <button
@@ -259,7 +262,7 @@ export default {
       searchQuery: "",
       inputPassword: "",
       isAuthenticated: false,
-      correctPassword: "tempadmin",
+      correctPassword: "showcase2024",
       showPasswordModal: false,
     };
   },

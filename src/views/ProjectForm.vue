@@ -175,7 +175,7 @@
                 v-model="projectType"
                 required
               >
-                <option value="">Select project keywords</option>
+                <option value="">Select project type</option>
                 <option value="Web Application">Web Application</option>
                 <option value="Mobile Application">Mobile Application</option>
                 <option value="Games">Games</option>
@@ -234,7 +234,7 @@
               >Cancel</a
             >
             <button
-              class="bg-custom-blue text-white w-14 h-[2.63rem] rounded-lg"
+              class="bg-custom-blue text-white w-14 h-[2.9rem] rounded-lg"
             >
               Next
             </button>
@@ -277,7 +277,7 @@
                   </p>
                   <span
                     id="file-name"
-                    class="pt-2 font-bold underline text-custom-blue dark:text-custom-blue"
+                    class="pt-2 font-bold underline text-custom-blue dark:text-custom-blue truncate w-full text-center"
                     >No File Selected</span
                   >
                 </div>
@@ -354,7 +354,7 @@
                 </p>
                 <span
                   id="file-name"
-                  class="pt-2 font-bold underline text-custom-blue dark:text-custom-blue"
+                  class="pt-2 font-bold underline text-custom-blue dark:text-custom-blue truncate w-full text-center"
                   >No File Selected</span
                 >
               </div>
