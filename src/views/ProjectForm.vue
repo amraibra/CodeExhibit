@@ -519,69 +519,47 @@ export default {
       return url;
     },
     async submitForm() {
-      let powerPointUrl = "";
-      let projectImageUrl = "";
+  try {
+    // Initiate both uploads simultaneously
+    const uploads = [];
+    if (this.powerPointFile) {
+      uploads.push(this.uploadPowerPoint(this.powerPointFile));
+    }
+    if (this.projectImageFile) {
+      uploads.push(this.uploadProjectImage(this.projectImageFile));
+    }
 
-      // Upload the PowerPoint file if it exists
-      if (this.powerPointFile) {
-        try {
-          powerPointUrl = await this.uploadPowerPoint(this.powerPointFile);
-        } catch (error) {
-          console.error("Error uploading PowerPoint:", error);
-          // Handle the error (e.g., display an error message)
-          return;
-        }
-      }
+    // Wait for all uploads to complete
+    const [powerPointUrl, projectImageUrl] = await Promise.all(uploads);
 
-      // Upload the project image file if it exists
-      if (this.projectImageFile) {
-        try {
-          projectImageUrl = await this.uploadProjectImage(
-            this.projectImageFile
-          );
-        } catch (error) {
-          console.error("Error uploading project image:", error);
-          // Handle the error (e.g., display an error message)
-          return;
-        }
-      }
+    // Prepare the project data, including URLs of uploaded files
+    const projectData = {
+      projectName: this.projectName,
+      memberNames: this.memberNames,
+      semesterType: this.semesterType,
+      year: this.year,
+      className: this.className,
+      projectDescription: this.projectDescription,
+      projectType: this.projectType,
+      githubLink: this.githubLink,
+      powerpoint: powerPointUrl || '', // Use URL or empty string if upload was not initiated
+      imageUrl: projectImageUrl || '', // Use URL or empty string if upload was not initiated
+      continuation: this.continuation,
+      extraInfo: this.extraInfo ? this.extraInfo : "", // Optional additional info
+      keywords: this.keywords
+    };
 
-      // Compile project data, including URLs of uploaded files
-      const projectData = {
-        projectName: this.projectName,
-        memberNames: this.memberNames,
-        semesterType: this.semesterType,
-        year: this.year,
-        className: this.className,
-        projectDescription: this.projectDescription,
-        projectType: this.projectType,
-        githubLink: this.githubLink,
-        powerpoint: powerPointUrl, // URL from the uploaded PowerPoint file
-        imageUrl: projectImageUrl, // URL from the uploaded project image
-        continuation: this.continuation,
-        extraInfo: this.extraInfo ? this.extraInfo : "", // Optional additional info
-        keywords: this.keywords
-      };
-
-      // Generate a key for the new project entry based on the project name
-      const projectKey = this.projectName
-        .replace(/[^a-zA-Z0-9]/g, "")
-        .toLowerCase();
-
-      // Reference to your project's location in the database
-      const projectRef = databaseRef(database, `projects/${projectKey}`);
-
-      // Save the project data in the Firebase Database
-      try {
-        await set(projectRef, projectData);
-        console.log("Project submitted successfully");
-        this.step = 4; // Navigate to the confirmation message or step
-        // Reset the form or redirect the user as needed
-      } catch (error) {
-        console.error("Failed to submit project:", error);
-        // Handle the error (e.g., display an error message)
-      }
-    },
+    // Save the project data in the Firebase Database
+    const projectKey = this.projectName.replace(/[^a-zA-Z0-9]/g, "").toLowerCase();
+    const projectRef = databaseRef(database, `projects/${projectKey}`);
+    await set(projectRef, projectData);
+    console.log("Project submitted successfully");
+    this.step = 4; // Navigate to the confirmation step
+  } catch (error) {
+    console.error("Failed to submit project:", error);
+    alert("Failed to submit project. Please check your inputs and try again.");
+  }
+}
   },
 };
 </script>
