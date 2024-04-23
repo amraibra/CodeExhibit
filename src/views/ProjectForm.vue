@@ -273,7 +273,7 @@
                     and drop
                   </p>
                   <p class="text-custom-blue dark:text-custom-blue">
-                    SVG, PNG, JPG or GIF (MAX. 400x200px)
+                    (.ppt, .pptx, .pdf)
                   </p>
                   <span
                     id="file-name"
@@ -350,7 +350,7 @@
                   drop
                 </p>
                 <p class="text-custom-blue dark:text-custom-blue">
-                  SVG, PNG, JPG or GIF (MAX. 400x200px)
+                  (.ppt, .pptx, .pdf)
                 </p>
                 <span
                   id="file-name"
