@@ -1,13 +1,13 @@
 <template>
-    <div class="admin-login-container" v-if="isVisible">
+    <div class="main admin-login-container" v-if="isVisible">
       <form @submit.prevent="login">
         <div class="form-group">
           <label for="username">Username:</label>
-          <input type="text" id="username" v-model="username" required>
+          <input type="text" id="username" class="text-black" v-model="username" required>
         </div>
         <div class="form-group">
           <label for="password">Password:</label>
-          <input type="password" id="password" v-model="password" required>
+          <input type="password" id="password" class="text-black" v-model="password" required>
         </div>
         <button type="submit" class="bg-custom-blue rounded text-white p-2 hover:bg-custom-teal">Login</button>
       </form>
@@ -84,6 +84,7 @@
     padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    background-color: white;
   }
 
   .error-message {
